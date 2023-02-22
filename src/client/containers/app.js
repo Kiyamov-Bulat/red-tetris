@@ -1,18 +1,18 @@
-import React from 'react'
-import { connect } from 'react-redux'
-
+import React from 'react';
+import StartMenu from "./startMenu";
+import Field from "../components/field";
+import {useSelector} from "react-redux";
+import {selectField} from "../store/selectors/field";
 
 const App = ({message}) => {
+  const fieldState = useSelector(selectField);
+
   return (
-    <span>{message}</span>
-  )
-}
+      <div>
+        <StartMenu/>
+        <Field state={fieldState}/>
+      </div>
+  );
+};
 
-const mapStateToProps = (state) => {
-  return {
-    message: state.message
-  }
-}
-export default connect(mapStateToProps, null)(App)
-
-
+export default App;

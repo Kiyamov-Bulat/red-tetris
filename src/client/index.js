@@ -6,6 +6,6 @@ import store from "./store";
 
 ReactDom.render((
   <Provider store={store}>
-    <App/>
+    <App message='hi'/>
   </Provider>
 ), document.getElementById('tetris'));
