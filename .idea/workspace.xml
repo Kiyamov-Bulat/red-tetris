@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32dd85b2-f2c5-423d-93c2-d244d35fa568" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/field/cube/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/field/cube/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/test.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/containers/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/game/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/models/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/field.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/models/tetramino.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/tetramino.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +62,14 @@
       <recent name="$PROJECT_DIR$/src/client/components/field" />
       <recent name="$PROJECT_DIR$/src/client/components/button" />
     </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/client/utils/constants.js" />
+    </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Node.js.index.js">
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/client/components/field/index.js" working-dir="$PROJECT_DIR$/src/client/components/field">
+      <method v="2" />
+    </configuration>
     <configuration name="client-dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -86,6 +92,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.index.js" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.client-dev" />
       </list>
@@ -101,7 +108,7 @@
       <updated>1676907487594</updated>
       <workItem from="1676907488910" duration="989000" />
       <workItem from="1676908491186" duration="358000" />
-      <workItem from="1676991680800" duration="7668000" />
+      <workItem from="1676991680800" duration="19060000" />
     </task>
     <servers />
   </component>

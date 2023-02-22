@@ -1,16 +1,13 @@
 import React from 'react';
 import StartMenu from "./startMenu";
-import Field from "../components/field";
-import {useSelector} from "react-redux";
-import {selectField} from "../store/selectors/field";
+import Game from "./game";
 
 const App = ({message}) => {
-  const fieldState = useSelector(selectField);
 
   return (
       <div>
-        <StartMenu/>
-        <Field state={fieldState}/>
+          <StartMenu/>
+          <Game/>
       </div>
   );
 };
