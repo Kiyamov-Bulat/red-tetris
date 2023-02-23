@@ -58,10 +58,10 @@ const TETRAMINO_COORDS = {
         [TETRAMINO_ROTATE.NINE]: [[0, -1], [0, 1], [1, 0]],
     },
     [TETRAMINO_TYPE.J]: {
-        [TETRAMINO_ROTATE.TWELVE]: [[0, 1], [0, 2], [-1, 2]],
-        [TETRAMINO_ROTATE.THREE]: [[-1, 0], [-2, 0], [-2, -1]],
-        [TETRAMINO_ROTATE.SIX]: [[0, -1], [0, -2], [1, -2]],
-        [TETRAMINO_ROTATE.NINE]: [[1, 0], [2, 0], [2, 1]],
+        [TETRAMINO_ROTATE.TWELVE]: [[0, -1], [0, 1], [-1, 1]],
+        [TETRAMINO_ROTATE.THREE]: [[1, 0], [-1, 0], [-1, -1]],
+        [TETRAMINO_ROTATE.SIX]: [[0, 1], [0, -1], [1, -1]],
+        [TETRAMINO_ROTATE.NINE]: [[-1, 0], [1, 0], [1, 1]],
     },
     [TETRAMINO_TYPE.L]: {
         [TETRAMINO_ROTATE.TWELVE]: [[0, 1], [0, 2], [1, 2]],
@@ -86,7 +86,7 @@ const TETRAMINO_COORDS = {
 const TetraminoModel = {
     generate: () => {
         return {
-            type: TETRAMINO_TYPE.I,// randomChoice(Object.values(TETRAMINO_TYPE).filter((type) => type !== TETRAMINO_TYPE.EMPTY)),
+            type: TETRAMINO_TYPE.L,// randomChoice(Object.values(TETRAMINO_TYPE).filter((type) => type !== TETRAMINO_TYPE.EMPTY)),
             position: { column: 4, line: 0 },
             rotation: TETRAMINO_ROTATE.TWELVE,
         };
