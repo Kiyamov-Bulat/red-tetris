@@ -1,9 +1,10 @@
 import TetraminoModel, {TETRAMINO_TYPE} from "./tetramino";
 import {FIELD_SIZE} from "../utils/constants";
+import {CUBE_TYPE} from "./cube";
 
 
 const getEmptyFieldLine = () => {
-    return Array(FIELD_SIZE.column).fill({ type: TETRAMINO_TYPE.EMPTY });
+    return Array(FIELD_SIZE.column).fill({ type: CUBE_TYPE.EMPTY });
 };
 
 export const FIELD = [...Array(FIELD_SIZE.line)].map(() => getEmptyFieldLine());
@@ -18,7 +19,7 @@ const FieldModel = {
         let collapsedLines = 0;
 
         newField.slice().forEach((line, idx) => {
-            if (line.every((column) => column.type !== TETRAMINO_TYPE.EMPTY)) {
+            if (line.every((column) => column.type !== CUBE_TYPE.EMPTY)) {
                 newField.splice(idx - collapsedLines, 1);
                 collapsedLines += 1;
             }
@@ -34,13 +35,13 @@ const FieldModel = {
     atRight: (field, tetramino) => {
         return TetraminoModel.getCubes(tetramino).some((cube) =>
             (cube.column === FIELD_SIZE.column - 1) ||
-            field[cube.line][cube.column + 1].type !== TETRAMINO_TYPE.EMPTY
+            field[cube.line][cube.column + 1].type !== CUBE_TYPE.EMPTY
         );
     },
 
     atLeft: (field, tetramino) => {
         return TetraminoModel.getCubes(tetramino).some((cube) =>
-            (cube.column === 0) || field[cube.line][cube.column - 1].type !== TETRAMINO_TYPE.EMPTY
+            (cube.column === 0) || field[cube.line][cube.column - 1].type !== CUBE_TYPE.EMPTY
         );
     },
 
@@ -48,7 +49,7 @@ const FieldModel = {
         return TetraminoModel.getCubes(tetramino).some((cube) =>
                 cube.line >= 0 && (
                     (cube.line === FIELD_SIZE.line - 1) ||
-                    field[cube.line + 1][cube.column].type !== TETRAMINO_TYPE.EMPTY
+                    field[cube.line + 1][cube.column].type !== CUBE_TYPE.EMPTY
                 )
         );
     },

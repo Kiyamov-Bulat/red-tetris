@@ -72,11 +72,15 @@ const TETRAMINO_COORDS = {
 
 const TetraminoModel = {
     generate: () => {
-        return {
+        const tetramino = {
             type: randomChoice(Object.values(TETRAMINO_TYPE)),
             position: { column: 4, line: 0 },
             rotation: TETRAMINO_ROTATE.TWELVE,
         };
+        const topmostCube = TetraminoModel.getTopmostCube(tetramino);
+
+        tetramino.position.line -= topmostCube.line;
+        return tetramino;
     },
     
     getCubes: (tetramino) => {
@@ -125,10 +129,6 @@ const TetraminoModel = {
     },
 
     rotate: (tetramino) => {
-        if (!tetramino) {
-            return tetramino;
-        }
-
         return { ...tetramino, rotation: NEXT_TETRAMINO_ROTATE[tetramino.rotation] };
     },
 
@@ -148,6 +148,12 @@ const TetraminoModel = {
         return TetraminoModel.getCubes(tetramino).reduce((acc, cube) => (
             acc.line > cube.line ? acc : cube
         ), { column: 0, line: 0 });
+    },
+
+    getTopmostCube: (tetramino) => {
+        return TetraminoModel.getCubes(tetramino).reduce((acc, cube) => (
+            acc.line > cube.line ? cube : acc
+        ), { ...FIELD_SIZE });
     },
 };
 
