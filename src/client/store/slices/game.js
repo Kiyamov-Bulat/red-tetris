@@ -1,13 +1,13 @@
 import {createSlice} from "@reduxjs/toolkit";
-import TetraminoModel from "../../models/tetramino";
+import TetraminoModel, {CUBE_TYPE} from "../../models/tetramino";
 import FieldModel, {FIELD} from "../../models/field";
-import { v4 as uuidv4 } from 'uuid';
 
 const gameState = {
     oppositeFields: [],
     field: [...FIELD],
     currentTetramino: null, //{ type: TETRAMINO_TYPE.I },
     isSinglePlay: true,
+    isOver: false,
 };
 
 
@@ -16,7 +16,8 @@ const game = createSlice({
     initialState: gameState,
     reducers: {
         startGame(state) {
-            state.field = { id: uuidv4(), value: [...FIELD ] };
+            state.isOver = false;
+            state.field = [...FIELD ];
         },
         generateTetramino(state) {
 
@@ -30,6 +31,10 @@ const game = createSlice({
             if (FieldModel.atBottom(state.field, state.currentTetramino)) {
                 state.field = FieldModel.update(state.field, state.currentTetramino);
                 state.currentTetramino = null;
+
+                if (state.field[0].some((column) => column.type !== CUBE_TYPE.EMPTY)) {
+                    state.isOver = true;
+                }
                 return;
             }
             state.currentTetramino = TetraminoModel.incrementLine(state.currentTetramino);

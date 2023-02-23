@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/client/models/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/field.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/game/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/game/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/selectors/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/selectors/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

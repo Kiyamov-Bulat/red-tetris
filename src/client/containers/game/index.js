@@ -1,11 +1,12 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import Field from "../../components/field";
 import {useDispatch, useSelector} from "react-redux";
-import {selectField} from "../../store/selectors/game";
+import {selectField, selectGameIsOver} from "../../store/selectors/game";
 import {
     moveBottomTetramino,
     moveLeftTetramino,
-    moveRightTetramino, moveToPile,
+    moveRightTetramino,
+    moveToPile,
     rotateTetramino,
     updateGameState
 } from "../../store/slices/game";
@@ -39,18 +40,27 @@ const gameControl = (e) => {
 const Game = () => {
     const dispatch = useDispatch();
     const fieldState = useSelector(selectField);
+    const gameIsOver = useSelector(selectGameIsOver);
+    const updateIntervalId = useRef(null);
 
     useEffect(() => {
-        setInterval(() => {
+        updateIntervalId.current = window.setInterval(() => {
             dispatch(updateGameState());
         }, 500);
 
         document.addEventListener('keydown', gameControl);
 
         return () => {
+            window.clearInterval(updateIntervalId.current);
             document.removeEventListener('keydown', gameControl);
         };
     }, []);
+
+    useEffect(() => {
+        if (gameIsOver) {
+            window.clearInterval(updateIntervalId.current);
+        }
+    }, [gameIsOver]);
 
     return (
         <Field state={fieldState}/>

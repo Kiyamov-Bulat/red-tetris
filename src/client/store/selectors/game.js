@@ -6,3 +6,5 @@ export const selectField = (state) => selectGame(state).field;
 export const getSelectLine = (idx) => (state) => selectField(state)[idx];
 
 export const getSelectCube = (line, column) => (state) => getSelectLine(line)(state)[column];
+
+export const selectGameIsOver = (state) => selectGame(state).isOver;
