@@ -1,9 +1,7 @@
-import randomChoice from "../utils/randomChoice";
 import {FIELD_SIZE} from "../utils/constants";
-import {current} from "@reduxjs/toolkit";
+import randomChoice from "../utils/randomChoice";
 
 export const TETRAMINO_TYPE = {
-    EMPTY: 'empty',
     I: 'straight tetromino',
     O: 'square tetromino',
     T: 'T-tetromino',
@@ -11,17 +9,6 @@ export const TETRAMINO_TYPE = {
     L: 'L-tetromino',
     S: 'skew tetromino',
     Z: 'Z-tetramino',
-};
-
-export const TETRAMINO_COLOR = {
-    [TETRAMINO_TYPE.EMPTY]: '#e1e1e1',
-    [TETRAMINO_TYPE.I]: '#00eaff',
-    [TETRAMINO_TYPE.O]: '#ffdd00',
-    [TETRAMINO_TYPE.T]: '#e600ff',
-    [TETRAMINO_TYPE.J]: '#0039ff',
-    [TETRAMINO_TYPE.L]: '#ff4400',
-    [TETRAMINO_TYPE.S]: '#48ff00',
-    [TETRAMINO_TYPE.Z]: '#ff0015',
 };
 
 export const TETRAMINO_ROTATE = {
@@ -86,7 +73,7 @@ const TETRAMINO_COORDS = {
 const TetraminoModel = {
     generate: () => {
         return {
-            type: TETRAMINO_TYPE.L,// randomChoice(Object.values(TETRAMINO_TYPE).filter((type) => type !== TETRAMINO_TYPE.EMPTY)),
+            type: randomChoice(Object.values(TETRAMINO_TYPE)),
             position: { column: 4, line: 0 },
             rotation: TETRAMINO_ROTATE.TWELVE,
         };
