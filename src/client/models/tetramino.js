@@ -119,48 +119,22 @@ const TetraminoModel = {
         return { ...tetramino, position: { ...tetramino.position, line: tetramino.position.line + 1 }};
     },
 
-    moveLeft: (field, tetramino) => {
-        if (!tetramino) {
-            return tetramino;
-        }
-
-        const newTetramino = { ...tetramino };
-
-        if (!TetraminoModel.atFieldLeft(field, tetramino)) {
-            newTetramino.position = {
-                ...newTetramino.position,
-                column: newTetramino.position.column - 1
-            };
-        }
-
-        return newTetramino;
+    moveLeft: (tetramino) => {
+        return { ...tetramino, position: {
+            ...tetramino.position,
+            column: tetramino.position.column - 1
+        }};
     },
     
-    moveRight: (field, tetramino) => {
-        if (!tetramino) {
-            return tetramino;
-        }
-
-        const newTetramino = { ...tetramino };
-
-        if (!TetraminoModel.atFieldRight(field, tetramino)) {
-            newTetramino.position = {
-                ...newTetramino.position,
-                column: newTetramino.position.column + 1
-            };
-        }
-
-        return newTetramino;
+    moveRight: (tetramino) => {
+        return { ...tetramino, position: {
+            ...tetramino.position,
+            column: tetramino.position.column + 1
+        }};
     },
 
-    moveBottom: (field, tetramino) => {
-        if (!tetramino) {
-            return tetramino;
-        }
-        if (!TetraminoModel.atFieldBottom(field, tetramino)) {
-            return TetraminoModel.incrementLine(tetramino);
-        }
-        return { ...tetramino };
+    moveBottom: (tetramino) => {
+        return TetraminoModel.incrementLine(tetramino);
     },
 
     rotate: (tetramino) => {
@@ -187,28 +161,6 @@ const TetraminoModel = {
         return TetraminoModel.getCubes(tetramino).reduce((acc, cube) => (
             acc.line > cube.line ? acc : cube
         ), { column: 0, line: 0 });
-    },
-
-    atFieldRight: (field, tetramino) => {
-        return TetraminoModel.getCubes(tetramino).some((cube) =>
-            (cube.column === FIELD_SIZE.column - 1) ||
-            field[cube.line][cube.column + 1].type !== TETRAMINO_TYPE.EMPTY
-        );
-    },
-
-    atFieldLeft: (field, tetramino) => {
-        return TetraminoModel.getCubes(tetramino).some((cube) =>
-            (cube.column === 0) || field[cube.line][cube.column - 1].type !== TETRAMINO_TYPE.EMPTY
-        );
-    },
-
-    atFieldBottom: (field, tetramino) => {
-        return TetraminoModel.getCubes(tetramino).some((cube) =>
-            cube.line >= 0 && (
-                (cube.line === FIELD_SIZE.line - 1) ||
-                field[cube.line + 1][cube.column].type !== TETRAMINO_TYPE.EMPTY
-            )
-        );
     },
 };
 

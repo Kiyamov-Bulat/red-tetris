@@ -29,7 +29,29 @@ const FieldModel = {
         }
 
         return newField;
-    }       
+    },
+
+    atRight: (field, tetramino) => {
+        return TetraminoModel.getCubes(tetramino).some((cube) =>
+            (cube.column === FIELD_SIZE.column - 1) ||
+            field[cube.line][cube.column + 1].type !== TETRAMINO_TYPE.EMPTY
+        );
+    },
+
+    atLeft: (field, tetramino) => {
+        return TetraminoModel.getCubes(tetramino).some((cube) =>
+            (cube.column === 0) || field[cube.line][cube.column - 1].type !== TETRAMINO_TYPE.EMPTY
+        );
+    },
+
+    atBottom: (field, tetramino) => {
+        return TetraminoModel.getCubes(tetramino).some((cube) =>
+                cube.line >= 0 && (
+                    (cube.line === FIELD_SIZE.line - 1) ||
+                    field[cube.line + 1][cube.column].type !== TETRAMINO_TYPE.EMPTY
+                )
+        );
+    },
 };
 
 export default FieldModel;

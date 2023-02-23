@@ -25,7 +25,7 @@ const game = createSlice({
                 return;
             }
 
-            if (TetraminoModel.atFieldBottom(state.field, state.currentTetramino)) {
+            if (FieldModel.atBottom(state.field, state.currentTetramino)) {
                 state.field = FieldModel.update(state.field, state.currentTetramino);
                 state.currentTetramino = null;
                 return;
@@ -37,15 +37,24 @@ const game = createSlice({
         },
 
         moveLeftTetramino(state) {
-            state.currentTetramino = TetraminoModel.moveLeft(state.field, state.currentTetramino);
+            if (!state.currentTetramino || FieldModel.atLeft(state.field, state.currentTetramino)) {
+                return;
+            }
+            state.currentTetramino = TetraminoModel.moveLeft(state.currentTetramino);
         },
 
         moveRightTetramino(state) {
-            state.currentTetramino = TetraminoModel.moveRight(state.field, state.currentTetramino);
+            if (!state.currentTetramino || FieldModel.atRight(state.field, state.currentTetramino)) {
+                return;
+            }
+            state.currentTetramino = TetraminoModel.moveRight(state.currentTetramino);
         },
 
         moveBottomTetramino(state) {
-            state.currentTetramino = TetraminoModel.moveBottom(state.field, state.currentTetramino);
+            if (!state.currentTetramino || FieldModel.atBottom(state.field, state.currentTetramino)) {
+                return;
+            }
+            state.currentTetramino = TetraminoModel.moveBottom(state.currentTetramino);
         }
     }
 });
