@@ -40,10 +40,10 @@ export const NEXT_TETRAMINO_ROTATE = {
 
 const TETRAMINO_COORDS = {
     [TETRAMINO_TYPE.I]: {
-        [TETRAMINO_ROTATE.TWELVE]: [[0, 1], [0, 2], [0, 3]],
-        [TETRAMINO_ROTATE.THREE]: [[1, 0], [2, 0], [3, 0]],
-        [TETRAMINO_ROTATE.SIX]: [[0, 1], [0, 2], [0, 3]],
-        [TETRAMINO_ROTATE.NINE]: [[1, 0], [2, 0], [3, 0]],
+        [TETRAMINO_ROTATE.TWELVE]: [[0, -2], [0, -1], [0, 1]],
+        [TETRAMINO_ROTATE.THREE]: [[-1, 0], [1, 0], [2, 0]],
+        [TETRAMINO_ROTATE.SIX]: [[0, -2], [0, -1], [0, 1]],
+        [TETRAMINO_ROTATE.NINE]: [[-1, 0], [1, 0], [2, 0]],
     },
     [TETRAMINO_TYPE.O]: {
         [TETRAMINO_ROTATE.TWELVE]: [[1, 0], [0, 1], [1, 1]],
@@ -86,7 +86,7 @@ const TETRAMINO_COORDS = {
 const TetraminoModel = {
     generate: () => {
         return {
-            type: randomChoice(Object.values(TETRAMINO_TYPE).filter((type) => type !== TETRAMINO_TYPE.EMPTY)),
+            type: TETRAMINO_TYPE.I,// randomChoice(Object.values(TETRAMINO_TYPE).filter((type) => type !== TETRAMINO_TYPE.EMPTY)),
             position: { column: 4, line: 0 },
             rotation: TETRAMINO_ROTATE.TWELVE,
         };
@@ -204,7 +204,10 @@ const TetraminoModel = {
 
     atFieldBottom: (field, tetramino) => {
         return TetraminoModel.getCubes(tetramino).some((cube) =>
-            (cube.line === FIELD_SIZE.line - 1) || field[cube.line + 1][cube.column].type !== TETRAMINO_TYPE.EMPTY
+            cube.line >= 0 && (
+                (cube.line === FIELD_SIZE.line - 1) ||
+                field[cube.line + 1][cube.column].type !== TETRAMINO_TYPE.EMPTY
+            )
         );
     },
 };

@@ -1,6 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
 import TetraminoModel from "../../models/tetramino";
-import {FIELD_SIZE} from "../../utils/constants";
 import FieldModel, {FIELD} from "../../models/field";
 
 const gameState = {
