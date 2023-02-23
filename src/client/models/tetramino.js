@@ -1,5 +1,5 @@
-import {FIELD_SIZE} from "../utils/constants";
-import randomChoice from "../utils/randomChoice";
+import {FIELD_SIZE} from "../../utils/constants";
+import randomChoice from "../../utils/randomChoice";
 
 export const TETRAMINO_TYPE = {
     I: 'straight tetromino',
