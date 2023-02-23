@@ -11,6 +11,7 @@ import {
     updateGameState
 } from "../../store/slices/game";
 import store from "../../store";
+import {selectPlayerIsWinner} from "../../store/selectors/player";
 
 const gameControl = (e) => {
     let action = null;
@@ -42,6 +43,7 @@ const Game = () => {
     const fieldState = useSelector(selectField);
     const gameIsOver = useSelector(selectGameIsOver);
     const updateIntervalId = useRef(null);
+    const isWinner = useSelector(selectPlayerIsWinner);
 
     useEffect(() => {
         updateIntervalId.current = window.setInterval(() => {
@@ -58,6 +60,11 @@ const Game = () => {
 
     useEffect(() => {
         if (gameIsOver) {
+            if (isWinner) {
+                alert('You are won!');
+            } else {
+                alert('You are loss!');
+            }
             window.clearInterval(updateIntervalId.current);
         }
     }, [gameIsOver]);
