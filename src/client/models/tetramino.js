@@ -1,8 +1,9 @@
 import randomChoice from "../utils/randomChoice";
 import {FIELD_SIZE} from "../utils/constants";
+import {current} from "@reduxjs/toolkit";
 
 export const TETRAMINO_TYPE = {
-    E: 'empty',
+    EMPTY: 'empty',
     I: 'straight tetromino',
     O: 'square tetromino',
     T: 'T-tetromino',
@@ -13,7 +14,7 @@ export const TETRAMINO_TYPE = {
 };
 
 export const TETRAMINO_COLOR = {
-    [TETRAMINO_TYPE.E]: '#e1e1e1',
+    [TETRAMINO_TYPE.EMPTY]: '#e1e1e1',
     [TETRAMINO_TYPE.I]: '#00eaff',
     [TETRAMINO_TYPE.O]: '#ffdd00',
     [TETRAMINO_TYPE.T]: '#e600ff',
@@ -35,33 +36,6 @@ export const NEXT_TETRAMINO_ROTATE = {
     [TETRAMINO_ROTATE.THREE]: TETRAMINO_ROTATE.SIX,
     [TETRAMINO_ROTATE.SIX]: TETRAMINO_ROTATE.NINE,
     [TETRAMINO_ROTATE.NINE]: TETRAMINO_ROTATE.TWELVE,
-};
-
-const isITetraminoCube = (tetramino, cubeLine, cubeColumn) => {
-    const pos = tetramino.position;
-
-    if (tetramino.rotate === TETRAMINO_ROTATE.TWELVE || tetramino.rotate === TETRAMINO_ROTATE.SIX) {
-        return (
-            pos.column === cubeColumn &&
-            pos.line <= cubeLine &&
-            cubeLine <= pos.line + 3
-        );
-    }
-    return (
-        pos.line === cubeLine &&
-        pos.column <= cubeColumn &&
-        cubeColumn <= pos.column + 3
-    );
-};
-
-const isOTetraminoCube = (tetramino, cubeLine, cubeColumn) => {
-    const pos = tetramino.position;
-
-    return pos <= cubeColumn && cubeColumn <= pos + 1 && pos <= cubeLine && cubeLine <= pos + 1;
-};
-
-const isSTetraminoCube = (tetramino, cubeLine, cubeColumn) => {
-    const pos = tetramino.position;
 };
 
 const TETRAMINO_COORDS = {
@@ -112,7 +86,7 @@ const TETRAMINO_COORDS = {
 const TetraminoModel = {
     generate: () => {
         return {
-            type: randomChoice(Object.values(TETRAMINO_TYPE).filter((type) => type !== TETRAMINO_TYPE.E)),
+            type: randomChoice(Object.values(TETRAMINO_TYPE).filter((type) => type !== TETRAMINO_TYPE.EMPTY)),
             position: { column: 4, line: 0 },
             rotation: TETRAMINO_ROTATE.TWELVE,
         };
@@ -142,26 +116,17 @@ const TetraminoModel = {
     },
 
     incrementLine: (tetramino) => {
-        const newTetramino = { ...tetramino };
-        const lowestCube = TetraminoModel.getLowestCube(newTetramino);
-
-        console.log(lowestCube, newTetramino);
-        if (lowestCube.line !== FIELD_SIZE.line - 1) {
-            newTetramino.position = {
-                ...newTetramino.position,
-                line: newTetramino.position.line + 1
-            };
-        }
-
-        return newTetramino;
+        return { ...tetramino, position: { ...tetramino.position, line: tetramino.position.line + 1 }};
     },
 
-    moveLeft: (tetramino) => {
-        const newTetramino = { ...tetramino };
-        const leftmostCube = TetraminoModel.getLeftmostCube(newTetramino);
+    moveLeft: (field, tetramino) => {
+        if (!tetramino) {
+            return tetramino;
+        }
 
-        console.log(leftmostCube)
-        if (leftmostCube.column !== 0) {
+        const newTetramino = { ...tetramino };
+
+        if (!TetraminoModel.atFieldLeft(field, tetramino)) {
             newTetramino.position = {
                 ...newTetramino.position,
                 column: newTetramino.position.column - 1
@@ -171,11 +136,14 @@ const TetraminoModel = {
         return newTetramino;
     },
     
-    moveRight: (tetramino) => {
-        const newTetramino = { ...tetramino };
-        const leftmostCube = TetraminoModel.getRightmostCube(newTetramino);
+    moveRight: (field, tetramino) => {
+        if (!tetramino) {
+            return tetramino;
+        }
 
-        if (leftmostCube.column !== FIELD_SIZE.column - 1) {
+        const newTetramino = { ...tetramino };
+
+        if (!TetraminoModel.atFieldRight(field, tetramino)) {
             newTetramino.position = {
                 ...newTetramino.position,
                 column: newTetramino.position.column + 1
@@ -185,7 +153,21 @@ const TetraminoModel = {
         return newTetramino;
     },
 
+    moveBottom: (field, tetramino) => {
+        if (!tetramino) {
+            return tetramino;
+        }
+        if (!TetraminoModel.atFieldBottom(field, tetramino)) {
+            return TetraminoModel.incrementLine(tetramino);
+        }
+        return { ...tetramino };
+    },
+
     rotate: (tetramino) => {
+        if (!tetramino) {
+            return tetramino;
+        }
+
         return { ...tetramino, rotation: NEXT_TETRAMINO_ROTATE[tetramino.rotation] };
     },
 
@@ -205,7 +187,26 @@ const TetraminoModel = {
         return TetraminoModel.getCubes(tetramino).reduce((acc, cube) => (
             acc.line > cube.line ? acc : cube
         ), { column: 0, line: 0 });
-    }
+    },
+
+    atFieldRight: (field, tetramino) => {
+        return TetraminoModel.getCubes(tetramino).some((cube) =>
+            (cube.column === FIELD_SIZE.column - 1) ||
+            field[cube.line][cube.column + 1].type !== TETRAMINO_TYPE.EMPTY
+        );
+    },
+
+    atFieldLeft: (field, tetramino) => {
+        return TetraminoModel.getCubes(tetramino).some((cube) =>
+            (cube.column === 0) || field[cube.line][cube.column - 1].type !== TETRAMINO_TYPE.EMPTY
+        );
+    },
+
+    atFieldBottom: (field, tetramino) => {
+        return TetraminoModel.getCubes(tetramino).some((cube) =>
+            (cube.line === FIELD_SIZE.line - 1) || field[cube.line + 1][cube.column].type !== TETRAMINO_TYPE.EMPTY
+        );
+    },
 };
 
 export default TetraminoModel;

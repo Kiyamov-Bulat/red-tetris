@@ -7,12 +7,13 @@
     <list default="true" id="32dd85b2-f2c5-423d-93c2-d244d35fa568" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/components/field/cube/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/field/cube/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/game/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/game/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/game/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/models/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/field.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/models/tetramino.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/tetramino.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/selectors/field.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/selectors/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/selectors/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/slices/field.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +109,7 @@
       <updated>1676907487594</updated>
       <workItem from="1676907488910" duration="989000" />
       <workItem from="1676908491186" duration="358000" />
-      <workItem from="1676991680800" duration="19060000" />
+      <workItem from="1676991680800" duration="23728000" />
     </task>
     <servers />
   </component>

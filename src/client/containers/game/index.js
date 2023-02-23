@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Field from "../../components/field";
 import {useDispatch, useSelector} from "react-redux";
-import {selectField} from "../../store/selectors/field";
+import {selectField} from "../../store/selectors/game";
 import {
     moveBottomTetramino,
     moveLeftTetramino,

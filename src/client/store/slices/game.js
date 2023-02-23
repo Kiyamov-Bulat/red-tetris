@@ -1,8 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
 import TetraminoModel from "../../models/tetramino";
 import {FIELD_SIZE} from "../../utils/constants";
+import FieldModel, {FIELD} from "../../models/field";
 
 const gameState = {
+    field: [ ...FIELD ],
     currentTetramino: null, //{ type: TETRAMINO_TYPE.I },
     isSinglePlay: true,
 };
@@ -24,7 +26,8 @@ const game = createSlice({
                 return;
             }
 
-            if (state.currentTetramino.position.line === FIELD_SIZE.line) {
+            if (TetraminoModel.atFieldBottom(state.field, state.currentTetramino)) {
+                state.field = FieldModel.update(state.field, state.currentTetramino);
                 state.currentTetramino = null;
                 return;
             }
@@ -35,15 +38,15 @@ const game = createSlice({
         },
 
         moveLeftTetramino(state) {
-            state.currentTetramino = TetraminoModel.moveLeft(state.currentTetramino);
+            state.currentTetramino = TetraminoModel.moveLeft(state.field, state.currentTetramino);
         },
 
         moveRightTetramino(state) {
-            state.currentTetramino = TetraminoModel.moveRight(state.currentTetramino);
+            state.currentTetramino = TetraminoModel.moveRight(state.field, state.currentTetramino);
         },
 
         moveBottomTetramino(state) {
-            state.currentTetramino = TetraminoModel.incrementLine(state.currentTetramino);
+            state.currentTetramino = TetraminoModel.moveBottom(state.field, state.currentTetramino);
         }
     }
 });
