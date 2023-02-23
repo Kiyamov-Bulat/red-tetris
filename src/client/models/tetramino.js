@@ -1,6 +1,5 @@
 import {FIELD_SIZE} from "../utils/constants";
 import randomChoice from "../utils/randomChoice";
-import tetramino from "../store/slices/tetramino";
 
 export const TETRAMINO_TYPE = {
     I: 'straight tetromino',
@@ -71,6 +70,26 @@ const TETRAMINO_COORDS = {
     },
 };
 
+
+export const CUBE_TYPE = {
+    EMPTY: 'empty',
+    LOCKED: 'locked',
+    ...TETRAMINO_TYPE,
+};
+
+export const EMPTY_CUBE_TYPE = CUBE_TYPE.EMPTY;
+
+export const CUBE_COLOR = {
+    [CUBE_TYPE.EMPTY]: '#e1e1e1',
+    [CUBE_TYPE.I]: '#00eaff',
+    [CUBE_TYPE.O]: '#ffdd00',
+    [CUBE_TYPE.T]: '#e600ff',
+    [CUBE_TYPE.J]: '#0039ff',
+    [CUBE_TYPE.L]: '#ff4400',
+    [CUBE_TYPE.S]: '#48ff00',
+    [CUBE_TYPE.Z]: '#ff0015',
+};
+
 const TetraminoModel = {
     generate: () => {
         const tetramino = {
@@ -102,6 +121,7 @@ const TetraminoModel = {
             return false;
         }
 
+        console.log(cubeLine, cubeColumn, TetraminoModel.getCubes(tetramino));
         return TetraminoModel.getCubes(tetramino).some((cube) =>
             cube.column === cubeColumn && cube.line === cubeLine
         );
@@ -164,6 +184,20 @@ const TetraminoModel = {
         return TetraminoModel.getCubes(tetramino).reduce((acc, cube) => (
             acc.line > cube.line ? cube : acc
         ), { ...FIELD_SIZE });
+    },
+
+    outsideLeftEdge: (tetramino) => {
+        return TetraminoModel.getLeftmostCube(tetramino).column < 0;
+    },
+
+    outsideRightEdge: (tetramino) => {
+        return TetraminoModel.getRightmostCube(tetramino).column >= FIELD_SIZE.column;
+    },
+
+    intersectsPile: (field, tetramino) => {
+        return TetraminoModel.getCubes(tetramino).some((cube) =>
+            field[cube.line][cube.column].type !== CUBE_TYPE.EMPTY
+        );
     },
 };
 

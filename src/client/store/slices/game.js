@@ -1,9 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
 import TetraminoModel from "../../models/tetramino";
 import FieldModel, {FIELD} from "../../models/field";
+import { v4 as uuidv4 } from 'uuid';
 
 const gameState = {
-    field: [ ...FIELD ],
+    oppositeFields: [],
+    field: [...FIELD],
     currentTetramino: null, //{ type: TETRAMINO_TYPE.I },
     isSinglePlay: true,
 };
@@ -14,7 +16,7 @@ const game = createSlice({
     initialState: gameState,
     reducers: {
         startGame(state) {
-
+            state.field = { id: uuidv4(), value: [...FIELD ] };
         },
         generateTetramino(state) {
 
@@ -33,7 +35,17 @@ const game = createSlice({
             state.currentTetramino = TetraminoModel.incrementLine(state.currentTetramino);
         },
         rotateTetramino(state) {
-            state.currentTetramino = TetraminoModel.rotate(state.currentTetramino);
+            let rotatedTetramino = TetraminoModel.rotate(state.currentTetramino);
+
+            while (TetraminoModel.outsideLeftEdge(rotatedTetramino)) {
+               rotatedTetramino = TetraminoModel.moveRight(rotatedTetramino);
+            }
+            while (TetraminoModel.outsideRightEdge(rotatedTetramino)) {
+                rotatedTetramino = TetraminoModel.moveLeft(rotatedTetramino);
+            }
+            if (!TetraminoModel.intersectsPile(state.field, rotatedTetramino)) {
+                state.currentTetramino = rotatedTetramino;
+            }
         },
 
         moveLeftTetramino(state) {

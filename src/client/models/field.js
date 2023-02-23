@@ -1,6 +1,5 @@
-import TetraminoModel, {TETRAMINO_TYPE} from "./tetramino";
+import TetraminoModel, {CUBE_TYPE} from "./tetramino";
 import {FIELD_SIZE} from "../utils/constants";
-import {CUBE_TYPE} from "./cube";
 import {current} from "@reduxjs/toolkit";
 
 
