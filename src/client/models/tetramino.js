@@ -64,10 +64,10 @@ const TETRAMINO_COORDS = {
         [TETRAMINO_ROTATE.NINE]: [[-1, 0], [1, 0], [1, 1]],
     },
     [TETRAMINO_TYPE.L]: {
-        [TETRAMINO_ROTATE.TWELVE]: [[0, 1], [0, 2], [1, 2]],
-        [TETRAMINO_ROTATE.THREE]: [[-1, 0], [-2, 0], [-2, 1]],
-        [TETRAMINO_ROTATE.SIX]: [[0, -1], [0, -2], [-1, -2]],
-        [TETRAMINO_ROTATE.NINE]: [[1, 0], [2, 0], [2, -1]],
+        [TETRAMINO_ROTATE.TWELVE]: [[0, -1], [0, 1], [1, 1]],
+        [TETRAMINO_ROTATE.THREE]: [[1, 0], [-1, 0], [-1, 1]],
+        [TETRAMINO_ROTATE.SIX]: [[0, 1], [0, -1], [-1, -1]],
+        [TETRAMINO_ROTATE.NINE]: [[-1, 0], [1, 0], [1, -1]],
     },
     [TETRAMINO_TYPE.S]: {
         [TETRAMINO_ROTATE.TWELVE]: [[1, 0], [0, 1], [-1, 1]],

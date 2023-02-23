@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32dd85b2-f2c5-423d-93c2-d244d35fa568" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/models/tetramino.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/tetramino.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +100,7 @@
       <updated>1676907487594</updated>
       <workItem from="1676907488910" duration="989000" />
       <workItem from="1676908491186" duration="358000" />
-      <workItem from="1676991680800" duration="25763000" />
+      <workItem from="1676991680800" duration="25872000" />
     </task>
     <servers />
   </component>
