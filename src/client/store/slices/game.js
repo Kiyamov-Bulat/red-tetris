@@ -73,7 +73,7 @@ const game = createSlice({
             if (!state.currentTetramino || FieldModel.atBottom(state.field, state.currentTetramino)) {
                 return;
             }
-            const pileLine = FieldModel.getPileLine(state.field, state.currentTetramino.position.column);
+            const pileLine = FieldModel.getPileLine(state.field, state.currentTetramino);
 
             state.currentTetramino = TetraminoModel.moveToPile(state.currentTetramino, pileLine);
         }

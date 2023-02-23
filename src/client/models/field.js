@@ -54,12 +54,12 @@ const FieldModel = {
         );
     },
 
-    getPileLine: (field, column) => {
+    getPileLine: (field, tetramino) => {
         let i;
+        const cubes = TetraminoModel.getCubes(tetramino);
 
         for (i = 0; i < field.length; ++i) {
-            console.log(current(field[i][column]));
-            if (field[i][column].type !== CUBE_TYPE.EMPTY) {
+            if (cubes.some((cube) => field[i][cube.column].type !== CUBE_TYPE.EMPTY)) {
                 return i;
             }
         }
