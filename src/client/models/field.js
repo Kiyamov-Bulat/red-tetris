@@ -1,6 +1,7 @@
 import TetraminoModel, {TETRAMINO_TYPE} from "./tetramino";
 import {FIELD_SIZE} from "../utils/constants";
 import {CUBE_TYPE} from "./cube";
+import {current} from "@reduxjs/toolkit";
 
 
 const getEmptyFieldLine = () => {
@@ -53,6 +54,18 @@ const FieldModel = {
                 )
         );
     },
+
+    getPileLine: (field, column) => {
+        let i;
+
+        for (i = 0; i < field.length; ++i) {
+            console.log(current(field[i][column]));
+            if (field[i][column].type !== CUBE_TYPE.EMPTY) {
+                return i;
+            }
+        }
+        return i;
+    }
 };
 
 export default FieldModel;

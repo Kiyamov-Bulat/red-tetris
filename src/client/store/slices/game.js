@@ -55,6 +55,15 @@ const game = createSlice({
                 return;
             }
             state.currentTetramino = TetraminoModel.moveBottom(state.currentTetramino);
+        },
+
+        moveToPile(state) {
+            if (!state.currentTetramino || FieldModel.atBottom(state.field, state.currentTetramino)) {
+                return;
+            }
+            const pileLine = FieldModel.getPileLine(state.field, state.currentTetramino.position.column);
+
+            state.currentTetramino = TetraminoModel.moveToPile(state.currentTetramino, pileLine);
         }
     }
 });
@@ -66,6 +75,7 @@ export const {
     moveLeftTetramino,
     moveRightTetramino,
     moveBottomTetramino,
+    moveToPile,
 } = game.actions;
 
 export default game.reducer;

@@ -5,7 +5,7 @@ import {selectField} from "../../store/selectors/game";
 import {
     moveBottomTetramino,
     moveLeftTetramino,
-    moveRightTetramino,
+    moveRightTetramino, moveToPile,
     rotateTetramino,
     updateGameState
 } from "../../store/slices/game";
@@ -16,7 +16,7 @@ const gameControl = (e) => {
 
     switch (e.key) {
         case 'ArrowDown':
-            action = moveBottomTetramino;
+            action = moveToPile;
             break;
         case 'ArrowUp':
             action = rotateTetramino;
@@ -26,6 +26,9 @@ const gameControl = (e) => {
             break;
         case 'ArrowRight':
             action = moveRightTetramino;
+            break;
+        case ' ':
+            action = moveBottomTetramino;
             break;
     }
     if (action) {

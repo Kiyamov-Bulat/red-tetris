@@ -1,5 +1,6 @@
 import {FIELD_SIZE} from "../utils/constants";
 import randomChoice from "../utils/randomChoice";
+import tetramino from "../store/slices/tetramino";
 
 export const TETRAMINO_TYPE = {
     I: 'straight tetromino',
@@ -126,6 +127,15 @@ const TetraminoModel = {
 
     moveBottom: (tetramino) => {
         return TetraminoModel.incrementLine(tetramino);
+    },
+
+    moveToPile: (tetramino, pileLine) => {
+        const lowestCube = TetraminoModel.getLowestCube(tetramino);
+
+        return { ...tetramino, position: {
+            ...tetramino.position,
+            line: tetramino.position.line - lowestCube.line + pileLine - 1,
+        }};
     },
 
     rotate: (tetramino) => {
