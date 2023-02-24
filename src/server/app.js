@@ -28,9 +28,9 @@ const startApp = (config) => {
 		router.use(logger);
 
 		router.post('/create', gameController.create);
-		router.post('/(?<roomId>.+)/(?<playerId>.+)', gameController.connect);
-		router.post('/(?<roomId>.+)', gameController.start);
-		router.post('/(?<roomId>.+)', gameController.restart);
+		router.post('/connect', gameController.connect);
+		router.post('/start', gameController.start);
+		router.post('/restart', gameController.restart);
 
 		router.get('/bundle\\.js', mainController.getBundle);
 		router.get('/*\\.css', mainController.getStyles);

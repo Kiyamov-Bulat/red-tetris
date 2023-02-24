@@ -20,11 +20,15 @@ class Request extends http.IncomingMessage {
 		return this._params;
 	}
 
-	get body() {
+	getBody() {
 		if (!this._body) {
 			this._body = this.readBody();
 		}
 		return this._body;
+	}
+
+	async getJSONBody() {
+		return JSON.parse((await this.getBody()).toString());
 	}
 
 	get URL() {
@@ -48,10 +52,6 @@ class Request extends http.IncomingMessage {
 			buffers.push(chunk);
 		}
 		return Buffer.concat(buffers);
-	}
-
-	async getJSONBody() {
-		return JSON.parse((await this.body).toString());
 	}
 
 	setUserId(id) {

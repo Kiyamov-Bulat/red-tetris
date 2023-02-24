@@ -2,10 +2,13 @@ import React from 'react';
 import Button from "../../components/button";
 import styles from './styles.module.scss';
 import jsonFetch from "../../services/fetch";
+import { io } from "socket.io-client";
+
 const StartMenu = () => {
     const createMultiplayerGame = async () => {
-        const resp = await jsonFetch('/1/1', 'POST');
+        const resp = await jsonFetch('/create', 'POST', { body: { playerId: 1 } });
 
+        const socket = io();
         console.log(resp);
     };
 

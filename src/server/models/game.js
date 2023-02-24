@@ -13,11 +13,23 @@ class Game {
         this._host = host;
         this._id = uuidv4();
         this._createdAt = new Date();
-
+        this._players = [];
     }
 
     get id() {
         return this._id;
+    }
+
+    get createdAt() {
+        return this._createdAt;
+    }
+
+    get host() {
+        return this._host;
+    }
+
+    get players() {
+        return this._players;
     }
 
     connect(player) {
@@ -39,4 +51,15 @@ class Game {
     static remove(game) {
         this.GAME_LIST = this.GAME_LIST.filter((next) => next.id !== game.id);
     }
+
+    toJSON() {
+        return {
+            id: this.id,
+            createdAt: this.createdAt,
+            host: this.host.toJSON(),
+            players: this.players.map((player) => player.toJSON()),
+        };
+    }
 }
+
+export default Game;
