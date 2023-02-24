@@ -1,14 +1,17 @@
-import fs  from 'fs';
+import fs from 'fs';
 import debug from 'debug';
-import io from 'socket.io';
 import http from 'http';
+import io from 'socket.io';
+
 const logerror = debug('tetris:error');
 const loginfo = debug('tetris:info');
 
 const initApp = (app, params, cb) => {
-  const {host, port} = params;
+  const { host, port } = params;
+
   const handler = (req, res) => {
     const file = req.url === '/bundle.js' ? '/../../build/bundle.js' : '/../../index.html';
+
     fs.readFile(__dirname + file, (err, data) => {
       if (err) {
         logerror(err);
@@ -22,7 +25,7 @@ const initApp = (app, params, cb) => {
 
   app.on('request', handler);
 
-  app.listen({host, port}, () =>{
+  app.listen({ host, port }, () =>{
     loginfo(`tetris listen on ${params.url}`);
     cb();
   });
@@ -39,15 +42,12 @@ const initEngine = io => {
   });
 };
 
-export function create(params){
-  const promise = new Promise( (resolve, reject) => {
+export function create(params) {
+  return new Promise( (resolve, reject) => {
     const app = http.createServer();
 
-    initApp(app, params, () =>{
-      const io = require('socket.io');
-      const socket = new io.Server();
-
-      socket.attachApp(app);
+    initApp(app, params, () => {
+      const socket = new io.Server(app);
 
       const stop = (cb) => {
         socket.close();
@@ -62,5 +62,4 @@ export function create(params){
       resolve({stop});
     });
   });
-  return promise;
 }

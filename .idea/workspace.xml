@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/models/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/field.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/models/tetramino.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/tetramino.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/utils/randomChoice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/randomChoice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +61,10 @@
       <recent name="$PROJECT_DIR$/src/client/utils/constants.js" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Node.js.httpStatusCode.js">
+    <configuration name="httpStatusCode.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/server/router/router/httpStatusCode.js" working-dir="$PROJECT_DIR$/src/server/router/router">
+      <method v="2" />
+    </configuration>
     <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/client/components/field/index.js" working-dir="$PROJECT_DIR$/src/client/components/field">
       <method v="2" />
     </configuration>
@@ -91,6 +90,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.httpStatusCode.js" />
         <item itemvalue="npm.dev" />
         <item itemvalue="Node.js.index.js" />
         <item itemvalue="npm.client-dev" />
@@ -100,7 +100,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="32dd85b2-f2c5-423d-93c2-d244d35fa568" name="Changes" comment="" />
+      <changelist id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="" />
       <created>1676907487594</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -108,6 +108,7 @@
       <workItem from="1676907488910" duration="989000" />
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
+      <workItem from="1677221687371" duration="1801000" />
     </task>
     <servers />
   </component>
