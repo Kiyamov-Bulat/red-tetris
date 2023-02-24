@@ -1,6 +1,8 @@
 import io from "socket.io";
-import Router from "./router/router";
+import Router from "./router";
 import mainController from './controllers/main';
+import gameController from './controllers/game';
+import setCORS from "./middlewares/setCors";
 
 const RESTART_DELAY = 1000;
 
@@ -19,6 +21,13 @@ const startApp = (config) => {
 	try {
 		const router = new Router();
 		const socket = new io.Server(router.server);
+
+		router.use(setCORS);
+
+		router.post('/create', gameController.create);
+		router.post('/#(?<roomId>.+)[(<playerId>.+)]', gameController.connect);
+		router.post('/#(?<roomId>.+)', gameController.start);
+		router.post('/#(?<roomId>.+)', gameController.restart);
 
 		router.get('/bundle.js', mainController.getBundle);
 		router.get('/*.css', mainController.getStyles);

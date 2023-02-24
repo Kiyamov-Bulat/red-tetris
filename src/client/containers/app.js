@@ -3,7 +3,6 @@ import StartMenu from "./startMenu";
 import Game from "./game";
 
 const App = ({message}) => {
-
   return (
       <div>
           <StartMenu/>

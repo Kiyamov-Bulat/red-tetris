@@ -1,7 +1,7 @@
 import * as http from 'http';
 import Request from './request';
 import Response from './response';
-import SelfPreservingPromise from "../../../utils/selfPreservingPromise";
+import SelfPreservingPromise from "../../utils/selfPreservingPromise";
 import RoueParams from "./routeParams";
 
 const ERequestMethod = {

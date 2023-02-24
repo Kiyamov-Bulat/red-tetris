@@ -46,11 +46,11 @@ const Game = () => {
     const isWinner = useSelector(selectPlayerIsWinner);
 
     useEffect(() => {
-        updateIntervalId.current = window.setInterval(() => {
-            dispatch(updateGameState());
-        }, 500);
+        // updateIntervalId.current = window.setInterval(() => {
+        //     dispatch(updateGameState());
+        // }, 500);
 
-        document.addEventListener('keydown', gameControl);
+        // document.addEventListener('keydown', gameControl);
 
         return () => {
             window.clearInterval(updateIntervalId.current);

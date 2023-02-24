@@ -1,12 +1,19 @@
 import React from 'react';
 import Button from "../../components/button";
 import styles from './styles.module.scss';
+import jsonFetch from "../../services/fetch";
 const StartMenu = () => {
+    const createMultiplayerGame = async () => {
+        const resp = await jsonFetch('/#1[1]');
+
+        console.log(resp);
+    };
+
     return (
         <div className={styles.startMenuContainer}>
-            <p>welcome to the wonderful world</p>
+            <p>Menu</p>
             <div>
-                <Button>123</Button>
+                <Button onClick={createMultiplayerGame}>Multiplayer</Button>
             </div>
         </div>
     );

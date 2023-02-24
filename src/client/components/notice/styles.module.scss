@@ -1,0 +1,30 @@
+.notificationOpen  {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  font-weight: 450;
+  font-size: 14px;
+  line-height: 18px;
+  width: 250px;
+  padding: 5px 12px 5px 5px;
+  border-radius: 8px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: "SBSansTextRegular", sans-serif;
+  box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.12), 0px 8px 16px -4px rgba(0, 0, 0, 0.12);
+  transform: translateX(-50%);
+  transition: top 0.5s;
+  z-index: 10000;
+
+  > p {
+    flex-grow: 1;
+    text-align: center;
+  }
+  > svg {
+    min-width: 24px;
+    min-height: 24px;
+    margin-right: 6px;
+  }
+}

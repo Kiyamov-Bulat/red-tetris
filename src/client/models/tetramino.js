@@ -121,7 +121,6 @@ const TetraminoModel = {
             return false;
         }
 
-        console.log(cubeLine, cubeColumn, TetraminoModel.getCubes(tetramino));
         return TetraminoModel.getCubes(tetramino).some((cube) =>
             cube.column === cubeColumn && cube.line === cubeLine
         );

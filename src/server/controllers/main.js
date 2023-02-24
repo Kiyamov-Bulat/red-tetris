@@ -1,5 +1,5 @@
 import fs from "fs";
-import HttpStatusCode from "../router/router/httpStatusCode";
+import HttpStatusCode from "../router/httpStatusCode";
 
 export default {
     async getBundle(req, res) {

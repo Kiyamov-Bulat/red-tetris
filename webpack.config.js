@@ -21,6 +21,9 @@ module.exports = {
       directory: path.resolve(__dirname, './assets'),
       publicPath: '/assets'
     },
+    devMiddleware: {
+      writeToDisk: true,
+    },
     port: 2345,
     hot: true,
     historyApiFallback: true,

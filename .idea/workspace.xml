@@ -5,13 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/params.js" beforeDir="false" afterPath="$PROJECT_DIR$/params.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/game/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/game/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/startMenu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/startMenu/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/models/tetramino.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/tetramino.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/controllers/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/controllers/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/router/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/router/router/httpStatusCode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/httpStatusCode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/router/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/router/router/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/router/router/response.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/response.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/router/router/routeParams.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/routeParams.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +71,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/server/router" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/client/components/field" />
       <recent name="$PROJECT_DIR$/src/client/components/button" />
@@ -65,21 +80,8 @@
       <recent name="$PROJECT_DIR$/src/client/utils/constants.js" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.httpStatusCode.js">
-    <configuration name="httpStatusCode.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/server/router/router/httpStatusCode.js" working-dir="$PROJECT_DIR$/src/server/router/router">
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="npm.dev">
     <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/client/components/field/index.js" working-dir="$PROJECT_DIR$/src/client/components/field">
-      <method v="2" />
-    </configuration>
-    <configuration name="client-dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="client-dev" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
       <method v="2" />
     </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -92,12 +94,21 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="srv-dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="srv-dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.httpStatusCode.js" />
+        <item itemvalue="npm.srv-dev" />
         <item itemvalue="npm.dev" />
         <item itemvalue="Node.js.index.js" />
-        <item itemvalue="npm.client-dev" />
       </list>
     </recent_temporary>
   </component>
@@ -112,7 +123,7 @@
       <workItem from="1676907488910" duration="989000" />
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
-      <workItem from="1677221687371" duration="5342000" />
+      <workItem from="1677221687371" duration="10638000" />
     </task>
     <servers />
   </component>
