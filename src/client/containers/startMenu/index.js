@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 import jsonFetch from "../../services/fetch";
 const StartMenu = () => {
     const createMultiplayerGame = async () => {
-        const resp = await jsonFetch('/#1[1]');
+        const resp = await jsonFetch('/1/1', 'POST');
 
         console.log(resp);
     };

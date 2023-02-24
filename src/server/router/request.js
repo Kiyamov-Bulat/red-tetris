@@ -8,14 +8,14 @@ class Request extends http.IncomingMessage {
 
 	get parsedURL() {
 		if (!this._parsedURL) {
-			this._parsedURL = new URL(this.url, 'https://localhost'); // TODO
+			this._parsedURL = new URL(this.url, `http://${this.headers.host}`); // @TODO
 		}
 		return this._parsedURL;
 	}
 
 	get params() {
 		if (!this._params) {
-			this._params = this._parsedURL.searchParams;
+			this._params = this.parsedURL?.searchParams;
 		}
 		return this._params;
 	}
@@ -27,6 +27,20 @@ class Request extends http.IncomingMessage {
 		return this._body;
 	}
 
+	get URL() {
+		return this.parsedURL;
+	}
+
+
+	get path() {
+		return this.parsedURL?.pathname || '';
+	}
+
+	get hash() {
+		return this.parsedURL?.hash || '';
+	}
+
+
 	async readBody() {
 		const buffers = [];
 
@@ -36,24 +50,8 @@ class Request extends http.IncomingMessage {
 		return Buffer.concat(buffers);
 	}
 
-	getPath() {
-		return this.parsedURL?.pathname || '';
-	}
-
-	getParams() {
-		return this.params;
-	}
-
-	getURL() {
-		return this.parsedURL;
-	}
-
-	getBody() {
-		return this.body;
-	}
-
 	async getJSONBody() {
-		return JSON.parse((await this.getBody()).toString());
+		return JSON.parse((await this.body).toString());
 	}
 
 	setUserId(id) {

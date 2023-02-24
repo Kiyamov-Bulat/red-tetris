@@ -15,6 +15,7 @@ class Router {
 	routes;
 	middlewares;
 	server;
+	hashBased;
 
 	constructor() {
 		this.routes = {
@@ -63,7 +64,7 @@ class Router {
 
 	matchRoute(req) {
 		return (this.routes[req.method] || []).find((route) =>
-			route.path.test(req.getPath()),
+			route.path.test(req.path),
 		);
 	}
 
@@ -73,7 +74,7 @@ class Router {
 		if (!route) {
 			return;
 		}
-		RoueParams.matchAllRouteParams(req.getPath(), route.path);
+		RoueParams.matchAllRouteParams(req.path, route.path);
 
 		return route.controller(req, res);
 	}
