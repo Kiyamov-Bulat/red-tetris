@@ -1,59 +1,33 @@
-import comment from './controllers/comment';
-import like from './controllers/like';
-import photo from './controllers/photo';
-import post from './controllers/post';
-import user from './controllers/user';
-import auth from './middleware/auth';
-import logger from './middleware/logger';
-import setCORS from './middleware/setCORS';
-import Router from './router';
+import io from "socket.io";
+import Router from "./router/router";
+import mainController from './controllers/main';
 
 const RESTART_DELAY = 1000;
 
-const startApp = (): void => {
+const initEngine = io => {
+	io.on('connection', function(socket){
+		console.log("Socket connected: " + socket.id);
+		socket.on('action', (action) => {
+			if(action.type === 'server/ping'){
+				socket.emit('action', {type: 'pong'});
+			}
+		});
+	});
+};
+
+const startApp = (config) => {
 	try {
 		const router = new Router();
+		const socket = new io.Server(router.server);
 
-		/** MIDDLEWARES **/
-		router.use(setCORS);
-		router.use(logger);
-		router.use(auth);
-
-		/** USER **/
-		router.get('/user/(?<id>\\d+)', user.get);
-		router.post('/signup', user.signup);
-		router.post('/login', user.login);
-		router.post('/activate/(?<token>.+)', user.activate);
-		router.post('/toggleSendEmailAlerts', user.toggleSendEmailAlerts);
-		router.post('/account', user.update);
-		router.get('/reset', user.sendPasswordResetLink);
-		router.post('/reset', user.resetPassword);
-
-		/** PHOTO **/
-		router.get('/photos/(?<ownerId>\\d+)/(?<photoId>\\d+)', photo.get);
-		router.post('/photo', photo.create);
-		router.delete('/photo', photo.remove);
-
-		/** POST **/
-		router.get('/post/(?<itemId>\\d+)', post.get);
-		router.delete('/post/(?<itemId>\\d+)', post.remove);
-		router.get('/post', post.getAll);
-
-		/** LIKE **/
-		router.post('/like', like.toggle);
-
-		/** COMMENT **/
-		router.post('/comment', comment.create);
-		router.get('/comment', comment.getAll);
-
-		router.listen(process.env.APP_PORT);
+		router.get('/bundle.js', mainController.getBundle);
+		router.get('/*.css', mainController.getStyles);
+		router.get('/*', mainController.getIndex);
+		initEngine(socket);
+		router.listen(config);
 	} catch (e) {
 		setTimeout(startApp, RESTART_DELAY);
 	}
 };
 
-const main = (): void => {
-	startApp();
-};
-
-main();
+export default startApp;

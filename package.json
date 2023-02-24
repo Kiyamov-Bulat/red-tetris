@@ -7,18 +7,24 @@
     "eslint": "eslint src",
     "dev": "webpack serve --open",
     "build": "cross-env NODE_ENV=production webpack --mode=production",
+    "srv-dev": "DEBUG=tetris:* babel-watch -w src src/server/main.js",
+    "srv-dist": "DEBUG=tetris:* babel src --out-dir dist",
     "test": "mocha --require babel-core/register --reporter spec",
     "coverage": "NODE_ENV=test nyc --include src --all -r text -r lcov -r text --require babel-core/register mocha "
   },
   "devDependencies": {
-    "@babel/core": "^7.18.0",
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/eslint-parser": "^7.19.1",
     "@babel/preset-env": "^7.18.0",
     "@babel/preset-react": "7.16.7",
-    "@babel/eslint-parser": "^7.19.1",
     "babel-loader": "^8.2.5",
     "babel-plugin-module-resolver": "^4.1.0",
+    "babel-watch": "^7.7.2",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "eslint": "^7.32.0",
+    "eslint-loader": "^4.0.2",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.0",
     "mocha": "^10.2.0",
@@ -28,9 +34,7 @@
     "style-loader": "^3.3.1",
     "webpack": "5.72.1",
     "webpack-cli": "4.10.0",
-    "webpack-dev-server": "4.8.0",
-    "eslint-loader": "^4.0.2",
-    "cross-env": "^7.0.3"
+    "webpack-dev-server": "4.8.0"
   },
   "dependencies": {
     "@reduxjs/toolkit": "1.8.0",

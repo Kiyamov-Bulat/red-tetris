@@ -57,8 +57,8 @@ class Router {
 		this.middlewares.push(middleware);
 	}
 
-	listen(port, listener) {
-		return this.server.listen(port, listener);
+	listen(config, listener) {
+		return this.server.listen(config, listener);
 	}
 
 	matchRoute(req) {
