@@ -21,8 +21,6 @@ const initEngine = io => {
 const startApp = (config) => {
 	try {
 		const router = new Router();
-		const socket = new io.Server(router.server);
-
 
 		router.use(setCORS);
 		router.use(logger);
@@ -31,11 +29,11 @@ const startApp = (config) => {
 		router.post('/connect', gameController.connect);
 		router.post('/start', gameController.start);
 		router.post('/restart', gameController.restart);
+		router.get('/list', gameController.getAll);
 
 		router.get('/bundle\\.js', mainController.getBundle);
 		router.get('/*\\.css', mainController.getStyles);
 		router.get('/*', mainController.getIndex);
-		initEngine(socket);
 		router.listen(config);
 	} catch (e) {
 		setTimeout(startApp, RESTART_DELAY);

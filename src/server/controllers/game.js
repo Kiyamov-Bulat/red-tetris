@@ -2,9 +2,13 @@ import Player from "../models/player";
 import Game from "../models/game";
 
 export default {
+    getAll(req, res) {
+        res.sendJSON(Game.getAll());
+    },
+
     async create(req, res) {
-        const { playerId } = await req.getJSONBody();
-        const game = Game.create(new Player(playerId));
+        const { hostId } = await req.getJSONBody();
+        const game = Game.create(new Player(hostId));
 
         res.sendJSON(game);
     },

@@ -3,6 +3,8 @@ import sessionStorageService from "../services/sessionStorageService";
 import {selectGameId} from "../store/selectors/game";
 import store from "../store";
 import {GAME_SOCKET_EVENT} from "../../utils/constants";
+import jsonFetch from "../services/fetch";
+import {createAsyncThunk} from "@reduxjs/toolkit";
 
 const socket = io();
 
@@ -15,9 +17,13 @@ const Game = {
         Game.get().emit(event, ...args);
     },
 
-    create: () => {
-        socket.emit(GAME_SOCKET_EVENT.CREATE, sessionStorageService.getSessionId());
-    },
+    create: createAsyncThunk('game/create', (_, thunkAPI) => {
+        return jsonFetch('/create', 'POST',
+            { body: { hostId: sessionStorageService.getSessionId() }
+        })
+            .then((game) => thunkAPI.fulfillWithValue(game))
+            .catch(() => thunkAPI.rejectWithValue(null));
+    }),
 
     connect: () => {
         const game = Game.get();

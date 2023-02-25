@@ -1,9 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
 import TetraminoModel, {CUBE_TYPE} from "../../models/tetramino";
 import FieldModel, {FIELD} from "../../models/field";
+import Game from "../../models/game";
 
 const gameState = {
     id: '',
+    host: null,
+    createdAt: new Date().toISOString(),
     oppositeFields: [],
     field: [...FIELD],
     currentTetramino: null, //{ type: TETRAMINO_TYPE.I },
@@ -82,6 +85,17 @@ const game = createSlice({
 
             state.currentTetramino = TetraminoModel.moveToPile(state.currentTetramino, pileLine);
         }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(Game.create.fulfilled, (state, { payload }) => {
+                state.id = payload.id;
+                state.createdAt = payload.createdAt;
+                state.host = payload.host;
+            })
+            .addCase(Game.create.rejected, (state) => {
+                //@TODO
+            });
     }
 });
 

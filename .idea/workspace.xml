@@ -6,12 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/containers/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/game/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/game/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/models/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/field.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/store/selectors/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/selectors/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/startMenu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/startMenu/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/services/sessionStorageService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/services/sessionStorageService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/controllers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/controllers/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +27,8 @@
       <list>
         <option value="Sass File" />
         <option value="JavaScript JSX File" />
-        <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -67,7 +70,10 @@
       <recent name="$PROJECT_DIR$/src/client/utils/constants.js" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Node.js.gameList.js">
+    <configuration name="gameList.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/client/models/gameList.js" working-dir="$PROJECT_DIR$/src/client/models">
+      <method v="2" />
+    </configuration>
     <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/client/components/field/index.js" working-dir="$PROJECT_DIR$/src/client/components/field">
       <method v="2" />
     </configuration>
@@ -103,6 +109,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.gameList.js" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.srv-dev" />
         <item itemvalue="npm.build" />
@@ -121,7 +128,7 @@
       <workItem from="1676907488910" duration="989000" />
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
-      <workItem from="1677221687371" duration="20160000" />
+      <workItem from="1677221687371" duration="24471000" />
     </task>
     <servers />
   </component>
