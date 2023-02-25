@@ -9,8 +9,8 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 const socket = io();
 
 const Game = {
-    get: () => {
-        return socket.to(selectGameId(store.getState()));
+    get: (id = selectGameId(store.getState())) => {
+        return socket.to(id);
     },
 
     emit: (event, ...args) => {
@@ -25,8 +25,8 @@ const Game = {
             .catch(() => thunkAPI.rejectWithValue(null));
     }),
 
-    connect: () => {
-        const game = Game.get();
+    connect: (id) => {
+        const game = Game.get(id);
 
         game.emit(
             GAME_SOCKET_EVENT.CONNECT,

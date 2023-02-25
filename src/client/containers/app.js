@@ -13,8 +13,8 @@ const App = () => {
       <div className={styles.app}>
           <Game/>
           <div className={styles.sidePanel}>
-              <GameList/>
               <StartMenu/>
+              <GameList/>
           </div>
       </div>
 );

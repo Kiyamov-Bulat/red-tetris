@@ -10,10 +10,8 @@ const StartMenu = () => {
 
     return (
         <div className={styles.startMenuContainer}>
-            <p>Menu</p>
-            <div>
-                <Button onClick={createMultiplayerGame}>Multiplayer</Button>
-            </div>
+            <Button onClick={createMultiplayerGame}>Одиночная</Button>
+            <Button onClick={createMultiplayerGame}>С противником</Button>
         </div>
     );
 };

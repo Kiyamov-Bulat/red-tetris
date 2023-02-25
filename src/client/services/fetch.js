@@ -27,8 +27,10 @@ const jsonFetch =
 
 		return isJSON ? resp.json() : resp.text();
 	}).catch((err) => {
-		Notice.error(options?.errorMsg || ERROR_MSG);
-
+		if (options.notice) {
+			Notice.error(options?.errorMsg || ERROR_MSG);
+		}
+		
 		if (options?.throwErr) {
 			throw err;
 		}
