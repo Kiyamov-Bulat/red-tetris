@@ -50,7 +50,7 @@ const Game = () => {
         //     dispatch(updateGameState());
         // }, 500);
 
-        // document.addEventListener('keydown', gameControl);
+        document.addEventListener('keydown', gameControl);
 
         return () => {
             window.clearInterval(updateIntervalId.current);

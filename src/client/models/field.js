@@ -1,7 +1,5 @@
 import TetraminoModel, {CUBE_TYPE} from "./tetramino";
 import {FIELD_SIZE} from "../../utils/constants";
-import {current} from "@reduxjs/toolkit";
-
 
 const getEmptyFieldLine = () => {
     return Array(FIELD_SIZE.column).fill({ type: CUBE_TYPE.EMPTY });

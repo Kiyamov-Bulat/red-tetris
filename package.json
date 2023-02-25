@@ -5,8 +5,11 @@
   "license": "MIT",
   "scripts": {
     "eslint": "eslint src",
-    "dev": "webpack serve --open",
-    "build": "cross-env NODE_ENV=production webpack --mode=production",
+    "dev": "npm run client-watch & npm run srv-dev",
+    "dist": "npm run client-dist && npm run srv-dist",
+    "client-watch": "webpack -w",
+    "client-dev": "webpack serve --open",
+    "client-dist": "cross-env NODE_ENV=production webpack --progress --colors --mode=production",
     "srv-dev": "DEBUG=tetris:* babel-watch -w src src/server/main.js",
     "srv-dist": "DEBUG=tetris:* babel src --out-dir dist",
     "test": "mocha --require babel-core/register --reporter spec",

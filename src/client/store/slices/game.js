@@ -3,13 +3,13 @@ import TetraminoModel, {CUBE_TYPE} from "../../models/tetramino";
 import FieldModel, {FIELD} from "../../models/field";
 
 const gameState = {
+    id: '',
     oppositeFields: [],
     field: [...FIELD],
     currentTetramino: null, //{ type: TETRAMINO_TYPE.I },
     isSinglePlay: true,
     isOver: false,
 };
-
 
 const game = createSlice({
     name: "game",
