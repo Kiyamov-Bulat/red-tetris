@@ -6,8 +6,7 @@ import {
     moveLeftTetramino,
     moveRightTetramino,
     moveToPile,
-    rotateTetramino,
-    updateGameState
+    rotateTetramino
 } from "../../store/slices/game";
 import store from "../../store";
 

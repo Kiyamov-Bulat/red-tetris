@@ -6,15 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/game/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/game/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/gameList/gameUnit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/gameList/gameUnit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/gameList/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/gameList/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/store/selectors/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/selectors/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/game/useGameControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/game/useGameControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/startMenu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/startMenu/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/models/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/field.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +22,8 @@
       <list>
         <option value="Sass File" />
         <option value="JavaScript JSX File" />
-        <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -134,7 +130,7 @@
       <workItem from="1676907488910" duration="989000" />
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
-      <workItem from="1677221687371" duration="30918000" />
+      <workItem from="1677221687371" duration="31843000" />
     </task>
     <servers />
   </component>

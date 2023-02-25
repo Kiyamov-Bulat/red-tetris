@@ -8,9 +8,9 @@ const gameState = {
     host: null,
     createdAt: new Date().toISOString(),
     oppositeFields: [],
-    field: [...FIELD],
+    field: FieldModel.getEmpty(),
     currentTetramino: null, //{ type: TETRAMINO_TYPE.I },
-    isSinglePlay: true,
+    isSinglePlayer: true,
     isStarted: false,
     isOver: false,
 };
@@ -20,9 +20,15 @@ const game = createSlice({
     initialState: gameState,
     reducers: {
         startGame(state) {
+            state.isStarted = true;
             state.isOver = false;
             state.field = [...FIELD ];
         },
+
+        setIsSinglePlayerGame(state) {
+            state.isSinglePlayer = true;
+        },
+
         generateTetramino(state) {
 
         },
@@ -38,6 +44,8 @@ const game = createSlice({
 
                 if (state.field[0].some((column) => column.type !== CUBE_TYPE.EMPTY)) {
                     state.isOver = true;
+                    state.isStarted = false;
+                    state.field = FieldModel.getEmpty();
                 }
                 return;
             }
@@ -102,6 +110,7 @@ const game = createSlice({
 
 export const {
     startGame,
+    setIsSinglePlayerGame,
     updateGameState,
     rotateTetramino,
     moveLeftTetramino,

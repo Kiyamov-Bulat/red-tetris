@@ -2,15 +2,24 @@ import React from 'react';
 import Button from "../../components/button";
 import styles from './styles.module.scss';
 import Game from "../../models/game";
-import store from "../../store";
+import {useDispatch} from "react-redux";
+import {setIsSinglePlayerGame, startGame} from "../../store/slices/game";
+
 const StartMenu = () => {
+    const dispatch = useDispatch();
+
     const createMultiplayerGame = async () => {
-        store.dispatch(Game.create());
+        dispatch(Game.create());
+    };
+
+    const startSinglePlayerGame = () => {
+        dispatch(setIsSinglePlayerGame());
+        dispatch(startGame());
     };
 
     return (
         <div className={styles.startMenuContainer}>
-            <Button onClick={createMultiplayerGame}>Одиночная</Button>
+            <Button onClick={startSinglePlayerGame}>Одиночная</Button>
             <Button onClick={createMultiplayerGame}>С противником</Button>
         </div>
     );

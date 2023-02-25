@@ -8,6 +8,10 @@ const getEmptyFieldLine = () => {
 export const FIELD = [...Array(FIELD_SIZE.line)].map(() => getEmptyFieldLine());
 
 const FieldModel = {
+    getEmpty: () => {
+        return [...FIELD];
+    },
+
     update: (field, landedTetramino) => {
         const newField = [...field];
         
