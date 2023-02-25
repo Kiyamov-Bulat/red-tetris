@@ -6,6 +6,12 @@ import {GAME_SOCKET_EVENT} from "../../utils/constants";
 import jsonFetch from "../services/fetch";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 
+export const SIDE_PANEL_TYPE = {
+    MAIN: '@side-panel-type/main',
+    WAIT_START: '@side-panel-type/wait-start',
+    FIELDS: '@side-panel-type/fields',
+};
+
 const socket = io();
 
 const Game = {

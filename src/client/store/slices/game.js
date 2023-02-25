@@ -7,9 +7,11 @@ const gameState = {
     id: '',
     host: null,
     createdAt: new Date().toISOString(),
-    oppositeFields: [],
+
+    opponentsFields: [],
     field: FieldModel.getEmpty(),
     currentTetramino: null, //{ type: TETRAMINO_TYPE.I },
+
     isSinglePlayer: true,
     isStarted: false,
     isOver: false,
@@ -22,7 +24,7 @@ const game = createSlice({
         startGame(state) {
             state.isStarted = true;
             state.isOver = false;
-            state.field = [...FIELD ];
+            state.field = FieldModel.getEmpty();
         },
 
         setIsSinglePlayerGame(state) {
