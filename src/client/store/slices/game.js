@@ -7,6 +7,7 @@ const gameState = {
     id: '',
     host: null,
     createdAt: new Date().toISOString(),
+    players: [],
 
     opponentsFields: [],
     field: FieldModel.getEmpty(),
@@ -103,6 +104,7 @@ const game = createSlice({
                 state.id = payload.id;
                 state.createdAt = payload.createdAt;
                 state.host = payload.host;
+                state.players = payload.players;
             })
             .addCase(Game.create.rejected, (state) => {
                 //@TODO

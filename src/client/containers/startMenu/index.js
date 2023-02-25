@@ -7,7 +7,6 @@ import {setIsSinglePlayerGame, startGame} from "../../store/slices/game";
 
 const StartMenu = () => {
     const dispatch = useDispatch();
-
     const createMultiplayerGame = async () => {
         dispatch(Game.create());
     };

@@ -1,4 +1,5 @@
 import {SIDE_PANEL_TYPE} from "../../models/game";
+import sessionStorageService from "../../services/sessionStorageService";
 
 export const selectGame = (state) => state.game;
 export const selectCurrentTetramino = (state) => selectGame(state).currentTetramino;
@@ -28,3 +29,7 @@ export const selectSidePanelType = (state) => {
 };
 
 export const selectOpponentsFields = (state) => selectGame(state).opponentsFields;
+
+export const selectPlayers = (state) => selectGame(state).players;
+
+export const selectCurrentUserIsHost = (state) => selectGameHost(state).id === sessionStorageService.getSessionId();
