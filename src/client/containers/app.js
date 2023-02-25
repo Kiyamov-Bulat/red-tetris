@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import StartMenu from "./startMenu";
 import Game from "./game";
 import sessionStorageService from "../services/sessionStorageService";
-import GameList from "./gameList";
 import styles from './styles.module.scss';
+import SidePanel from "./sidePanel";
+
 const App = () => {
     useEffect(() => {
         sessionStorageService.setSessionId();
@@ -12,10 +12,7 @@ const App = () => {
     return (
       <div className={styles.app}>
           <Game/>
-          <div className={styles.sidePanel}>
-              <StartMenu/>
-              <GameList/>
-          </div>
+          <SidePanel/>
       </div>
 );
 };

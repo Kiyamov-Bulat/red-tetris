@@ -32,22 +32,13 @@ const Game = {
             GAME_SOCKET_EVENT.CONNECT,
             sessionStorageService.getSessionId()
         );
-
-        game.on(GAME_SOCKET_EVENT.START, () => {
-
-        });
-
-        game.on(GAME_SOCKET_EVENT.UPDATE, () => {
-
-        });
-
-        game.on(GAME_SOCKET_EVENT.FINISH, () => {
-            
-        });
-
-        game.on(GAME_SOCKET_EVENT.RESTART, () => {
-            
-        });
+        
+        game.on(GAME_SOCKET_EVENT.START, Game.onStart);
+        game.on(GAME_SOCKET_EVENT.UPDATE, Game.onUpdate);
+        game.on(GAME_SOCKET_EVENT.FINISH, Game.onFinish);
+        game.on(GAME_SOCKET_EVENT.RESTART, Game.onRestart);
+        game.on(GAME_SOCKET_EVENT.KICK, Game.onKick);
+        game.on(GAME_SOCKET_EVENT.JOIN, Game.onJoin);
     },
     
     update: () => {
@@ -64,6 +55,28 @@ const Game = {
 
     clear() {
        socket.removeAllListeners();
+    },
+
+    onStart: () => {
+
+    },
+
+    onUpdate: () => {
+    },
+
+    onRestart: () => {
+    },
+
+    onFinish() {
+
+    },
+
+    onJoin: () => {
+
+    },
+
+    onKick: () => {
+        Game.clear();
     },
 };
 

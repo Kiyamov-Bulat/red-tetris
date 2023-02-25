@@ -12,7 +12,7 @@ const GameUnit = ({ index, game }) => {
     };
 
     return (
-        <div className={styles.gameUnit}>
+        <div className={styles.gameUnit} onClick={connectToGame}>
             <p className={styles.createdAt}>{formatDateString(game.createdAt)}</p>
             <div className={styles.info}>
                 <p>{index}.</p>

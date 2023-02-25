@@ -11,6 +11,7 @@ const gameState = {
     field: [...FIELD],
     currentTetramino: null, //{ type: TETRAMINO_TYPE.I },
     isSinglePlay: true,
+    isStarted: false,
     isOver: false,
 };
 

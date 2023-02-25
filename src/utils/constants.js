@@ -9,4 +9,7 @@ export const GAME_SOCKET_EVENT = {
     UPDATE: 'game:update',
     FINISH: 'game:finish',
     RESTART: 'game:restart',
+    KICK: 'game:kick',
+    JOIN: 'game:join',
+    HOST_CHANGE: 'game:host_change',
 };
