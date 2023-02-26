@@ -7,6 +7,7 @@ const Main = () => {
     return (
         <>
             <StartMenu/>
+            <h1>Доступные игры:</h1>
             <GameList/>
         </>
     );

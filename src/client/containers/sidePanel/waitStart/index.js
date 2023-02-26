@@ -10,6 +10,7 @@ const WaitStart = () => {
     return (
         <>
             <Menu/>
+            <h1>Игроки подключившиеся к игре:</h1>
             <div>
                 {players.map((player) => <Player state={player}/>)}
             </div>
