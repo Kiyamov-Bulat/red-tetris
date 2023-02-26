@@ -33,13 +33,15 @@ const Game = {
     },
 
     connect: (id) => {
-        const game = Game.get(id);
+        const game = Game.get();
 
         Game._listenGameEvents(game);
 
         if (id) {
+            console.log('here')
             game.emit(
                 GAME_SOCKET_EVENT.CONNECT,
+                id,
                 sessionStorageService.getSessionId()
             );
         }

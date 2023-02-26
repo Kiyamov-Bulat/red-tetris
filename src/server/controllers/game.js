@@ -19,19 +19,18 @@ export default {
 
     connect(io, socket, gameId, playerId) {
         const game = Game.get(gameId);
-
         console.log('here2', gameId, playerId);
         if (!game) {
             return;
         }
+        const isHost = game.host.id === playerId;
         // @TODO коннект на другую игру если ты в игре
-        const player = game.host.id === playerId ? game.host : new Player(playerId);
+        const player = isHost ? game.host : new Player(playerId);
 
-        console.log('here');
         game.connect(player);
         socket.join(gameId);
-        io.to(gameId).emit(GAME_SOCKET_EVENT.CONNECT, { game, player });
         this._listenGameEvents(socket, gameId);
+        io.to(gameId).emit(GAME_SOCKET_EVENT.CONNECT, {game, player});
     },
 
     start() {
