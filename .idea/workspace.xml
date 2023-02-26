@@ -7,18 +7,9 @@
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/containers/gameList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/gameList/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/fields/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/fields/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/main/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/main/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/startMenu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/main/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/startMenu/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/main/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/models/gameList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/gameList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/store/slices/gameList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/gameList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/controllers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/controllers/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/styles.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +130,7 @@
       <workItem from="1676907488910" duration="989000" />
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
-      <workItem from="1677221687371" duration="44187000" />
+      <workItem from="1677221687371" duration="44842000" />
     </task>
     <servers />
   </component>

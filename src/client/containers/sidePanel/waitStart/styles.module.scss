@@ -5,3 +5,21 @@
   align-items: center;
   gap: 12px;
 }
+
+.playerList {
+  padding: 16px;
+  gap: 6px;
+}
+
+.player {
+  display: flex;
+  font-family: arial, sans-serif;
+  gap: 2px;
+
+  .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+}

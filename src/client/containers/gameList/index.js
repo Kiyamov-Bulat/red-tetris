@@ -21,7 +21,7 @@ const GameList = () => {
 
     return (
         <div className={styles.gameList}>
-            {[{ id: uuidv4(), host: {}, createdAt: new Date().toISOString()}].map((game, idx) =>
+            {state.map((game, idx) =>
                 <GameUnit key={game.id} game={game} index={idx + 1}/>)}
         </div>
     );

@@ -1,11 +1,11 @@
 import React from 'react';
-import Button from "../../../components/button";
+import styles from './styles.module.scss';
 
-const Player = ({ state }) => {
+const Player = ({ state, index }) => {
     return (
-        <div>
-            <p>{state.name || state.id}</p>
-            <Button/>
+        <div className={styles.player}>
+            <p>{index}.</p>
+            <p className={styles.name}>{state.name || state.id || 'unknown user'}</p>
         </div>
     );
 };
