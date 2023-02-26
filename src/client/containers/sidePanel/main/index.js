@@ -1,5 +1,5 @@
 import React from 'react';
-import StartMenu from "../../startMenu";
+import StartMenu from "./menu";
 import GameList from "../../gameList";
 
 const Main = () => {

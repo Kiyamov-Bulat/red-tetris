@@ -6,13 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/gameList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/gameList/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/fields/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/fields/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/main/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/main/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/startMenu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/main/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/startMenu/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/main/styles.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/models/gameList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/gameList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/slices/gameList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/gameList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/controllers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/controllers/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +64,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/client/containers/sidePanel" />
       <recent name="$PROJECT_DIR$/src/client/containers/sidePanel/main" />
+      <recent name="$PROJECT_DIR$/src/client/containers/sidePanel" />
       <recent name="$PROJECT_DIR$/src/server/router" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/client/components/field" />
@@ -68,7 +74,7 @@
       <recent name="$PROJECT_DIR$/src/client/utils/constants.js" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.client-dev">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="gameList.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/client/models/gameList.js" working-dir="$PROJECT_DIR$/src/client/models">
       <method v="2" />
     </configuration>
@@ -133,7 +139,7 @@
       <workItem from="1676907488910" duration="989000" />
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
-      <workItem from="1677221687371" duration="38773000" />
+      <workItem from="1677221687371" duration="44187000" />
     </task>
     <servers />
   </component>

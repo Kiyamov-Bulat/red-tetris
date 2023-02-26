@@ -1,7 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import TetraminoModel, {CUBE_TYPE} from "../../models/tetramino";
 import FieldModel from "../../models/field";
-import Game from "../../models/game";
 
 const gameState = {
     id: '',
@@ -26,6 +25,14 @@ const game = createSlice({
             state.isStarted = true;
             state.isOver = false;
             state.field = FieldModel.getEmpty();
+        },
+
+        setGameProps(state, { payload: game }) {
+            state.id = game.id;
+            state.createdAt = game.createdAt;
+            state.host = game.host;
+            state.players = game.players;
+            console.log(game);
         },
 
         setIsSinglePlayerGame(state) {
@@ -98,22 +105,11 @@ const game = createSlice({
             state.currentTetramino = TetraminoModel.moveToPile(state.currentTetramino, pileLine);
         }
     },
-    extraReducers: (builder) => {
-        builder
-            .addCase(Game.create.fulfilled, (state, { payload }) => {
-                state.id = payload.id;
-                state.createdAt = payload.createdAt;
-                state.host = payload.host;
-                state.players = payload.players;
-            })
-            .addCase(Game.create.rejected, (state) => {
-                //@TODO
-            });
-    }
 });
 
 export const {
     startGame,
+    setGameProps,
     setIsSinglePlayerGame,
     updateGameState,
     rotateTetramino,

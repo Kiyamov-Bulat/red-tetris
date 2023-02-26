@@ -3,9 +3,7 @@ import sessionStorageService from "../services/sessionStorageService";
 import {selectGameId} from "../store/selectors/game";
 import store from "../store";
 import {GAME_SOCKET_EVENT} from "../../utils/constants";
-import jsonFetch from "../services/fetch";
-import {createAsyncThunk} from "@reduxjs/toolkit";
-import {createGame} from "../store/slices/game";
+import {createGame, setGameProps, setIsSinglePlayerGame, startGame} from "../store/slices/game";
 
 export const SIDE_PANEL_TYPE = {
     MAIN: '@side-panel-type/main',
@@ -16,46 +14,45 @@ export const SIDE_PANEL_TYPE = {
 const socket = io();
 
 const Game = {
-    get: (id = selectGameId(store.getState())) => {
-        return socket.to(id);
+    get: () => {
+        return socket;
     },
 
     emit: (event, ...args) => {
         Game.get().emit(event, ...args);
     },
 
-    create: createAsyncThunk('game/create', (_, thunkAPI) => {
-        return jsonFetch('/create', 'POST',
-            { body: { hostId: sessionStorageService.getSessionId() }
-        })
-            .then((game) => {
-                Game._listenGameEvents(game.id);
-                thunkAPI.fulfillWithValue(game);
-            })
-            .catch(() => thunkAPI.rejectWithValue(null));
-    }),
+    create: (singlePlayer = true) => {
+        if (singlePlayer) {
+            store.dispatch(setIsSinglePlayerGame());
+            store.dispatch(startGame());
+            return;
+        }
+        socket.emit(GAME_SOCKET_EVENT.CREATE, sessionStorageService.getSessionId());
+        socket.on(GAME_SOCKET_EVENT.CREATE, Game.onCreate);
+    },
 
-    connect: createAsyncThunk('game/connect', (gameId, thunkAPI) => {
-        return jsonFetch('/connect', 'POST',
-            { body: { gameId,  playerId: sessionStorageService.getSessionId() }
-            })
-            .then((game) => {
-                Game._listenGameEvents(game.id);
-                thunkAPI.fulfillWithValue(game);
-            })
-            .catch(() => thunkAPI.rejectWithValue(null));
-    }),
+    connect: (id) => {
+        const game = Game.get(id);
 
-    _listenGameEvents(gameId) {
-        const game = Game.get(gameId);
+        Game._listenGameEvents(game);
 
+        if (id) {
+            game.emit(
+                GAME_SOCKET_EVENT.CONNECT,
+                sessionStorageService.getSessionId()
+            );
+        }
+
+    },
+
+    _listenGameEvents: (game = Game.get()) => {
         game.on(GAME_SOCKET_EVENT.CONNECT, Game.onConnect);
         game.on(GAME_SOCKET_EVENT.START, Game.onStart);
         game.on(GAME_SOCKET_EVENT.UPDATE, Game.onUpdate);
         game.on(GAME_SOCKET_EVENT.FINISH, Game.onFinish);
         game.on(GAME_SOCKET_EVENT.RESTART, Game.onRestart);
         game.on(GAME_SOCKET_EVENT.KICK, Game.onKick);
-        game.on(GAME_SOCKET_EVENT.JOIN, Game.onJoin);
     },
 
     update: () => {
@@ -70,12 +67,21 @@ const Game = {
         Game.emit(GAME_SOCKET_EVENT.FINISH);
     },
 
-    clear() {
+    clear: () => {
        socket.removeAllListeners();
     },
 
-    onConnect: () => {
+    onCreate: (game) => {
+        if (game.host.id !== sessionStorageService.getSessionId()) {
+            return;
+        }
+        store.dispatch(setGameProps(game));
+        Game.connect();
+        socket.removeListener(GAME_SOCKET_EVENT.CREATE, Game.onCreate);
+    },
 
+    onConnect: ({ game, player }) => {
+        store.dispatch(setGameProps(game));
     },
 
     onStart: () => {
@@ -89,10 +95,6 @@ const Game = {
     },
 
     onFinish() {
-
-    },
-
-    onJoin: () => {
 
     },
 

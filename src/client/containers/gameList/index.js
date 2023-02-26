@@ -7,22 +7,16 @@ import {selectGameListState} from "../../store/selectors/gameList";
 import GameUnit from "./gameUnit";
 import styles from './styles.module.scss';
 
-const UPDATE_TIMEOUT = 10000;
-
 const dispatchUpdateGameList = (dispatch = store.dispatch) => dispatch(GameListModel.get());
 
 const GameList = () => {
     const state = useSelector(selectGameListState);
-    const updateInterval = useRef(null);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatchUpdateGameList();
-        updateInterval.current = window.setInterval(dispatchUpdateGameList.bind(dispatch), UPDATE_TIMEOUT);
-        
-        return () => {
-            window.clearInterval(updateInterval.current);
-        };
+        GameListModel.listenUpdates();
+
+        return GameListModel.removeUpdatesListener;
     }, []);
 
     return (

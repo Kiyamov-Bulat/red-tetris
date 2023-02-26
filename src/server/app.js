@@ -14,14 +14,15 @@ const startApp = (config) => {
 		const server = new io.Server(router.server);
 
 		server.on('connection', (socket) => {
-			socket.on('disconnect', gameController.disconnect.bind(io, socket));
+			console.log('socket connection', socket.id);
+			socket.on(GAME_SOCKET_EVENT.CREATE, gameController.create.bind(gameController, server, socket));
+			socket.on(GAME_SOCKET_EVENT.CONNECT, gameController.connect.bind(gameController, server, socket));
+			socket.on('disconnect', gameController.disconnect.bind(gameController, server, socket));
 		});
 
 		router.use(setCORS);
 		router.use(logger);
 
-		router.post('/create', gameController.create);
-		router.post('/connect', gameController.connect);
 		router.get('/list', gameController.getAll);
 
 		router.get('/bundle\\.js', mainController.getBundle);

@@ -12,7 +12,7 @@ const WaitStart = () => {
             <Menu/>
             <h1>Игроки подключившиеся к игре:</h1>
             <div>
-                {players.map((player) => <Player state={player}/>)}
+                {players.map((player) => <Player key={player.id} state={player}/>)}
             </div>
         </>
     );

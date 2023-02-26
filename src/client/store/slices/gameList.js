@@ -9,18 +9,23 @@ const gameList = createSlice({
     name: "gameList",
     initialState: gameListState,
     reducers: {
+        addGame: (state, { payload }) => {
+            state.state.push(payload);
+        }
     },
     extraReducers: (builder) => {
         builder
             .addCase(GameList.get.fulfilled, (state, { payload }) => {
-                console.log('h1')
                 state.state = payload;
             })
             .addCase(GameList.get.rejected, (state, { payload }) => {
-                console.log('h')
                 state.state = payload;
             });
     }
 });
+
+export const {
+    addGame,
+} = gameList.actions;
 
 export default gameList.reducer;

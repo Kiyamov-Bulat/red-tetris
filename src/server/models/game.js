@@ -58,7 +58,7 @@ class Game {
     }
 
     static get(gameId) {
-        return this.GAME_LIST.find((id) => id === gameId);
+        return this.GAME_LIST.find((game) => game.id === gameId);
     }
 
     static remove(game) {

@@ -7,34 +7,31 @@ export default {
         res.sendJSON(Game.getAll());
     },
 
-    async create(io, req, res) {
-        // @TODO validation
-        const { hostId } = await req.getJSONBody();
-        const game = Game.create(new Player(hostId));
+    create(io, socket, hostId) {
+        const player = new Player(hostId);
+        const game = Game.create(player);
 
-        socket.broadcast.emit(GAME_SOCKET_EVENT.CREATE, game);
+        io.emit(GAME_SOCKET_EVENT.CREATE, game);
+        console.log('here3');
 
-        this._listenGameEvents(socket, game.id);
-        res.sendJSON(res);
+        this.connect(io, socket, game.id, player.id);
     },
 
-    async connect(socket, req, res) {
-        // @TODO validation
-        const { playerId, gameId } = await req.getJSONBody();
+    connect(io, socket, gameId, playerId) {
         const game = Game.get(gameId);
 
+        console.log('here2', gameId, playerId);
         if (!game) {
             return;
         }
-        const player = new Player(playerId);
+        // @TODO коннект на другую игру если ты в игре
+        const player = game.host.id === playerId ? game.host : new Player(playerId);
 
+        console.log('here');
         game.connect(player);
-
-        const response = { game, player };
-
-        socket.to(gameId).emit(GAME_SOCKET_EVENT.CONNECT, response);
+        socket.join(gameId);
+        io.to(gameId).emit(GAME_SOCKET_EVENT.CONNECT, { game, player });
         this._listenGameEvents(socket, gameId);
-        res.sendJSON(response);
     },
 
     start() {
@@ -42,6 +39,10 @@ export default {
     },
 
     restart() {
+    },
+
+    update() {
+
     },
     
     hostChange() {
@@ -55,15 +56,16 @@ export default {
     disconnect() {
 
     },
+
+    join() {
+
+    },
     
     _listenGameEvents(socket, gameId) {
-        const game = socket.to(gameId);
-        
-        game.on(GAME_SOCKET_EVENT.START, this.start);
-        game.on(GAME_SOCKET_EVENT.RESTART, this.restart);
-        game.on(GAME_SOCKET_EVENT.UPDATE, this.update);
-        game.on(GAME_SOCKET_EVENT.HOST_CHANGE, this.hostChange);
-        game.on(GAME_SOCKET_EVENT.KICK, this.kick);
-        game.on(GAME_SOCKET_EVENT.JOIN, this.join);
+        socket.on(GAME_SOCKET_EVENT.START, this.start);
+        socket.on(GAME_SOCKET_EVENT.RESTART, this.restart);
+        socket.on(GAME_SOCKET_EVENT.UPDATE, this.update);
+        socket.on(GAME_SOCKET_EVENT.HOST_CHANGE, this.hostChange);
+        socket.on(GAME_SOCKET_EVENT.KICK, this.kick);
     }
 };
