@@ -1,5 +1,8 @@
-import TetraminoModel, {CUBE_TYPE} from "./tetramino";
-import {FIELD_SIZE} from "../../utils/constants";
+import TetraminoModel, {CUBE_COLOR} from "./tetramino";
+import {CUBE_TYPE, FIELD_SIZE} from "../../utils/constants";
+import store from "../store";
+import {selectCurrentTetramino, selectField, selectGameHost, selectOpponentsFields} from "../store/selectors/game";
+import sessionStorageService from "../services/sessionStorageService";
 
 const getEmptyFieldLine = () => {
     return Array(FIELD_SIZE.column).fill({ type: CUBE_TYPE.EMPTY });
@@ -66,7 +69,29 @@ const FieldModel = {
             }
         }
         return i;
-    }
+    },
+
+    getCube: (playerId, line, column) => {
+        const state = store.getState();
+        const field = playerId === sessionStorageService.getSessionId()
+            ? selectField(state)
+            : selectOpponentsFields(state).find(({ playerId }) => playerId === playerId)?.field;
+
+        return field ? field[line][column] : CUBE_TYPE.EMPTY;
+    },
+
+    isMainField: (playerId) => {
+        return playerId === sessionStorageService.getSessionId();
+    },
+
+    getCubeColorSelector: (playerId, line, column) => (state) => {
+        const tetramino = selectCurrentTetramino(state);
+        const type = FieldModel.isMainField(playerId) && TetraminoModel.isTetraminoCube(tetramino, line, column)
+            ? tetramino.type
+            : FieldModel.getCube(playerId, line, column).type;
+
+        return CUBE_COLOR[type];
+    },
 };
 
 export default FieldModel;

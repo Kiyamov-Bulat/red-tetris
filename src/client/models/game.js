@@ -1,9 +1,8 @@
 import io from "socket.io-client";
 import sessionStorageService from "../services/sessionStorageService";
-import {selectGameId} from "../store/selectors/game";
 import store from "../store";
 import {GAME_SOCKET_EVENT} from "../../utils/constants";
-import {createGame, setGameProps, setIsSinglePlayerGame, startGame} from "../store/slices/game";
+import {setGameProps, setIsSinglePlayerGame, startGame, updateOpponentField} from "../store/slices/game";
 
 export const SIDE_PANEL_TYPE = {
     MAIN: '@side-panel-type/main',
@@ -38,7 +37,6 @@ const Game = {
         Game._listenGameEvents(game);
 
         if (id) {
-            console.log('here')
             game.emit(
                 GAME_SOCKET_EVENT.CONNECT,
                 id,
@@ -55,6 +53,10 @@ const Game = {
         game.on(GAME_SOCKET_EVENT.FINISH, Game.onFinish);
         game.on(GAME_SOCKET_EVENT.RESTART, Game.onRestart);
         game.on(GAME_SOCKET_EVENT.KICK, Game.onKick);
+    },
+
+    start: () => {
+        Game.emit(GAME_SOCKET_EVENT.START);
     },
 
     update: () => {
@@ -87,10 +89,11 @@ const Game = {
     },
 
     onStart: () => {
-
+        store.dispatch(startGame());
     },
 
-    onUpdate: () => {
+    onUpdate: (data) => {
+        store.dispatch(updateOpponentField(data));
     },
 
     onRestart: () => {

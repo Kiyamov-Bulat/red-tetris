@@ -1,16 +1,22 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './styles.module.scss';
-import TetraminoModel, {CUBE_COLOR} from "../../../models/tetramino";
+import FieldModel from "../../../models/field";
 import {useSelector} from "react-redux";
-import {selectCurrentTetramino} from "../../../store/selectors/game";
 
-const Cube = ({ line, column, state }) => {
-    const tetramino = useSelector(selectCurrentTetramino);
-    const isActive = TetraminoModel.isTetraminoCube(tetramino, line, column);
+export const CUBE_SIZE = {
+    MINI: 10,
+    FULL: 30,
+};
+const Cube = ({ size = CUBE_SIZE.FULL, playerId, column, line }) => {
+    const color = useSelector(FieldModel.getCubeColorSelector(playerId, line, column));
 
     return (
-        <div style={{ background: CUBE_COLOR[isActive ? tetramino.type : state.type] }} className={styles.cube}></div>
+        <div style={{
+            background: color,
+            width: `${size}px`,
+            height: `${size}px`,
+        }} className={styles.cube}></div>
     );
 };
 
-export default Cube;
+export default memo(Cube);

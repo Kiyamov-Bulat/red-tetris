@@ -1,6 +1,8 @@
-import {createSlice} from "@reduxjs/toolkit";
-import TetraminoModel, {CUBE_TYPE} from "../../models/tetramino";
+import {createSlice, current} from "@reduxjs/toolkit";
+import TetraminoModel from "../../models/tetramino";
 import FieldModel from "../../models/field";
+import {CUBE_TYPE} from "../../../utils/constants";
+import sessionStorageService from "../../services/sessionStorageService";
 
 const gameState = {
     id: '',
@@ -25,6 +27,11 @@ const game = createSlice({
             state.isStarted = true;
             state.isOver = false;
             state.field = FieldModel.getEmpty();
+            state.opponentsFields = state.players
+                .filter((player) => player.id !== sessionStorageService.getSessionId())
+                .map((player) => (
+                    { playerId: player.id, field: FieldModel.getEmpty() }
+                ));
         },
 
         setGameProps(state, { payload: game }) {
@@ -32,7 +39,16 @@ const game = createSlice({
             state.createdAt = game.createdAt;
             state.host = game.host;
             state.players = game.players;
-            console.log(game);
+        },
+
+        updateOpponentField(state, { payload }) {
+            const fieldIdx = state.opponentsFields.findIndex(({ playerId }) =>
+                playerId === payload.player.id
+            );
+
+            if (fieldIdx !== -1) {
+                state.opponentsFields[fieldIdx] = payload.field;
+            }
         },
 
         setIsSinglePlayerGame(state) {
@@ -112,6 +128,7 @@ export const {
     setGameProps,
     setIsSinglePlayerGame,
     updateGameState,
+    updateOpponentField,
     rotateTetramino,
     moveLeftTetramino,
     moveRightTetramino,

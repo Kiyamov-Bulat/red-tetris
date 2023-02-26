@@ -1,10 +1,7 @@
 .field {
   display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.line {
-  display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  height: 100%;
 }

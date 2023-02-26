@@ -8,7 +8,8 @@ const Fields = () => {
 
     return (
         <>
-            {opponentsFields.map((field, idx) => <Field key={idx} state={field}/>)}
+            {opponentsFields.map(({ field, playerId }, idx) =>
+                <Field key={idx} playerId={playerId} state={field}/>)}
         </>
     );
 };
