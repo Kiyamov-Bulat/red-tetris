@@ -4,6 +4,8 @@ export const FIELD_SIZE = {
 };
 
 export const GAME_SOCKET_EVENT = {
+    GET_ALL: 'game:get_all',
+    CREATE: 'game:connect',
     CONNECT: 'game:connect',
     START: 'game:restart',
     UPDATE: 'game:update',

@@ -33,7 +33,16 @@ class Game {
     }
 
     connect(player) {
+        this.players.push(player);
+    }
 
+    toJSON() {
+        return {
+            id: this.id,
+            createdAt: this.createdAt,
+            host: this.host.toJSON(),
+            players: this.players.map((player) => player.toJSON()),
+        };
     }
 
     static getAll() {
@@ -48,17 +57,12 @@ class Game {
         return game;
     }
 
-    static remove(game) {
-        this.GAME_LIST = this.GAME_LIST.filter((next) => next.id !== game.id);
+    static get(gameId) {
+        return this.GAME_LIST.find((id) => id === gameId);
     }
 
-    toJSON() {
-        return {
-            id: this.id,
-            createdAt: this.createdAt,
-            host: this.host.toJSON(),
-            players: this.players.map((player) => player.toJSON()),
-        };
+    static remove(game) {
+        this.GAME_LIST = this.GAME_LIST.filter((next) => next.id !== game.id);
     }
 }
 

@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import TetraminoModel, {CUBE_TYPE} from "../../models/tetramino";
-import FieldModel, {FIELD} from "../../models/field";
+import FieldModel from "../../models/field";
 import Game from "../../models/game";
 
 const gameState = {

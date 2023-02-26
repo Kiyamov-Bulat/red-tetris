@@ -4,31 +4,24 @@ import mainController from './controllers/main';
 import gameController from './controllers/game';
 import setCORS from "./middlewares/setCors";
 import logger from "./middlewares/logger";
+import {GAME_SOCKET_EVENT} from "../utils/constants";
 
 const RESTART_DELAY = 1000;
-
-const initEngine = io => {
-	io.on('connection', function(socket){
-		console.log("Socket connected: " + socket.id);
-		socket.on('action', (action) => {
-			if(action.type === 'server/ping'){
-				socket.emit('action', {type: 'pong'});
-			}
-		});
-	});
-};
 
 const startApp = (config) => {
 	try {
 		const router = new Router();
+		const server = new io.Server(router.server);
+
+		server.on('connection', (socket) => {
+			socket.on('disconnect', gameController.disconnect.bind(io, socket));
+		});
 
 		router.use(setCORS);
 		router.use(logger);
 
 		router.post('/create', gameController.create);
 		router.post('/connect', gameController.connect);
-		router.post('/start', gameController.start);
-		router.post('/restart', gameController.restart);
 		router.get('/list', gameController.getAll);
 
 		router.get('/bundle\\.js', mainController.getBundle);

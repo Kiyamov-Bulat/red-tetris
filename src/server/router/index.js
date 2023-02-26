@@ -3,7 +3,6 @@ import Request from './request';
 import Response from './response';
 import SelfPreservingPromise from "../../utils/selfPreservingPromise";
 import RoueParams from "./routeParams";
-import io from "socket.io";
 
 const ERequestMethod = {
 	GET: 'GET',
@@ -39,8 +38,6 @@ class Router {
 				}
 			},
 		);
-
-		this.io = new io.Server(this.server);
 	}
 
 	get(path, controller) {
