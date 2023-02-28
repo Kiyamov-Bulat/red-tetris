@@ -34,7 +34,10 @@ export default {
     },
 
     start(io, player, gameId) {
+        const nextTetramino = Game.get(gameId).generateFirstTetramino();
+
         io.to(gameId).emit(GAME_SOCKET_EVENT.START);
+        io.to(gameId).emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino);
     },
 
     restart(io, player, gameId) {
@@ -42,8 +45,10 @@ export default {
 
     update(io, player, gameId, field) {
         const transformedField = Field.transformToSpectatorField(field);
+        const nextTetramino = Game.get(gameId).getNextTetramino(player.id);
 
-        player.socket.broadcast.to(gameId).emit({ field: transformedField, player });
+        player.socket.broadcast.to(gameId).emit(GAME_SOCKET_EVENT.UPDATE, { field: transformedField, player });
+        player.socket.emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino);
     },
     
     hostChange(io, player, gameId) {
@@ -68,7 +73,7 @@ export default {
 
         socket.on(GAME_SOCKET_EVENT.START, this.start.bind(...args));
         socket.on(GAME_SOCKET_EVENT.RESTART, this.restart.bind(...args));
-        socket.on(GAME_SOCKET_EVENT.UPDATE, (field) => this.update(...args, field));
+        socket.on(GAME_SOCKET_EVENT.UPDATE, (field) => this.update(...args.slice(1), field));
         socket.on(GAME_SOCKET_EVENT.HOST_CHANGE, this.hostChange.bind(...args));
         socket.on(GAME_SOCKET_EVENT.KICK, this.kick.bind(...args));
     }

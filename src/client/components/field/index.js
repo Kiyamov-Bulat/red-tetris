@@ -4,9 +4,6 @@ import sessionStorageService from "../../services/sessionStorageService";
 import FieldModel from "../../models/field";
 import {FIELD_SIZE} from "../../../utils/constants";
 import styles from './styles.module.scss';
-import {selectCurrentTetramino} from "../../store/selectors/game";
-import store from "../../store";
-import {useSelector} from "react-redux";
 
 const CUBE_GAP = 1;
 

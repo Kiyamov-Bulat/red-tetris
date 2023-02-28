@@ -3,6 +3,7 @@ import TetraminoModel from "../../models/tetramino";
 import FieldModel from "../../models/field";
 import {CUBE_TYPE} from "../../../utils/constants";
 import sessionStorageService from "../../services/sessionStorageService";
+import Game from "../../models/game";
 
 const gameState = {
     id: '',
@@ -14,7 +15,7 @@ const gameState = {
     field: FieldModel.getEmpty(),
     currentTetramino: null, //{ type: TETRAMINO_TYPE.I },
 
-    isSinglePlayer: true,
+    isSinglePlayer: false,
     isStarted: false,
     isOver: false,
 };
@@ -47,7 +48,7 @@ const game = createSlice({
             );
 
             if (fieldIdx !== -1) {
-                state.opponentsFields[fieldIdx] = payload.field;
+                state.opponentsFields[fieldIdx] = {  field: payload.field, playerId: payload.player.id };
             }
         },
 
@@ -55,18 +56,22 @@ const game = createSlice({
             state.isSinglePlayer = true;
         },
 
-        generateTetramino(state) {
-
+        setCurrentTetramino(state, { payload }) {
+            state.currentTetramino = payload;
         },
+
         updateGameState(state) {
             if (!state.currentTetramino) {
-                state.currentTetramino = TetraminoModel.generate();
+                if (state.isSinglePlayer) {
+                    state.currentTetramino = TetraminoModel.generate();
+                }
                 return;
             }
 
             if (FieldModel.atBottom(state.field, state.currentTetramino)) {
                 state.field = FieldModel.update(state.field, state.currentTetramino);
                 state.currentTetramino = null;
+                Game.update(state.field);
 
                 if (state.field[0].some((column) => column.type !== CUBE_TYPE.EMPTY)) {
                     state.isOver = true;
@@ -77,6 +82,7 @@ const game = createSlice({
             }
             state.currentTetramino = TetraminoModel.incrementLine(state.currentTetramino);
         },
+
         rotateTetramino(state) {
             let rotatedTetramino = TetraminoModel.rotate(state.currentTetramino);
 
@@ -127,6 +133,7 @@ export const {
     startGame,
     setGameProps,
     setIsSinglePlayerGame,
+    setCurrentTetramino,
     updateGameState,
     updateOpponentField,
     rotateTetramino,

@@ -5,22 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/client/store/slices/tetramino.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/field/cube/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/field/cube/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/field/cube/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/field/cube/styles.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/components/field/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/field/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/field/line/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/field/line/styles.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/field/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/field/styles.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/fields/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/fields/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/models/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/field.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/models/tetramino.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/tetramino.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/controllers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/controllers/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/models/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/models/tetramino.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/tetramino.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/models/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/field.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,22 +42,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "list.type.of.created.stylesheet": "SCSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "fileTemplates",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/client/containers/sidePanel/main" />
@@ -142,7 +135,8 @@
       <workItem from="1676907488910" duration="989000" />
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
-      <workItem from="1677221687371" duration="54577000" />
+      <workItem from="1677221687371" duration="57813000" />
+      <workItem from="1677598254496" duration="2864000" />
     </task>
     <servers />
   </component>

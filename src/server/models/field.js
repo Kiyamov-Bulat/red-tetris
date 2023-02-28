@@ -18,6 +18,7 @@ class Field {
                 newField[line][column] = { ...field[line][column], type };
            });
         });
+        return newField;
     }
 }
 

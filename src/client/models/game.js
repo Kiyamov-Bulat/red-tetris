@@ -2,7 +2,13 @@ import io from "socket.io-client";
 import sessionStorageService from "../services/sessionStorageService";
 import store from "../store";
 import {GAME_SOCKET_EVENT} from "../../utils/constants";
-import {setGameProps, setIsSinglePlayerGame, startGame, updateOpponentField} from "../store/slices/game";
+import {
+    setCurrentTetramino,
+    setGameProps,
+    setIsSinglePlayerGame,
+    startGame,
+    updateOpponentField
+} from "../store/slices/game";
 
 export const SIDE_PANEL_TYPE = {
     MAIN: '@side-panel-type/main',
@@ -53,14 +59,15 @@ const Game = {
         game.on(GAME_SOCKET_EVENT.FINISH, Game.onFinish);
         game.on(GAME_SOCKET_EVENT.RESTART, Game.onRestart);
         game.on(GAME_SOCKET_EVENT.KICK, Game.onKick);
+        game.on(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, Game.onGenerateTetramino);
     },
 
     start: () => {
         Game.emit(GAME_SOCKET_EVENT.START);
     },
 
-    update: () => {
-        Game.emit(GAME_SOCKET_EVENT.UPDATE);
+    update: (field) => {
+        Game.emit(GAME_SOCKET_EVENT.UPDATE, field);
     },
 
     restart: () => {
@@ -106,6 +113,10 @@ const Game = {
     onKick: () => {
         Game.clear();
     },
+
+    onGenerateTetramino: (tetramino) => {
+        store.dispatch(setCurrentTetramino(tetramino));
+    }
 };
 
 export default Game;

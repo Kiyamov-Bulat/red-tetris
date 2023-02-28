@@ -8,6 +8,7 @@ export const GAME_SOCKET_EVENT = {
     CREATE: 'game:create',
     CONNECT: 'game:connect',
     START: 'game:restart',
+    GENERATE_TETRAMINO: 'game:generate_tetramino',
     UPDATE: 'game:update',
     FINISH: 'game:finish',
     RESTART: 'game:restart',
