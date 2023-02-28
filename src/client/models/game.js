@@ -3,6 +3,8 @@ import sessionStorageService from "../services/sessionStorageService";
 import store from "../store";
 import {GAME_SOCKET_EVENT} from "../../utils/constants";
 import {
+    finishGame,
+    lockLines,
     setCurrentTetramino,
     setGameProps,
     setIsSinglePlayerGame,
@@ -66,8 +68,8 @@ const Game = {
         Game.emit(GAME_SOCKET_EVENT.START);
     },
 
-    update: (field) => {
-        Game.emit(GAME_SOCKET_EVENT.UPDATE, field);
+    update: (field, collapsedLines) => {
+        Game.emit(GAME_SOCKET_EVENT.UPDATE, field, collapsedLines);
     },
 
     restart: () => {
@@ -100,14 +102,20 @@ const Game = {
     },
 
     onUpdate: (data) => {
+        const { collapsedLines } = data;
+
         store.dispatch(updateOpponentField(data));
+
+        if (collapsedLines !== 0) {
+            store.dispatch(lockLines(collapsedLines));
+        }
     },
 
     onRestart: () => {
     },
 
     onFinish() {
-
+        store.dispatch(finishGame());
     },
 
     onKick: () => {

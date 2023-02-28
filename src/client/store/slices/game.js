@@ -1,4 +1,4 @@
-import {createSlice, current} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 import TetraminoModel from "../../models/tetramino";
 import FieldModel from "../../models/field";
 import {CUBE_TYPE} from "../../../utils/constants";
@@ -35,6 +35,14 @@ const game = createSlice({
                 ));
         },
 
+        finishGame(state) {
+            state.isStarted = false;
+            state.isOver = true;
+            state.field = FieldModel.getEmpty();
+            state.opponentsFields = [];
+            state.currentTetramino = null;
+        },
+
         setGameProps(state, { payload: game }) {
             state.id = game.id;
             state.createdAt = game.createdAt;
@@ -69,18 +77,25 @@ const game = createSlice({
             }
 
             if (FieldModel.atBottom(state.field, state.currentTetramino)) {
-                state.field = FieldModel.update(state.field, state.currentTetramino);
+                const [field, collapsedLines]  = FieldModel.update(state.field, state.currentTetramino);
+
+                state.field = field;
                 state.currentTetramino = null;
-                Game.update(state.field);
+                Game.update(state.field, collapsedLines);
 
                 if (state.field[0].some((column) => column.type !== CUBE_TYPE.EMPTY)) {
                     state.isOver = true;
                     state.isStarted = false;
                     state.field = FieldModel.getEmpty();
+                    Game.finish();
                 }
                 return;
             }
             state.currentTetramino = TetraminoModel.incrementLine(state.currentTetramino);
+        },
+
+        lockLines(state, { payload }) {
+            state.field = FieldModel.lockNLines(state.field, payload);
         },
 
         rotateTetramino(state) {
@@ -131,11 +146,13 @@ const game = createSlice({
 
 export const {
     startGame,
+    finishGame,
     setGameProps,
     setIsSinglePlayerGame,
     setCurrentTetramino,
     updateGameState,
     updateOpponentField,
+    lockLines,
     rotateTetramino,
     moveLeftTetramino,
     moveRightTetramino,

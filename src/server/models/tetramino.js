@@ -1,4 +1,3 @@
-import randomChoice from "../../utils/randomChoice";
 import {FIELD_SIZE, TETRAMINO_COORDS, TETRAMINO_ROTATE, TETRAMINO_TYPE} from "../../utils/constants";
 
 class Tetramino {
@@ -13,7 +12,7 @@ class Tetramino {
      */
     static generate() {
         const tetramino = new Tetramino(
-            randomChoice(Object.values(TETRAMINO_TYPE)),
+            TETRAMINO_TYPE.I,//randomChoice(Object.values(TETRAMINO_TYPE)),
             { column: 4, line: 0 },
             TETRAMINO_ROTATE.TWELVE,
         );
