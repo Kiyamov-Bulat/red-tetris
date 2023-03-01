@@ -1,4 +1,5 @@
 import {FIELD_SIZE, TETRAMINO_COORDS, TETRAMINO_ROTATE, TETRAMINO_TYPE} from "../../utils/constants";
+import randomChoice from "../../utils/randomChoice";
 
 class Tetramino {
     constructor(type, position, rotation) {
@@ -12,7 +13,7 @@ class Tetramino {
      */
     static generate() {
         const tetramino = new Tetramino(
-            TETRAMINO_TYPE.I,//randomChoice(Object.values(TETRAMINO_TYPE)),
+            randomChoice(Object.values(TETRAMINO_TYPE)),
             { column: 4, line: 0 },
             TETRAMINO_ROTATE.TWELVE,
         );
