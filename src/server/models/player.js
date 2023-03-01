@@ -8,6 +8,7 @@ class Player {
     constructor(id, socket) {
         this._id = id;
         this._socket = socket;
+        this._name = 'Noob';
 
         socket.player = this;
     }

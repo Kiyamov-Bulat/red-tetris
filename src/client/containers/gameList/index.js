@@ -1,8 +1,7 @@
-import { v4 as uuidv4 } from 'uuid';
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect} from 'react';
 import GameListModel from '../../models/gameList';
 import store from "../../store";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {selectGameListState} from "../../store/selectors/gameList";
 import GameUnit from "./gameUnit";
 import styles from './styles.module.scss';

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import {selectCurrentUserIsHost, selectPlayers} from "../../../store/selectors/game";
+import {selectPlayers} from "../../../store/selectors/game";
 import Player from "./player";
 import Menu from "./menu";
 import styles from './styles.module.scss';

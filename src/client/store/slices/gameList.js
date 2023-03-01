@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import GameList from "../../models/gameList";
+import GameListModel from "../../models/gameList";
 
 const gameListState = {
     state: []
@@ -11,14 +11,17 @@ const gameList = createSlice({
     reducers: {
         addGame: (state, { payload }) => {
             state.state.push(payload);
+        },
+        removeGame: (state, { payload }) => {
+            state.state = state.state.filter((game) => game.id !== payload.id);
         }
     },
     extraReducers: (builder) => {
         builder
-            .addCase(GameList.get.fulfilled, (state, { payload }) => {
+            .addCase(GameListModel.get.fulfilled, (state, { payload }) => {
                 state.state = payload;
             })
-            .addCase(GameList.get.rejected, (state, { payload }) => {
+            .addCase(GameListModel.get.rejected, (state, { payload }) => {
                 state.state = payload;
             });
     }
@@ -26,6 +29,7 @@ const gameList = createSlice({
 
 export const {
     addGame,
+    removeGame,
 } = gameList.actions;
 
 export default gameList.reducer;

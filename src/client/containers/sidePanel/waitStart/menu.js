@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import Button from "../../../components/button";
 import {useSelector} from "react-redux";
 import {selectCurrentUserIsHost} from "../../../store/selectors/game";
-import Game from "../../../models/game";
+import GameModel from "../../../models/game";
 
 const Menu = () => {
     const currentUserIsHost = useSelector(selectCurrentUserIsHost);
@@ -11,7 +11,7 @@ const Menu = () => {
     return (
         <div className={styles.waitStartMenuContainer}>
             <Button>Выйти</Button>
-            {currentUserIsHost && <Button onClick={() => Game.start()}>Начать</Button>}
+            {currentUserIsHost && <Button onClick={() => GameModel.start()}>Начать</Button>}
         </div>
     );
 };

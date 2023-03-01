@@ -3,7 +3,7 @@ import TetraminoModel from "../../models/tetramino";
 import FieldModel from "../../models/field";
 import {CUBE_TYPE} from "../../../utils/constants";
 import sessionStorageService from "../../services/sessionStorageService";
-import Game from "../../models/game";
+import GameModel from "../../models/game";
 
 const gameState = {
     id: '',
@@ -41,6 +41,11 @@ const game = createSlice({
             state.field = FieldModel.getEmpty();
             state.opponentsFields = [];
             state.currentTetramino = null;
+        },
+
+        resetGame() {
+            console.log()
+            return gameState;
         },
 
         setGameProps(state, { payload: game }) {
@@ -81,13 +86,13 @@ const game = createSlice({
 
                 state.field = field;
                 state.currentTetramino = null;
-                Game.update(state.field, collapsedLines);
+                GameModel.update(state.field, collapsedLines);
 
                 if (state.field[0].some((column) => column.type !== CUBE_TYPE.EMPTY)) {
                     state.isOver = true;
                     state.isStarted = false;
                     state.field = FieldModel.getEmpty();
-                    Game.finish();
+                    GameModel.finish();
                 }
                 return;
             }
@@ -147,6 +152,7 @@ const game = createSlice({
 export const {
     startGame,
     finishGame,
+    resetGame,
     setGameProps,
     setIsSinglePlayerGame,
     setCurrentTetramino,

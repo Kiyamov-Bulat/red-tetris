@@ -1,11 +1,11 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import jsonFetch from "../services/fetch";
-import Game from "./game";
+import GameModel from "./game";
 import {GAME_SOCKET_EVENT} from "../../utils/constants";
-import {addGame} from "../store/slices/gameList";
+import {addGame, removeGame} from "../store/slices/gameList";
 import store from "../store";
 
-const GameList = {
+const GameListModel = {
     get: createAsyncThunk('gameList/get', (_, thunkAPI) => {
         return jsonFetch('/list', 'GET', { throwErr: true })
             .then((state) => thunkAPI.fulfillWithValue(state))
@@ -16,13 +16,18 @@ const GameList = {
         store.dispatch(addGame(game));
     },
 
+    _removeGame: (game) => {
+        store.dispatch(removeGame(game));
+    },
+
     listenUpdates: () => {
-       Game.get().on(GAME_SOCKET_EVENT.CREATE, GameList._addGame);
+        GameModel.get().on(GAME_SOCKET_EVENT.CREATE, GameListModel._addGame);
+        GameModel.get().on(GAME_SOCKET_EVENT.DESTROY, GameListModel._removeGame);
     },
 
     removeUpdatesListener: () => {
-        Game.get().removeListener(GAME_SOCKET_EVENT.CREATE, GameList._addGame);
+        GameModel.get().removeListener(GAME_SOCKET_EVENT.CREATE, GameListModel._addGame);
     },
 };
 
-export default GameList;
+export default GameListModel;

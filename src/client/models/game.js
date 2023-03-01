@@ -4,7 +4,7 @@ import store from "../store";
 import {GAME_SOCKET_EVENT} from "../../utils/constants";
 import {
     finishGame,
-    lockLines,
+    lockLines, resetGame,
     setCurrentTetramino,
     setGameProps,
     setIsSinglePlayerGame,
@@ -20,13 +20,13 @@ export const SIDE_PANEL_TYPE = {
 
 const socket = io();
 
-const Game = {
+const GameModel = {
     get: () => {
         return socket;
     },
 
     emit: (event, ...args) => {
-        Game.get().emit(event, ...args);
+        GameModel.get().emit(event, ...args);
     },
 
     create: (singlePlayer = true) => {
@@ -36,13 +36,13 @@ const Game = {
             return;
         }
         socket.emit(GAME_SOCKET_EVENT.CREATE, sessionStorageService.getSessionId());
-        socket.on(GAME_SOCKET_EVENT.CREATE, Game.onCreate);
+        socket.on(GAME_SOCKET_EVENT.CREATE, GameModel.onCreate);
     },
 
     connect: (id) => {
-        const game = Game.get();
+        const game = GameModel.get();
 
-        Game._listenGameEvents(game);
+        GameModel._listenGameEvents(game);
 
         if (id) {
             game.emit(
@@ -51,32 +51,36 @@ const Game = {
                 sessionStorageService.getSessionId()
             );
         }
-
     },
 
-    _listenGameEvents: (game = Game.get()) => {
-        game.on(GAME_SOCKET_EVENT.CONNECT, Game.onConnect);
-        game.on(GAME_SOCKET_EVENT.START, Game.onStart);
-        game.on(GAME_SOCKET_EVENT.UPDATE, Game.onUpdate);
-        game.on(GAME_SOCKET_EVENT.FINISH, Game.onFinish);
-        game.on(GAME_SOCKET_EVENT.KICK, Game.onKick);
-        game.on(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, Game.onGenerateTetramino);
+    _listenGameEvents: (game = GameModel.get()) => {
+        game.on(GAME_SOCKET_EVENT.CONNECT, GameModel.onConnect);
+        game.on(GAME_SOCKET_EVENT.START, GameModel.onStart);
+        game.on(GAME_SOCKET_EVENT.UPDATE, GameModel.onUpdate);
+        game.on(GAME_SOCKET_EVENT.FINISH, GameModel.onFinish);
+        game.on(GAME_SOCKET_EVENT.KICK, GameModel.onKick);
+        game.on(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, GameModel.onGenerateTetramino);
     },
 
     start: () => {
-        Game.emit(GAME_SOCKET_EVENT.START);
+        GameModel.emit(GAME_SOCKET_EVENT.START);
     },
 
     update: (field, collapsedLines) => {
-        Game.emit(GAME_SOCKET_EVENT.UPDATE, field, collapsedLines);
+        GameModel.emit(GAME_SOCKET_EVENT.UPDATE, field, collapsedLines);
     },
 
     finish: () => {
-        Game.emit(GAME_SOCKET_EVENT.FINISH);
+        GameModel.emit(GAME_SOCKET_EVENT.FINISH);
     },
 
     clear: () => {
-       socket.removeAllListeners();
+        store.dispatch(resetGame());
+        socket.removeAllListeners();
+    },
+
+    kick: (playerId) => {
+        GameModel.emit(GAME_SOCKET_EVENT.KICK, playerId);
     },
 
     onCreate: (game) => {
@@ -84,11 +88,11 @@ const Game = {
             return;
         }
         store.dispatch(setGameProps(game));
-        Game.connect();
-        socket.removeListener(GAME_SOCKET_EVENT.CREATE, Game.onCreate);
+        GameModel.connect();
+        socket.removeListener(GAME_SOCKET_EVENT.CREATE, GameModel.onCreate);
     },
 
-    onConnect: ({ game, player }) => {
+    onConnect: (game) => {
         store.dispatch(setGameProps(game));
     },
 
@@ -106,15 +110,16 @@ const Game = {
         }
     },
 
-    onRestart: () => {
-    },
-
     onFinish() {
         store.dispatch(finishGame());
     },
 
-    onKick: () => {
-        Game.clear();
+    onKick: (game, playerId) => {
+        if (playerId === sessionStorageService.getSessionId()) {
+            GameModel.clear();
+        } else {
+            store.dispatch(setGameProps(game));
+        }
     },
 
     onGenerateTetramino: (tetramino) => {
@@ -122,4 +127,4 @@ const Game = {
     }
 };
 
-export default Game;
+export default GameModel;

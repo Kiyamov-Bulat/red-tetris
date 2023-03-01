@@ -31,7 +31,7 @@ export default {
         game.connect(player);
         this._listenGameEvents(io, player);
 
-        io.to(gameId).emit(GAME_SOCKET_EVENT.CONNECT, {game, player});
+        io.to(gameId).emit(GAME_SOCKET_EVENT.CONNECT, game, player);
     },
 
     disconnect(io, socket) {
@@ -49,8 +49,6 @@ export default {
         if (!game) {
             return;
         }
-        const isHost = game.isHost(player);
-
         game.disconnect(player);
 
         switch (game.players.length) {
@@ -63,11 +61,9 @@ export default {
                     this.finish(io, game.players[0]);
                 }
                 break;
+        }
 
-        }
-        if (isHost) {
-            io.to(game.id).emit(GAME_SOCKET_EVENT.HOST_CHANGE, game.host);
-        }
+        io.to(game.id).emit(GAME_SOCKET_EVENT.KICK, game, player.id);
     },
 
     start(io, player) {
@@ -115,16 +111,19 @@ export default {
         }
         const kickedPlayer = game.players.find((next) => next.id === kickedPlayerId);
 
-        if (kickedPlayer) {
-            kickedPlayer.socket.player = null;
-            game.disconnect(kickedPlayer);
-            this._removeGameListeners(io, player);
+        if (!kickedPlayer) {
+            return;
         }
+        game.disconnect(kickedPlayer);
+        this._removeGameListeners(io, kickedPlayer.id);
+
+        io.to(game.id).to(kickedPlayer.socket.id).emit(GAME_SOCKET_EVENT.KICK, game, kickedPlayer.id);
+        kickedPlayer.socket.player = null;
     },
 
     _listenGameEvents(io, player) {
         const socket = player.socket;
-        const wrapper = (cb) => (...args) => cb(io, player, ...args);
+        const wrapper = (cb) => cb.bind(this, io, player);
 
         this.gameListeners = [
             [GAME_SOCKET_EVENT.START, wrapper(this.start)],
