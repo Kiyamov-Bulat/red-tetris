@@ -11,9 +11,8 @@ export const GAME_SOCKET_EVENT = {
     GENERATE_TETRAMINO: 'game:generate_tetramino',
     UPDATE: 'game:update',
     FINISH: 'game:finish',
-    RESTART: 'game:restart',
+    DESTROY: 'game:destroy',
     KICK: 'game:kick',
-    JOIN: 'game:join',
     HOST_CHANGE: 'game:host_change',
 };
 

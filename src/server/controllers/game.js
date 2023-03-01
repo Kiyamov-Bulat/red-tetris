@@ -4,6 +4,8 @@ import {GAME_SOCKET_EVENT} from "../../utils/constants";
 import Field from "../models/field";
 
 export default {
+    gameListeners: [],
+
     getAll(req, res) {
         res.sendJSON(Game.getAll());
     },
@@ -24,58 +26,102 @@ export default {
             return;
         }
         const isHost = game.host.id === playerId;
-        // @TODO коннект на другую игру если ты в игре
         const player = isHost ? game.host : new Player(playerId, socket);
 
         game.connect(player);
-        socket.join(gameId);
-        this._listenGameEvents(io, player, gameId);
+        this._listenGameEvents(io, player);
+
         io.to(gameId).emit(GAME_SOCKET_EVENT.CONNECT, {game, player});
     },
 
-    start(io, player, gameId) {
-        const nextTetramino = Game.get(gameId).generateFirstTetramino();
+    disconnect(io, socket) {
+        const { player } = socket;
+        const { game } = player;
 
-        io.to(gameId).emit(GAME_SOCKET_EVENT.START);
-        io.to(gameId).emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino);
+        socket.player = null;
+        socket.removeAllListeners();
+
+        if (!game) {
+            return;
+        }
+        const isHost = game.isHost(player);
+
+        game.disconnect(player);
+
+        switch (game.players) {
+            case 0:
+                game.destroy();
+                io.emit(GAME_SOCKET_EVENT.DESTROY, game);
+                return;
+            case 1:
+                this.finish(io, socket, game.id);
+                break;
+
+        }
+        if (isHost) {
+            io.to(game.id).emit(GAME_SOCKET_EVENT.HOST_CHANGE, game.host);
+        }
     },
 
-    finish(io, player, gameId) {
-        io.to(gameId).emit(GAME_SOCKET_EVENT.FINISH);
+    start(io, player) {
+        const { game } = player;
+
+        if (!game.isHost(player)) {
+            return;
+        }
+
+        const nextTetramino = game.generateFirstTetramino();
+
+        io.to(game.id).emit(GAME_SOCKET_EVENT.START);
+        io.to(game.id).emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino);
     },
 
-    restart(io, player, gameId) {
+    finish(io, player) {
+        io.to(player.game.id).emit(GAME_SOCKET_EVENT.FINISH);
     },
 
-    update(io, player, gameId, field, collapsedLines) {
+    update(io, player, field, collapsedLines) {
+        const { game } = player;
         const transformedField = Field.transformToSpectatorField(field);
-        const nextTetramino = Game.get(gameId).getNextTetramino(player.id);
+        const nextTetramino = game.getNextTetramino(player.id);
 
-        player.socket.broadcast.to(gameId).emit(GAME_SOCKET_EVENT.UPDATE, { field: transformedField, player, collapsedLines });
+        player.socket.broadcast.to(game.id).emit(GAME_SOCKET_EVENT.UPDATE, { field: transformedField, player, collapsedLines });
         player.socket.emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino);
     },
     
-    hostChange(io, player, gameId) {
-        
+    kick(io, player, kickedPlayerId) {
+        const { game } = player;
+
+        if (!game || !game.isHost(player)) {
+            return;
+        }
+        const kickedPlayer = game.players.find((next) => next.id === kickedPlayerId);
+
+        if (kickedPlayer) {
+            kickedPlayer.socket.player = null;
+            game.disconnect(kickedPlayer);
+            this._removeGameListeners(io, player);
+        }
     },
 
-    kick(io, player, gameId) {
-
-    },
-
-    disconnect(io, player, gameId) {
-
-    },
-
-    _listenGameEvents(io, player, gameId) {
-        const args = [this, io, player, gameId];
+    _listenGameEvents(io, player) {
         const socket = player.socket;
+        const wrapper = (cb) => (...args) => cb(io, player, ...args);
 
-        socket.on(GAME_SOCKET_EVENT.START, this.start.bind(...args));
-        socket.on(GAME_SOCKET_EVENT.FINISH, this.finish.bind(...args));
-        socket.on(GAME_SOCKET_EVENT.RESTART, this.restart.bind(...args));
-        socket.on(GAME_SOCKET_EVENT.UPDATE, (field, collapsedLines) => this.update(...args.slice(1), field, collapsedLines));
-        socket.on(GAME_SOCKET_EVENT.HOST_CHANGE, this.hostChange.bind(...args));
-        socket.on(GAME_SOCKET_EVENT.KICK, this.kick.bind(...args));
+        this.gameListeners = [
+            [GAME_SOCKET_EVENT.START, wrapper(this.start)],
+            [GAME_SOCKET_EVENT.FINISH, wrapper(this.finish)],
+            [GAME_SOCKET_EVENT.UPDATE, wrapper(this.update)],
+            [GAME_SOCKET_EVENT.KICK, wrapper(this.kick)],
+        ];
+        for (const pair of this.gameListeners) {
+            socket.on(...pair);
+        }
+    },
+
+    _removeGameListeners(socket) {
+        for (const pair of this.gameListeners) {
+            socket.removeListener(...pair);
+        }
     }
 };

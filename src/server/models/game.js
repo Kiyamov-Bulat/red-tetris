@@ -1,6 +1,6 @@
-import { v4 as uuidv4 } from 'uuid';
-import tetramino from "./tetramino";
+import {v4 as uuidv4} from 'uuid';
 import Tetramino from "./tetramino";
+import randomChoice from "../../utils/randomChoice";
 
 class Game {
     static GAME_LIST = [];
@@ -37,7 +37,23 @@ class Game {
     }
 
     connect(player) {
+        player.game = player;
+        player.socket.join(this.id);
         this.players.push(player);
+    }
+
+    disconnect(player) {
+        player.game = null;
+        player.socket.leave(this.id);
+        this._players = this._players.filter((next) => next.id !== player.id);
+
+        if (player.id === this.host.id) {
+            this.host = randomChoice(this._players);
+        }
+    }
+
+    isHost(player) {
+        return this.host.id === player.id;
     }
 
     toJSON() {
@@ -80,6 +96,10 @@ class Game {
         }
 
         return nextTetramino.value;
+    }
+
+    destroy() {
+        Game.GAME_LIST = Game.GAME_LIST.filter((game) => game.id !== this.id);
     }
 
     static getAll() {

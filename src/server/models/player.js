@@ -4,9 +4,12 @@ class Player {
 
     _socket;
 
+    _game;
     constructor(id, socket) {
         this._id = id;
         this._socket = socket;
+
+        socket.player = this;
     }
 
     get id() {
@@ -18,6 +21,14 @@ class Player {
     }
     get name() {
         return this._name;
+    }
+
+    get game() {
+        return this._game;
+    }
+    
+    set game(aGame) {
+        this._game = aGame;
     }
 
     toJSON() {

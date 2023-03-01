@@ -59,7 +59,6 @@ const Game = {
         game.on(GAME_SOCKET_EVENT.START, Game.onStart);
         game.on(GAME_SOCKET_EVENT.UPDATE, Game.onUpdate);
         game.on(GAME_SOCKET_EVENT.FINISH, Game.onFinish);
-        game.on(GAME_SOCKET_EVENT.RESTART, Game.onRestart);
         game.on(GAME_SOCKET_EVENT.KICK, Game.onKick);
         game.on(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, Game.onGenerateTetramino);
     },
@@ -70,10 +69,6 @@ const Game = {
 
     update: (field, collapsedLines) => {
         Game.emit(GAME_SOCKET_EVENT.UPDATE, field, collapsedLines);
-    },
-
-    restart: () => {
-        Game.emit(GAME_SOCKET_EVENT.RESTART);
     },
 
     finish: () => {
