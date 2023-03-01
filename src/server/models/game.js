@@ -11,6 +11,7 @@ class Game {
     _createdAt;
     _players;
     _tetraminoQueue;
+    _isStarted;
 
     constructor(host) {
         this._host = host;
@@ -18,6 +19,8 @@ class Game {
         this._createdAt = new Date();
         this._players = [];
         this._tetraminoQueue = [];
+        this._isStarted = false;
+        this._isOver = false;
     }
 
     get id() {
@@ -32,12 +35,24 @@ class Game {
         return this._host;
     }
 
+    set host(player) {
+        this._host = player;
+    }
+
     get players() {
         return this._players;
     }
 
+    get isOver() {
+        return this._isOver;
+    }
+
+    get isStarted() {
+        return this._isStarted;
+    }
+
     connect(player) {
-        player.game = player;
+        player.game = this;
         player.socket.join(this.id);
         this.players.push(player);
     }
@@ -60,8 +75,10 @@ class Game {
         return {
             id: this.id,
             createdAt: this.createdAt,
-            host: this.host.toJSON(),
-            players: this.players.map((player) => player.toJSON()),
+            host: this.host?.toJSON(),
+            players: this.players.map((player) => player?.toJSON()),
+            isOver: this.isOver,
+            isStarted: this.isStarted,
         };
     }
 
@@ -99,7 +116,24 @@ class Game {
     }
 
     destroy() {
+        this._isStarted = false;
+        this._isOver = false;
+        this._players = [];
+        this._tetraminoQueue = [];
+        this._host = null;
+        this._createdAt = null;
         Game.GAME_LIST = Game.GAME_LIST.filter((game) => game.id !== this.id);
+    }
+
+    start() {
+        this._isStarted = true;
+        this._isOver = false;
+        return this.generateFirstTetramino();
+    }
+
+    finish() {
+        this._isStarted = false;
+        this._isOver = true;
     }
 
     static getAll() {

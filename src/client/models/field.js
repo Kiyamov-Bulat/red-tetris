@@ -106,7 +106,7 @@ const FieldModel = {
         const field = [...fieldState];
         
         for (let i = fieldState.length - 1; i >= 0 && n > 0; --i) {
-            if (field[i][0] !== CUBE_TYPE.LOCKED) {
+            if (field[i][0].type !== CUBE_TYPE.LOCKED) {
                 field[i] = getLockedFieldLine();
                 --n;
             }

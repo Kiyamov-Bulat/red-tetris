@@ -36,6 +36,11 @@ export default {
 
     disconnect(io, socket) {
         const { player } = socket;
+
+        if (!player) {
+            return;
+        }
+
         const { game } = player;
 
         socket.player = null;
@@ -48,13 +53,15 @@ export default {
 
         game.disconnect(player);
 
-        switch (game.players) {
+        switch (game.players.length) {
             case 0:
                 game.destroy();
                 io.emit(GAME_SOCKET_EVENT.DESTROY, game);
                 return;
             case 1:
-                this.finish(io, socket, game.id);
+                if (game.isStarted) {
+                    this.finish(io, game.players[0]);
+                }
                 break;
 
         }
@@ -66,22 +73,33 @@ export default {
     start(io, player) {
         const { game } = player;
 
-        if (!game.isHost(player)) {
+        if (!game || !game.isHost(player) || game.isStarted) {
             return;
         }
 
-        const nextTetramino = game.generateFirstTetramino();
+        const nextTetramino = game.start();
 
         io.to(game.id).emit(GAME_SOCKET_EVENT.START);
         io.to(game.id).emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino);
     },
 
     finish(io, player) {
-        io.to(player.game.id).emit(GAME_SOCKET_EVENT.FINISH);
+        const { game } = player;
+        
+        if (!game || game.isOver || !game.isStarted) {
+            return;
+        }
+        game.finish();
+        io.to(game.id).emit(GAME_SOCKET_EVENT.FINISH);
     },
 
     update(io, player, field, collapsedLines) {
         const { game } = player;
+
+        if (!game || game.isOver || !game.isStarted) {
+            return;
+        }
+
         const transformedField = Field.transformToSpectatorField(field);
         const nextTetramino = game.getNextTetramino(player.id);
 
