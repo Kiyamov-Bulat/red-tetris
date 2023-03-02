@@ -16,6 +16,7 @@ export default {
 
         io.emit(GAME_SOCKET_EVENT.CREATE, game);
 
+        console.log('here', game, player);
         this.connect(io, socket, game.id, player.id);
     },
 
@@ -34,7 +35,7 @@ export default {
         io.to(gameId).emit(GAME_SOCKET_EVENT.CONNECT, game, player);
     },
 
-    disconnect(io, socket) {
+    disconnect(io, socket, fromGame = false) {
         const { player } = socket;
 
         if (!player) {
@@ -44,7 +45,12 @@ export default {
         const { game } = player;
 
         socket.player = null;
-        socket.removeAllListeners();
+
+        if (fromGame) {
+            this._removeGameListeners(socket);
+        } else {
+            socket.removeAllListeners();
+        }
 
         if (!game) {
             return;
@@ -114,11 +120,14 @@ export default {
         if (!kickedPlayer) {
             return;
         }
-        game.disconnect(kickedPlayer);
-        this._removeGameListeners(io, kickedPlayer.id);
+        const socketId = kickedPlayer.socket.id;
 
-        io.to(game.id).to(kickedPlayer.socket.id).emit(GAME_SOCKET_EVENT.KICK, game, kickedPlayer.id);
-        kickedPlayer.socket.player = null;
+        this.disconnect(io, player.socket, true);
+        io.to(socketId).emit(GAME_SOCKET_EVENT.KICK, game, kickedPlayer.id);
+    },
+
+    leave(io, player) {
+        this.disconnect(io, player.socket, true);
     },
 
     _listenGameEvents(io, player) {
@@ -130,6 +139,7 @@ export default {
             [GAME_SOCKET_EVENT.FINISH, wrapper(this.finish)],
             [GAME_SOCKET_EVENT.UPDATE, wrapper(this.update)],
             [GAME_SOCKET_EVENT.KICK, wrapper(this.kick)],
+            [GAME_SOCKET_EVENT.LEAVE, wrapper(this.leave)],
         ];
         for (const pair of this.gameListeners) {
             socket.on(...pair);

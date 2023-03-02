@@ -4,13 +4,14 @@ import Button from "../../../components/button";
 import {useSelector} from "react-redux";
 import {selectCurrentUserIsHost} from "../../../store/selectors/game";
 import GameModel from "../../../models/game";
+import sessionStorageService from "../../../services/sessionStorageService";
 
 const Menu = () => {
     const currentUserIsHost = useSelector(selectCurrentUserIsHost);
 
     return (
         <div className={styles.waitStartMenuContainer}>
-            <Button>Выйти</Button>
+            <Button onClick={() => GameModel.leave(sessionStorageService.getSessionId())}>Выйти</Button>
             {currentUserIsHost && <Button onClick={() => GameModel.start()}>Начать</Button>}
         </div>
     );

@@ -13,6 +13,7 @@ export const GAME_SOCKET_EVENT = {
     FINISH: 'game:finish',
     DESTROY: 'game:destroy',
     KICK: 'game:kick',
+    LEAVE: 'game:leave',
     HOST_CHANGE: 'game:host_change',
 };
 

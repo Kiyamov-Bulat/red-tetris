@@ -2,7 +2,6 @@ import React from 'react';
 import {useSelector} from "react-redux";
 import {selectOpponentsFields} from "../../../store/selectors/game";
 import Field from "../../../components/field";
-import sessionStorageService from "../../../services/sessionStorageService";
 
 const Fields = () => {
     const opponentsFields = useSelector(selectOpponentsFields);

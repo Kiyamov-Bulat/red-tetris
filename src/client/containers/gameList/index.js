@@ -11,7 +11,6 @@ const dispatchUpdateGameList = (dispatch = store.dispatch) => dispatch(GameListM
 const GameList = () => {
     const state = useSelector(selectGameListState);
 
-    console.log(state)
     useEffect(() => {
         dispatchUpdateGameList();
         GameListModel.listenUpdates();

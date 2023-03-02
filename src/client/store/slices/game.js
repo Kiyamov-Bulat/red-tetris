@@ -44,7 +44,6 @@ const game = createSlice({
         },
 
         resetGame() {
-            console.log()
             return gameState;
         },
 

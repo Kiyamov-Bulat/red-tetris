@@ -7,8 +7,14 @@
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/containers/gameList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/gameList/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/fields/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/fields/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/styles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/styles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/controllers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/controllers/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/models/tetramino.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/tetramino.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,18 +70,11 @@
       <recent name="$PROJECT_DIR$/src/client/utils/constants.js" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Node.js.game.js">
     <configuration name="gameList.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/client/models/gameList.js" working-dir="$PROJECT_DIR$/src/client/models">
       <method v="2" />
     </configuration>
-    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="build" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
+    <configuration name="game.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/server/controllers/game.js" working-dir="$PROJECT_DIR$/src/server/controllers">
       <method v="2" />
     </configuration>
     <configuration name="client-dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -110,11 +109,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.game.js" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.client-dev" />
         <item itemvalue="Node.js.gameList.js" />
         <item itemvalue="npm.srv-dev" />
-        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -130,7 +129,7 @@
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
       <workItem from="1677221687371" duration="57813000" />
-      <workItem from="1677598254496" duration="18976000" />
+      <workItem from="1677598254496" duration="21577000" />
     </task>
     <servers />
   </component>

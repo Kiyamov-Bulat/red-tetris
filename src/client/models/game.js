@@ -35,6 +35,7 @@ const GameModel = {
             store.dispatch(startGame());
             return;
         }
+        console.log('here');
         socket.emit(GAME_SOCKET_EVENT.CREATE, sessionStorageService.getSessionId());
         socket.on(GAME_SOCKET_EVENT.CREATE, GameModel.onCreate);
     },
@@ -83,10 +84,16 @@ const GameModel = {
         GameModel.emit(GAME_SOCKET_EVENT.KICK, playerId);
     },
 
+    leave: () => {
+        GameModel.emit(GAME_SOCKET_EVENT.LEAVE);
+        GameModel.clear();
+    },
+
     onCreate: (game) => {
         if (game.host.id !== sessionStorageService.getSessionId()) {
             return;
         }
+        console.log('here', game);
         store.dispatch(setGameProps(game));
         GameModel.connect();
         socket.removeListener(GAME_SOCKET_EVENT.CREATE, GameModel.onCreate);
@@ -120,6 +127,10 @@ const GameModel = {
         } else {
             store.dispatch(setGameProps(game));
         }
+    },
+
+    onLeave: (game, playerId) => {
+        store.dispatch(setGameProps(game));
     },
 
     onGenerateTetramino: (tetramino) => {
