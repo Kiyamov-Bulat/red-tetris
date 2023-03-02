@@ -97,18 +97,22 @@ class Game {
         const nextTetraminoIndex = this._tetraminoQueue.findIndex(({ players }) => !players[playerId]);
 
         if (nextTetraminoIndex === -1) {
-            this._tetraminoQueue.push({
+            const newTetramino = {
                 value: Tetramino.generate(),
                 players: { [playerId]: true },
-            });
-            return this._tetraminoQueue[this._tetraminoQueue.length - 1].value;
+            };
+
+            this._tetraminoQueue.push(newTetramino);
+            return newTetramino.value;
         }
 
         const nextTetramino = this._tetraminoQueue[nextTetraminoIndex];
 
-        this._tetraminoQueue[nextTetraminoIndex].players[playerId] = true;
+        nextTetramino.players[playerId] = true;
 
-        if (Object.values(this._tetraminoQueue[nextTetraminoIndex]).every((player) => player)) {
+        const players = Object.values(nextTetramino.players);
+
+        if (players.length === this.players.length && players.every((player) => player)) {
             this._tetraminoQueue.splice(nextTetraminoIndex, 1);
         }
 
