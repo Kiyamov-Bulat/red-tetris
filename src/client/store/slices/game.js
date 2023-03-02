@@ -20,6 +20,27 @@ const gameState = {
     isOver: false,
 };
 
+const onFinish = (state) => {
+    state.isStarted = false;
+    state.isOver = true;
+    state.field = FieldModel.getEmpty();
+    state.opponentsFields = [];
+    state.currentTetramino = null;
+};
+
+const updateFieldAndGame = (state) => {
+    const [field, collapsedLines]  = FieldModel.update(state.field, state.currentTetramino);
+
+    state.field = field;
+    state.currentTetramino = null;
+    !state.isSinglePlayer && GameModel.update(state.field, collapsedLines);
+
+    if (FieldModel.pileLineIsZero(state.field)) {
+        onFinish(state);
+        !state.isSinglePlayer && GameModel.finish();
+    }
+};
+
 const game = createSlice({
     name: "game",
     initialState: gameState,
@@ -34,11 +55,7 @@ const game = createSlice({
         },
 
         finishGame(state) {
-            state.isStarted = false;
-            state.isOver = true;
-            state.field = FieldModel.getEmpty();
-            state.opponentsFields = [];
-            state.currentTetramino = null;
+            onFinish(state);
         },
 
         resetGame() {
@@ -58,7 +75,7 @@ const game = createSlice({
             );
 
             if (fieldIdx !== -1) {
-                state.opponentsFields[fieldIdx] = {  field: payload.field, player: payload.player };
+                state.opponentsFields[fieldIdx] = { field: payload.field, player: payload.player };
             }
         },
 
@@ -79,21 +96,11 @@ const game = createSlice({
             }
 
             if (FieldModel.atBottom(state.field, state.currentTetramino)) {
-                const [field, collapsedLines]  = FieldModel.update(state.field, state.currentTetramino);
-
-                state.field = field;
-                state.currentTetramino = null;
-                GameModel.update(state.field, collapsedLines);
-
-                if (state.field[0].some((column) => column.type !== CUBE_TYPE.EMPTY)) {
-                    state.isOver = true;
-                    state.isStarted = false;
-                    state.field = FieldModel.getEmpty();
-                    GameModel.finish();
-                }
-                return;
+                updateFieldAndGame(state);
+            } else {
+                state.currentTetramino = TetraminoModel.incrementLine(state.currentTetramino);
             }
-            state.currentTetramino = TetraminoModel.incrementLine(state.currentTetramino);
+
         },
 
         lockLines(state, { payload }) {

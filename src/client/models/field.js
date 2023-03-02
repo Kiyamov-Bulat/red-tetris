@@ -112,6 +112,9 @@ const FieldModel = {
             }
         }
         return field;
+    },
+    pileLineIsZero: (field) => {
+        return field[0].some((column) => column.type !== CUBE_TYPE.EMPTY);
     }
 };
 
