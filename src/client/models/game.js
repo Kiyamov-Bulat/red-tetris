@@ -12,7 +12,7 @@ import {
     startGame,
     updateOpponentField
 } from "../store/slices/game";
-import {selectGameId} from "../store/selectors/game";
+import {selectGameId, selectGameIsStarted, selectIsSinglePlayer} from "../store/selectors/game";
 import {setIsWinner} from "../store/slices/player";
 
 export const SIDE_PANEL_TYPE = {
@@ -38,11 +38,14 @@ const GameModel = {
             store.dispatch(startGame());
             return;
         }
+
         socket.emit(GAME_SOCKET_EVENT.CREATE, sessionStorageService.getSessionId());
         socket.on(GAME_SOCKET_EVENT.CREATE, GameModel.onCreate);
     },
 
     connect: (id) => {
+        GameModel.clear();
+
         const game = GameModel.get();
 
         GameModel._listenGameEvents(game);

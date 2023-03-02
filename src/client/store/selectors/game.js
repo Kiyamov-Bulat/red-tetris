@@ -4,6 +4,8 @@ import sessionStorageService from "../../services/sessionStorageService";
 export const selectGame = (state) => state.game;
 export const selectCurrentTetramino = (state) => selectGame(state).currentTetramino;
 
+export const selectIsSinglePlayer = (state) => selectGame(state).isSinglePlayer;
+
 export const selectField = (state) => selectGame(state).field;
 
 export const getSelectLine = (idx) => (state) => selectField(state)[idx];

@@ -1,12 +1,9 @@
 import React from 'react';
 import {formatDateString} from "../../../utils/formatDateString";
 import styles from './styles.module.scss';
-import {useDispatch} from "react-redux";
 import GameModel from "../../models/game";
 
 const GameUnit = ({ index, game }) => {
-    const dispatch = useDispatch();
-    
     const connectToGame = () => {
         GameModel.connect(game.id);
     };

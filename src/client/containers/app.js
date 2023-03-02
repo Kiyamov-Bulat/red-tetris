@@ -16,8 +16,9 @@ const App = () => {
       <div className={styles.app}>
           <Game/>
           <SidePanel/>
+          <p className={styles.bg}>RED &nbsp;&nbsp;&nbsp;&nbsp; TETRIS</p>
       </div>
-);
+    );
 };
 
 export default App;
