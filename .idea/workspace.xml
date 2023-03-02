@@ -6,16 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/field/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/field/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/gameList/gameUnit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/gameList/gameUnit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/gameList/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/gameList/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/main/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/main/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/main/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/main/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/store/selectors/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/selectors/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/fields/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/fields/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/models/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/field.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +122,7 @@
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
       <workItem from="1677221687371" duration="57813000" />
-      <workItem from="1677598254496" duration="31304000" />
+      <workItem from="1677598254496" duration="32717000" />
     </task>
     <servers />
   </component>

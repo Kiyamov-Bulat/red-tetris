@@ -84,7 +84,7 @@ const FieldModel = {
         const state = store.getState();
         const field = playerId === sessionStorageService.getSessionId()
             ? selectField(state)
-            : selectOpponentsFields(state).find(({ playerId }) => playerId === playerId)?.field;
+            : selectOpponentsFields(state).find((next) => next.player.id === playerId)?.field;
 
         return field ? field[line][column] : CUBE_TYPE.EMPTY;
     },
