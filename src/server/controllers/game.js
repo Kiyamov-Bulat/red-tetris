@@ -91,7 +91,7 @@ export default {
             return;
         }
         game.finish();
-        io.emit(GAME_SOCKET_EVENT.FINISH, game);
+        io.emit(GAME_SOCKET_EVENT.FINISH, game, game.players.length > 1 ? player : null);
     },
 
     update(io, player, field, collapsedLines) {

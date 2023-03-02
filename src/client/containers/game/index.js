@@ -4,17 +4,19 @@ import {useSelector} from "react-redux";
 import {selectField} from "../../store/selectors/game";
 import useGameUpdate from "./useGameUpdate";
 import useGameControl from "./useGameControl";
-import useGameIsOver from "./useGameIsOver";
+import GameOverModal from "./gameOverModal";
 
 const Game = () => {
     const fieldState = useSelector(selectField);
 
     useGameControl();
     useGameUpdate();
-    useGameIsOver();
 
     return (
-        <Field state={fieldState}/>
+        <>
+            <GameOverModal/>
+            <Field state={fieldState}/>
+        </>
     );
 };
 

@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 const Button = ({ onClick, className, children }) => {
     return (
-        <button onClick={onClick} className={cx(className, styles.button)}>
+        <button onClick={onClick} className={cx(styles.button, className)}>
             {children}
         </button>
     );
