@@ -23,10 +23,15 @@ const GameListModel = {
     listenUpdates: () => {
         GameModel.get().on(GAME_SOCKET_EVENT.CREATE, GameListModel._addGame);
         GameModel.get().on(GAME_SOCKET_EVENT.DESTROY, GameListModel._removeGame);
+        GameModel.get().on(GAME_SOCKET_EVENT.START, GameListModel._removeGame);
+        GameModel.get().on(GAME_SOCKET_EVENT.FINISH, GameListModel._addGame);
     },
 
     removeUpdatesListener: () => {
         GameModel.get().removeListener(GAME_SOCKET_EVENT.CREATE, GameListModel._addGame);
+        GameModel.get().removeListener(GAME_SOCKET_EVENT.DESTROY, GameListModel._removeGame);
+        GameModel.get().removeListener(GAME_SOCKET_EVENT.START, GameListModel._removeGame);
+        GameModel.get().removeListener(GAME_SOCKET_EVENT.FINISH, GameListModel._addGame);
     },
 };
 

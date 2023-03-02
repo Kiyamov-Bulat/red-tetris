@@ -4,7 +4,7 @@ import FieldModel from "../../../models/field";
 import {useSelector} from "react-redux";
 
 export const CUBE_SIZE = {
-    MINI: 10,
+    MINI: 12,
     FULL: 30,
 };
 const Cube = ({ size = CUBE_SIZE.FULL, playerId, column, line }) => {

@@ -4,13 +4,15 @@ import store from "../store";
 import {GAME_SOCKET_EVENT} from "../../utils/constants";
 import {
     finishGame,
-    lockLines, resetGame,
+    lockLines,
+    resetGame,
     setCurrentTetramino,
     setGameProps,
     setIsSinglePlayerGame,
     startGame,
     updateOpponentField
 } from "../store/slices/game";
+import {selectGameId} from "../store/selectors/game";
 
 export const SIDE_PANEL_TYPE = {
     MAIN: '@side-panel-type/main',
@@ -35,7 +37,6 @@ const GameModel = {
             store.dispatch(startGame());
             return;
         }
-        console.log('here');
         socket.emit(GAME_SOCKET_EVENT.CREATE, sessionStorageService.getSessionId());
         socket.on(GAME_SOCKET_EVENT.CREATE, GameModel.onCreate);
     },
@@ -93,7 +94,6 @@ const GameModel = {
         if (game.host.id !== sessionStorageService.getSessionId()) {
             return;
         }
-        console.log('here', game);
         store.dispatch(setGameProps(game));
         GameModel.connect();
         socket.removeListener(GAME_SOCKET_EVENT.CREATE, GameModel.onCreate);
@@ -103,8 +103,12 @@ const GameModel = {
         store.dispatch(setGameProps(game));
     },
 
-    onStart: () => {
-        store.dispatch(startGame());
+    onStart: (game) => {
+        const gameId = selectGameId(store.getState());
+
+        if (game.id === gameId) {
+            store.dispatch(startGame());
+        }
     },
 
     onUpdate: (data) => {
@@ -117,8 +121,12 @@ const GameModel = {
         }
     },
 
-    onFinish() {
-        store.dispatch(finishGame());
+    onFinish(game) {
+        const gameId = selectGameId(store.getState());
+
+        if (game.id === gameId) {
+            store.dispatch(finishGame());
+        }
     },
 
     onKick: (game, playerId) => {

@@ -140,6 +140,10 @@ class Game {
         return [...this.GAME_LIST];
     }
 
+    static getAllAvailable() {
+        return this.getAll().filter((game) => !game.isStarted);
+    }
+
     static create(host) {
         const game = new Game(host);
 

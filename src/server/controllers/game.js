@@ -7,7 +7,7 @@ export default {
     gameListeners: [],
 
     getAll(req, res) {
-        res.sendJSON(Game.getAll());
+        res.sendJSON(Game.getAllAvailable());
     },
 
     create(io, socket, hostId) {
@@ -16,7 +16,6 @@ export default {
 
         io.emit(GAME_SOCKET_EVENT.CREATE, game);
 
-        console.log('here', game, player);
         this.connect(io, socket, game.id, player.id);
     },
 
@@ -81,7 +80,7 @@ export default {
 
         const nextTetramino = game.start();
 
-        io.to(game.id).emit(GAME_SOCKET_EVENT.START);
+        io.emit(GAME_SOCKET_EVENT.START, game);
         io.to(game.id).emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino);
     },
 
@@ -92,7 +91,7 @@ export default {
             return;
         }
         game.finish();
-        io.to(game.id).emit(GAME_SOCKET_EVENT.FINISH);
+        io.emit(GAME_SOCKET_EVENT.FINISH, game);
     },
 
     update(io, player, field, collapsedLines) {
@@ -122,7 +121,7 @@ export default {
         }
         const socketId = kickedPlayer.socket.id;
 
-        this.disconnect(io, player.socket, true);
+        this.disconnect(io, kickedPlayer.socket, true);
         io.to(socketId).emit(GAME_SOCKET_EVENT.KICK, game, kickedPlayer.id);
     },
 

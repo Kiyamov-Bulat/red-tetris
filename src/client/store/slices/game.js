@@ -30,9 +30,7 @@ const game = createSlice({
             state.field = FieldModel.getEmpty();
             state.opponentsFields = state.players
                 .filter((player) => player.id !== sessionStorageService.getSessionId())
-                .map((player) => (
-                    { playerId: player.id, field: FieldModel.getEmpty() }
-                ));
+                .map((player) => ({ player, field: FieldModel.getEmpty() }));
         },
 
         finishGame(state) {
@@ -55,12 +53,12 @@ const game = createSlice({
         },
 
         updateOpponentField(state, { payload }) {
-            const fieldIdx = state.opponentsFields.findIndex(({ playerId }) =>
-                playerId === payload.player.id
+            const fieldIdx = state.opponentsFields.findIndex(({ player }) =>
+                player.id === payload.player.id
             );
 
             if (fieldIdx !== -1) {
-                state.opponentsFields[fieldIdx] = {  field: payload.field, playerId: payload.player.id };
+                state.opponentsFields[fieldIdx] = {  field: payload.field, player: payload.player };
             }
         },
 
