@@ -1,9 +1,7 @@
 class Player {
     _id;
     _name;
-
     _socket;
-
     _game;
     constructor(id, socket) {
         this._id = id;

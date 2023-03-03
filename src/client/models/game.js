@@ -13,7 +13,7 @@ import {
     updateOpponentField
 } from "../store/slices/game";
 import {selectGameId, selectGameIsStarted, selectIsSinglePlayer} from "../store/selectors/game";
-import {setIsWinner} from "../store/slices/player";
+import {resetIsWinner, setIsWinner} from "../store/slices/player";
 
 export const SIDE_PANEL_TYPE = {
     MAIN: '@side-panel-type/main',
@@ -111,6 +111,7 @@ const GameModel = {
         const gameId = selectGameId(store.getState());
 
         if (game.id === gameId) {
+            store.dispatch(resetIsWinner());
             store.dispatch(startGame());
         }
     },

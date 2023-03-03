@@ -1,3 +1,5 @@
+import {selectIsSinglePlayer} from "./game";
+
 export const selectPlayer = (state) => state.player;
 
-export const selectPlayerIsWinner = (state) => selectPlayer(state).isWinner;
+export const selectPlayerIsWinner = (state) => selectIsSinglePlayer(state) ? false : selectPlayer(state).isWinner;

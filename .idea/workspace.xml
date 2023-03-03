@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/game/gameOverModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/game/gameOverModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/selectors/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/selectors/player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/slices/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/models/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/player.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +66,7 @@
       <recent name="$PROJECT_DIR$/src/client/utils/constants.js" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.game.js">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="gameList.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/client/models/gameList.js" working-dir="$PROJECT_DIR$/src/client/models">
       <method v="2" />
     </configuration>
@@ -103,8 +105,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.game.js" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="Node.js.game.js" />
         <item itemvalue="npm.client-dev" />
         <item itemvalue="Node.js.gameList.js" />
         <item itemvalue="npm.srv-dev" />
@@ -123,7 +125,7 @@
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
       <workItem from="1677221687371" duration="57813000" />
-      <workItem from="1677598254496" duration="34158000" />
+      <workItem from="1677598254496" duration="36185000" />
     </task>
     <servers />
   </component>

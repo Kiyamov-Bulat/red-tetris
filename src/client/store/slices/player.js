@@ -17,6 +17,9 @@ const player = createSlice({
         },
         setIsWinner(state) {
             state.isWinner = true;
+        },
+        resetIsWinner(state) {
+            state.isWinner = false;
         }
     }
 });
@@ -24,6 +27,7 @@ const player = createSlice({
 export const {
     setName,
     setIsWinner,
+    resetIsWinner,
 } = player.actions;
 
 export default player.reducer;
