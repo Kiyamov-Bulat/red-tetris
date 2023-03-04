@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 import sessionStorageService from "../services/sessionStorageService";
-import appStore from "../store";
+import store from "../store";
 import {GAME_SOCKET_EVENT} from "../../utils/constants";
 import {
     finishGame,
@@ -32,7 +32,7 @@ const GameModel = {
         GameModel.get().emit(event, ...args);
     },
 
-    create: (singlePlayer = true, store = appStore) => {
+    create: (singlePlayer = true) => {
         if (singlePlayer) {
             store.dispatch(setIsSinglePlayerGame());
             store.dispatch(startGame());
@@ -80,7 +80,7 @@ const GameModel = {
         GameModel.emit(GAME_SOCKET_EVENT.FINISH);
     },
 
-    clear: (store = appStore) => {
+    clear: () => {
         store.dispatch(resetGame());
         socket.removeAllListeners();
     },
@@ -94,20 +94,21 @@ const GameModel = {
         GameModel.clear();
     },
 
-    onCreate: (game, store = appStore) => {
+    onCreate: (game) => {
         if (game.host.id !== sessionStorageService.getSessionId()) {
             return;
         }
-        store.dispatch(setGameProps(game));
+
         GameModel.connect();
+        store.dispatch(setGameProps(game));
         socket.removeListener(GAME_SOCKET_EVENT.CREATE, GameModel.onCreate);
     },
 
-    onConnect: (game, store = appStore) => {
+    onConnect: (game) => {
         store.dispatch(setGameProps(game));
     },
 
-    onStart: (game, store = appStore) => {
+    onStart: (game) => {
         const gameId = selectGameId(store.getState());
 
         if (game.id === gameId) {
@@ -116,7 +117,7 @@ const GameModel = {
         }
     },
 
-    onUpdate: (data, store = appStore) => {
+    onUpdate: (data) => {
         const { collapsedLines } = data;
 
         store.dispatch(updateOpponentField(data));
@@ -126,7 +127,7 @@ const GameModel = {
         }
     },
 
-    onFinish(game, loser, store = appStore) {
+    onFinish(game, loser) {
         const gameId = selectGameId(store.getState());
 
         if (game.id !== gameId) {
@@ -139,7 +140,7 @@ const GameModel = {
         }
     },
 
-    onKick: (game, playerId, store = appStore) => {
+    onKick: (game, playerId) => {
         if (playerId === sessionStorageService.getSessionId()) {
             GameModel.clear();
         } else {
@@ -147,11 +148,11 @@ const GameModel = {
         }
     },
 
-    onLeave: (game, playerId, store = appStore) => {
+    onLeave: (game, playerId) => {
         store.dispatch(setGameProps(game));
     },
 
-    onGenerateTetramino: (tetramino, store = appStore) => {
+    onGenerateTetramino: (tetramino) => {
         store.dispatch(setCurrentTetramino(tetramino));
     }
 };

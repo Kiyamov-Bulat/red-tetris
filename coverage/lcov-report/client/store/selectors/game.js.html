@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.7% </span>
+                <span class="strong">88.23% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/34</span>
+                <span class='fraction'>30/34</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>8/16</span>
+                <span class='fraction'>12/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">73.68% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/19</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -103,40 +103,40 @@
 <a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10163x</span>
-<span class="cline-any cline-yes">5003x</span>
+<span class="cline-any cline-yes">25914x</span>
+<span class="cline-any cline-yes">12603x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">59x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4818x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">5450x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">241x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">200x</span>
+<span class="cline-any cline-yes">278x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">43x</span>
+<span class="cline-any cline-yes">43x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">43x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7200x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">135x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {SIDE_PANEL_TYPE} from "../../models/game";
 import sessionStorageService from "../../services/sessionStorageService";
 &nbsp;
@@ -157,23 +157,23 @@ export const selectGameIsStarted = (state) =&gt; selectGame(state).isStarted;
 &nbsp;
 export const selectGameId = (state) =&gt; selectGame(state).id;
 &nbsp;
-export const selectGameHost = <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >selectGame(state).host;</span>
+export const selectGameHost = (state) =&gt; selectGame(state).host;
 &nbsp;
-export const selectSidePanelType = <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; {
-    const host = <span class="cstat-no" title="statement not covered" >selectGameHost(state);</span>
-    const isGameStarted = <span class="cstat-no" title="statement not covered" >selectGameIsStarted(state);</span>
+export const selectSidePanelType = (state) =&gt; {
+    const host = selectGameHost(state);
+    const isGameStarted = selectGameIsStarted(state);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (!host) {</span>
-<span class="cstat-no" title="statement not covered" >        return SIDE_PANEL_TYPE.MAIN;</span>
+    if (!host) {
+        return SIDE_PANEL_TYPE.MAIN;
     }
-<span class="cstat-no" title="statement not covered" >    return isGameStarted ? SIDE_PANEL_TYPE.FIELDS : SIDE_PANEL_TYPE.WAIT_START;</span>
+    return isGameStarted ? <span class="branch-0 cbranch-no" title="branch not covered" >SIDE_PANEL_TYPE.FIELDS </span>: SIDE_PANEL_TYPE.WAIT_START;
 };
 &nbsp;
 export const selectOpponentsFields = (state) =&gt; selectGame(state).opponentsFields;
 &nbsp;
-export const selectPlayers = <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >selectGame(state).players;</span>
+export const selectPlayers = (state) =&gt; selectGame(state).players;
 &nbsp;
-export const selectCurrentUserIsHost = <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >selectGameHost(state).id === sessionStorageService.getSessionId();</span>
+export const selectCurrentUserIsHost = (state) =&gt; selectGameHost(state).id === sessionStorageService.getSessionId();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -181,7 +181,7 @@ export const selectCurrentUserIsHost = <span class="fstat-no" title="function no
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-04T15:49:22.644Z
+                at 2023-03-04T18:31:46.293Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

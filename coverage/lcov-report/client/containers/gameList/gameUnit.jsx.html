@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>1/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -85,17 +85,21 @@
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -112,18 +116,20 @@ import {formatDateString} from "../../../utils/formatDateString";
 import styles from './styles.module.scss';
 import GameModel from "../../models/game";
 &nbsp;
-const GameUnit = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> index, game }) =&gt; {</span>
-    const connectToGame = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+export const GAME_UNIT_TEST_ID = 'game-unit';
+&nbsp;
+const GameUnit = ({ index, game }) =&gt; {
+    const connectToGame = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >        GameModel.connect(game.id);</span>
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;div className={styles.gameUnit} onClick={connectToGame}&gt;
+    return (
+        &lt;div data-testid={GAME_UNIT_TEST_ID} className={styles.gameUnit} onClick={connectToGame}&gt;
             &lt;p className={styles.createdAt}&gt;{formatDateString(game.createdAt)}&lt;/p&gt;
             &lt;div className={styles.info}&gt;
                 &lt;p&gt;{index}.&lt;/p&gt;
                 &lt;p className={styles.id}&gt;(&lt;span&gt;{game.id}&lt;/span&gt;)&lt;/p&gt;
-                &lt;p className={styles.host}&gt;{game.host?.name || game.host?.id || 'unknown user'}&lt;/p&gt;
+                &lt;p className={styles.host}&gt;{game.host?.name || <span class="branch-1 cbranch-no" title="branch not covered" >game.host?.id </span>|| <span class="branch-2 cbranch-no" title="branch not covered" >'unknown user'}</span>&lt;/p&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     );
@@ -136,7 +142,7 @@ export default GameUnit;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-04T15:49:22.644Z
+                at 2023-03-04T18:31:46.293Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

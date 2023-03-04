@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.14% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/14</span>
+                <span class='fraction'>12/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>5/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.14% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/14</span>
+                <span class='fraction'>12/14</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -109,31 +109,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,32 +145,32 @@ import {addGame, removeGame} from "../store/slices/gameList";
 import appStore from "../store";
 &nbsp;
 const GameListModel = {
-    get: createAsyncThunk('gameList/get', <span class="fstat-no" title="function not covered" >(_</span>, thunkAPI) =&gt; {
-<span class="cstat-no" title="statement not covered" >        return jsonFetch('/list', 'GET', { throwErr: true })</span>
+    get: createAsyncThunk('gameList/get', (_, thunkAPI) =&gt; {
+        return jsonFetch('/list', 'GET', { throwErr: true })
             .then(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >thunkAPI.fulfillWithValue(state))</span>
             .catch(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >thunkAPI.rejectWithValue([]))</span>;
     }),
 &nbsp;
-    _addGame: <span class="fstat-no" title="function not covered" >(g</span>ame, store = <span class="branch-0 cbranch-no" title="branch not covered" >appStore)</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >        store.dispatch(addGame(game));</span>
+    _addGame: (game, store = appStore) =&gt; {
+        store.dispatch(addGame(game));
     },
 &nbsp;
-    _removeGame: <span class="fstat-no" title="function not covered" >(g</span>ame, store = <span class="branch-0 cbranch-no" title="branch not covered" >appStore)</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >        store.dispatch(removeGame(game));</span>
+    _removeGame: (game, store = appStore) =&gt; {
+        store.dispatch(removeGame(game));
     },
 &nbsp;
-    listenUpdates: <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >        GameModel.get().on(GAME_SOCKET_EVENT.CREATE, GameListModel._addGame);</span>
-<span class="cstat-no" title="statement not covered" >        GameModel.get().on(GAME_SOCKET_EVENT.DESTROY, GameListModel._removeGame);</span>
-<span class="cstat-no" title="statement not covered" >        GameModel.get().on(GAME_SOCKET_EVENT.START, GameListModel._removeGame);</span>
-<span class="cstat-no" title="statement not covered" >        GameModel.get().on(GAME_SOCKET_EVENT.FINISH, GameListModel._addGame);</span>
+    listenUpdates: () =&gt; {
+        GameModel.get().on(GAME_SOCKET_EVENT.CREATE, GameListModel._addGame);
+        GameModel.get().on(GAME_SOCKET_EVENT.DESTROY, GameListModel._removeGame);
+        GameModel.get().on(GAME_SOCKET_EVENT.START, GameListModel._removeGame);
+        GameModel.get().on(GAME_SOCKET_EVENT.FINISH, GameListModel._addGame);
     },
 &nbsp;
-    removeUpdatesListener: <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >        GameModel.get().removeListener(GAME_SOCKET_EVENT.CREATE, GameListModel._addGame);</span>
-<span class="cstat-no" title="statement not covered" >        GameModel.get().removeListener(GAME_SOCKET_EVENT.DESTROY, GameListModel._removeGame);</span>
-<span class="cstat-no" title="statement not covered" >        GameModel.get().removeListener(GAME_SOCKET_EVENT.START, GameListModel._removeGame);</span>
-<span class="cstat-no" title="statement not covered" >        GameModel.get().removeListener(GAME_SOCKET_EVENT.FINISH, GameListModel._addGame);</span>
+    removeUpdatesListener: () =&gt; {
+        GameModel.get().removeListener(GAME_SOCKET_EVENT.CREATE, GameListModel._addGame);
+        GameModel.get().removeListener(GAME_SOCKET_EVENT.DESTROY, GameListModel._removeGame);
+        GameModel.get().removeListener(GAME_SOCKET_EVENT.START, GameListModel._removeGame);
+        GameModel.get().removeListener(GAME_SOCKET_EVENT.FINISH, GameListModel._addGame);
     },
 };
 &nbsp;
@@ -181,7 +181,7 @@ export default GameListModel;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-04T15:49:22.644Z
+                at 2023-03-04T18:31:46.293Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

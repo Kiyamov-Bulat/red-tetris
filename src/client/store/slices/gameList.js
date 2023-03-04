@@ -22,7 +22,7 @@ const gameList = createSlice({
                 state.state = payload;
             })
             .addCase(GameListModel.get.rejected, (state, { payload }) => {
-                state.state = payload;
+                state.state = payload || [];
             });
     }
 });

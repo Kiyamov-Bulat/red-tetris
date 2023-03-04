@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from "../src/client/components/button";
-import {act, fireEvent, render, waitFor} from "@testing-library/react";
+import {act, fireEvent, render} from "@testing-library/react";
 import sessionStorageService from "../src/client/services/sessionStorageService";
 import {renderWithProviders} from "./helpers/redux";
 import Cube, {CUBE_SIZE} from "../src/client/components/field/cube";
@@ -9,12 +9,19 @@ import {CUBE_TYPE, FIELD_SIZE, TETRAMINO_TYPE} from "../src/utils/constants";
 import {getGameInitialState, updateGameState} from "../src/client/store/slices/game";
 import Field from "../src/client/components/field";
 import FieldModel from "../src/client/models/field";
-import Modal, {MODAL_TEST_ID} from "../src/client/components/modal";
+import Modal from "../src/client/components/modal";
 import {LOSE_TITLE, WIN_TITLE} from "../src/client/containers/game/gameOverModal";
 import Game from "../src/client/containers/game";
 import GameModel from "../src/client/models/game";
 import {selectGame} from "../src/client/store/selectors/game";
 import {v4 as uuidv4} from "uuid";
+import App from "../src/client/containers/app";
+import {MAIN_SIDE_PANEL_TITLE} from "../src/client/containers/sidePanel/main";
+import {WAIT_START_SIDE_PANEL_TITLE} from "../src/client/containers/sidePanel/waitStart";
+import {FIELDS_SIDE_PANEL_TITLE} from "../src/client/containers/sidePanel/fields";
+import GameList from "../src/client/models/gameList";
+import {GAME_UNIT_TEST_ID} from "../src/client/containers/gameList/gameUnit";
+import {PLAYER_UNIT_TEST_ID} from "../src/client/containers/sidePanel/waitStart/player";
 
 const getCubeCSSColor = (type) => `background: ${CUBE_COLOR[type]}`;
 
@@ -33,6 +40,10 @@ const expectEmptyField = (children) => {
 
 const getCurrentUser = () => (
     { name: 'Noob', id: sessionStorageService.getSessionId() }
+);
+
+const getMockPlayer = () => (
+    { name: 'Noob', id: uuidv4() }
 );
 
 const getMockGame = () => {
@@ -153,13 +164,7 @@ describe('components', () => {
            expect(queryByText('text')).toBeInTheDocument();
            expect(queryByText('title')).toBeInTheDocument();
 
-           const btn = queryByText('X');
-
-           expect(btn).toBeInTheDocument();
-
-           if (!btn) return;
-
-           fireEvent.click(btn);
+           fireEvent.click(modal);
            expect(modal).toBeInTheDocument();
        });
        
@@ -172,6 +177,7 @@ describe('components', () => {
 
     describe('game', () => {
         const renderGame = () => renderWithProviders(<Game/>);
+
         const EMPTY_GAME_TYPE = {
             INITIAL: 1,
             WIN: 2,
@@ -195,9 +201,9 @@ describe('components', () => {
             if (type !== EMPTY_GAME_TYPE.INITIAL) {
                 act(() => {
                     const loser = type === EMPTY_GAME_TYPE.WIN ? { id: 'bar' } : getCurrentUser();
-                    GameModel.onConnect(getMockGame(), store);
-                    GameModel.onStart(selectGame(store.getState()), store);
-                    GameModel.onFinish(selectGame(store.getState()), loser, store);
+                    GameModel.onConnect(getMockGame());
+                    GameModel.onStart(selectGame(store.getState()));
+                    GameModel.onFinish(selectGame(store.getState()), loser);
                 });
             }
             
@@ -238,28 +244,160 @@ describe('components', () => {
             fireEvent.click(container.firstChild);
             expectClosedModal(queryByText);
         });
-        
-        it('modal close', () => {
-            const {container, queryByText, getByTestId} = expectGameWithEmptyField(EMPTY_GAME_TYPE.WIN);
+    });
+    
+    describe('side panel', () => {
+        const renderApp = () => renderWithProviders(<App/>);
+        const actCreateGame = (game, players) => {
+            act(() => {
+                game.host = players[0];
+                game.players = [...players];
+                game.isStarted = true;
+                game.isOver = false;
+                GameModel.onCreate(game);
+            });
+        };
 
-            // click on modal
-            fireEvent.click(getByTestId(MODAL_TEST_ID));
-            expectWinModal(queryByText);
+        it('initial side panel', () => {
+            const { queryByText, queryByTestId } = renderApp();
 
-            const closeBtn = container.querySelector('button');
+            expect(queryByTestId(GAME_UNIT_TEST_ID)).toBeNull();
+            expect(queryByText(MAIN_SIDE_PANEL_TITLE)).toBeInTheDocument();
+            expect(queryByText(WAIT_START_SIDE_PANEL_TITLE)).toBeNull();
+            expect(queryByText(FIELDS_SIDE_PANEL_TITLE)).toBeNull();
 
-            expect(closeBtn).toBeTruthy();
-            // click on close btn
-            fireEvent.click(closeBtn);
-            expectClosedModal(queryByText);
+            expect(queryByText('Одиночная')).toBeInTheDocument();
+            expect(queryByText('С противником')).toBeInTheDocument();
         });
         
-        it.skip('single game',  () => {
-            const { store, container} = renderGame();
+        it('main side panel with games', () => {
+            const { queryAllByTestId, queryByTestId } = renderApp();
+            const games = [];
+            const expectAddOrRemoveGame = (n, add = true) => {
+                act(() => {
+                    let game;
+                    const action = add ? GameList._addGame : GameList._removeGame;
+
+                    if (add) {
+                        game = getMockGame();
+
+                        games.push(game);
+                    } else {
+                        game = games.pop();
+                    }
+
+                    action(game);
+                });
+
+                expect(queryAllByTestId(GAME_UNIT_TEST_ID)).toHaveLength(n);
+            };
+
+            expect(queryByTestId(GAME_UNIT_TEST_ID)).toBeNull();
+            expectAddOrRemoveGame(1);
+            expectAddOrRemoveGame(2);
+            expectAddOrRemoveGame(3);
+            expectAddOrRemoveGame(4);
+            expectAddOrRemoveGame(3, false);
+            expectAddOrRemoveGame(4);
+            expectAddOrRemoveGame(3, false);
+            expectAddOrRemoveGame(2, false);
+            expectAddOrRemoveGame(1, false);
+            expectAddOrRemoveGame(0, false);
+            expectAddOrRemoveGame(0, false);
+        });
+
+        it('wait start panel - initial - host', () => {
+            const { queryByText, queryAllByTestId } = renderApp();
+            const game = getMockGame();
+            const players = [getCurrentUser()];
+
+            actCreateGame(game, players);
+
+            expect(queryByText(MAIN_SIDE_PANEL_TITLE)).toBeNull();
+            expect(queryByText(WAIT_START_SIDE_PANEL_TITLE)).toBeInTheDocument();
+            expect(queryByText(FIELDS_SIDE_PANEL_TITLE)).toBeNull();
+            expect(queryAllByTestId(PLAYER_UNIT_TEST_ID)).toHaveLength(1);
+
+            expect(queryByText('Выйти')).toBeInTheDocument();
+            expect(queryByText('Начать')).toBeInTheDocument();
+            expect(queryByText('⭐')).toBeInTheDocument();
+            expect(queryByText('✔️')).toBeInTheDocument();
+        });
+
+        it('wait start panel - initial - player', () => {
+            const { queryAllByText, queryByText, queryAllByTestId } = renderApp();
+            const game = getMockGame();
+            const players = [getCurrentUser()];
+
+            actCreateGame(game, players);
             
             act(() => {
-                
+                const newHost = getMockPlayer();
+
+                players.push(newHost);
+                game.players = [...players];
+                game.host = newHost;
+
+                GameModel.onConnect(game);
             });
+
+            expect(queryAllByTestId(PLAYER_UNIT_TEST_ID)).toHaveLength(2);
+            expect(queryByText('Выйти')).toBeInTheDocument();
+            expect(queryByText('Начать')).toBeNull();
+            expect(queryAllByText('⭐')).toHaveLength(1);
+            expect(queryAllByText('✔️')).toHaveLength(1);
+        });
+
+        it('waitStart with players', () => {
+            const { queryAllByTestId, queryAllByText, queryByTestId, queryByText, store } = renderApp();
+            const players = [getCurrentUser()];
+            const game = getMockGame();
+
+            actCreateGame(game, players);
+
+            const expectPlayers = (n, add = true) => {
+                let player;
+
+                act(() => {
+                    if (add) {
+                        player = getMockPlayer();
+
+                        players.push(player);
+                        game.players = [...players];
+
+                        GameModel.onConnect(game);
+                    } else {
+                        player = players.pop();
+                        game.players = [...players];
+
+                        GameModel.onKick(game, player.id);
+                    }
+
+                });
+                expect(queryAllByTestId(PLAYER_UNIT_TEST_ID)).toHaveLength(n);
+            };
+
+            expect(queryAllByTestId(PLAYER_UNIT_TEST_ID)).toHaveLength(1);
+            expectPlayers(2);
+            expect(queryAllByText('Кикнуть')).toHaveLength(1);
+            expectPlayers(3);
+            expect(queryAllByText('Кикнуть')).toHaveLength(2);
+            expectPlayers(4);
+            expectPlayers(5);
+            expectPlayers(4, false);
+            expectPlayers(5);
+            expectPlayers(4, false);
+            expectPlayers(3, false);
+            expectPlayers(2, false);
+            expectPlayers(1, false);
+            console.log(store.getState().game.players, sessionStorageService.getSessionId());
+            expectPlayers(0, false);
+            console.log(store.getState());
+            expect(queryByTestId(PLAYER_UNIT_TEST_ID)).toBeNull();
+            expect(queryByTestId(GAME_UNIT_TEST_ID)).toBeNull();
+            expect(queryByText(MAIN_SIDE_PANEL_TITLE)).toBeInTheDocument();
+            expect(queryByText(WAIT_START_SIDE_PANEL_TITLE)).toBeNull();
+            expect(queryByText(FIELDS_SIDE_PANEL_TITLE)).toBeNull();
         });
     });
 });

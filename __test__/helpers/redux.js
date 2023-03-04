@@ -5,6 +5,12 @@ import {setupStore} from "../../src/client/store";
 import {getGameInitialState} from "../../src/client/store/slices/game";
 import {getPlayerInitialState} from "../../src/client/store/slices/player";
 import {getGameListInitialState} from "../../src/client/store/slices/gameList";
+import * as appStore from "../../src/client/store";
+
+const mutateDefaultStore = (store) => {
+    // eslint-disable-next-line no-import-assign
+    appStore.default = store;
+};
 
 export function renderWithProviders(
     ui,
@@ -18,6 +24,8 @@ export function renderWithProviders(
     function Wrapper({ children }) {
         return <Provider store={store}>{children}</Provider>;
     }
+
+    mutateDefaultStore(store);
     return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
 }
 
