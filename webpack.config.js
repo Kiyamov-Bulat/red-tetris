@@ -9,7 +9,7 @@ const isProd = !isDev
 module.exports = {
   // context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: './src/client/index.js',
+  entry: './src/client/index.jsx',
   output: {
     filename: `bundle.js`,
     path: path.resolve(__dirname, 'build'),
@@ -80,6 +80,6 @@ module.exports = {
     alias: {
     },
     modules: [__dirname, 'src', 'node_modules'],
-    extensions: ['.tsx', '.ts', '.js', 'jsx'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
   }
 };

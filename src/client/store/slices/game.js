@@ -1,7 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import TetraminoModel from "../../models/tetramino";
 import FieldModel from "../../models/field";
-import {CUBE_TYPE} from "../../../utils/constants";
 import sessionStorageService from "../../services/sessionStorageService";
 import GameModel from "../../models/game";
 
@@ -169,5 +168,7 @@ export const {
     moveBottomTetramino,
     moveToPile,
 } = game.actions;
+
+export const getGameInitialState = game.getInitialState;
 
 export default game.reducer;

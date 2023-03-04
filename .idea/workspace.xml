@@ -5,12 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/__test__/react.components.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__test__/redux1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/red-tetris.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/red-tetris.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/game/gameOverModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/game/gameOverModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/store/selectors/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/selectors/player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/store/slices/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/models/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/button/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/button/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/field/cube/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/field/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/modal/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/game/gameOverModal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/game/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/gameList/gameUnit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/gameList/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/fields/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/main/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/main/menu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/menu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/player.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/slices/tetramino.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fake.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/helpers/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/__test__/helpers/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/mocha.opts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/react1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/redux1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/server1.js" beforeDir="false" afterPath="$PROJECT_DIR$/__test__/server1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,22 +69,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "JavaScript.Libraries",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/client/containers/sidePanel/main" />
@@ -67,20 +98,7 @@
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
-    <configuration name="gameList.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/client/models/gameList.js" working-dir="$PROJECT_DIR$/src/client/models">
-      <method v="2" />
-    </configuration>
     <configuration name="game.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/server/controllers/game.js" working-dir="$PROJECT_DIR$/src/server/controllers">
-      <method v="2" />
-    </configuration>
-    <configuration name="client-dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="client-dev" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
       <method v="2" />
     </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -93,11 +111,11 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="srv-dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="jest" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="srv-dev" />
+        <script value="jest" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -105,11 +123,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.jest" />
         <item itemvalue="npm.dev" />
         <item itemvalue="Node.js.game.js" />
-        <item itemvalue="npm.client-dev" />
-        <item itemvalue="Node.js.gameList.js" />
-        <item itemvalue="npm.srv-dev" />
       </list>
     </recent_temporary>
   </component>
@@ -125,7 +141,7 @@
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
       <workItem from="1677221687371" duration="57813000" />
-      <workItem from="1677598254496" duration="36185000" />
+      <workItem from="1677598254496" duration="45765000" />
     </task>
     <servers />
   </component>
