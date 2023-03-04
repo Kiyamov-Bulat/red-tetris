@@ -4,11 +4,14 @@ import {useSelector} from "react-redux";
 import {selectGameIsOver, selectGameIsStarted} from "../../store/selectors/game";
 import {selectPlayerIsWinner} from "../../store/selectors/player";
 
+export const WIN_TITLE = 'Поздравляем! Вы выиграли!';
+export const LOSE_TITLE = 'К сожалению, вы проиграли';
+
 const GameOverModal = () => {
     const gameIsOver = useSelector(selectGameIsOver);
     const gameIsStarted = useSelector(selectGameIsStarted);
     const isWinner = useSelector(selectPlayerIsWinner);
-    const text = isWinner ? 'Поздравляем! Вы выиграли!' : 'К сожалению, вы проиграли' ;
+    const text = isWinner ? WIN_TITLE : LOSE_TITLE;
     const[isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {

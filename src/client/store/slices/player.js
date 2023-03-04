@@ -30,4 +30,7 @@ export const {
     resetIsWinner,
 } = player.actions;
 
+
+export const getPlayerInitialState = player.getInitialState;
+
 export default player.reducer;

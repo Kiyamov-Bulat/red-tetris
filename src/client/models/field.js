@@ -1,8 +1,8 @@
 import TetraminoModel, {CUBE_COLOR} from "./tetramino";
 import {CUBE_TYPE, FIELD_SIZE} from "../../utils/constants";
-import store from "../store";
 import {selectCurrentTetramino, selectField, selectOpponentsFields} from "../store/selectors/game";
 import sessionStorageService from "../services/sessionStorageService";
+import appStore from "../store";
 
 const getEmptyFieldLine = () => {
     return Array(FIELD_SIZE.column).fill({ type: CUBE_TYPE.EMPTY });
@@ -80,7 +80,7 @@ const FieldModel = {
         return i;
     },
 
-    getCube: (playerId, line, column) => {
+    getCube: (playerId, line, column, store = appStore) => {
         const state = store.getState();
         const field = playerId === sessionStorageService.getSessionId()
             ? selectField(state)

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.06% </span>
+                <span class="strong">35.93% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/64</span>
+                <span class='fraction'>23/64</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">5.26% </span>
+                <span class="strong">26.31% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/19</span>
+                <span class='fraction'>5/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.06% </span>
+                <span class="strong">35.93% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/64</span>
+                <span class='fraction'>23/64</span>
             </div>
         
             
@@ -258,11 +258,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -283,12 +283,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -296,14 +300,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -430,12 +430,12 @@ export const gameState = {
     isOver: false,
 };
 &nbsp;
-const onFinish = <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; {
-<span class="cstat-no" title="statement not covered" >    state.isStarted = false;</span>
-<span class="cstat-no" title="statement not covered" >    state.isOver = true;</span>
-<span class="cstat-no" title="statement not covered" >    state.field = FieldModel.getEmpty();</span>
-<span class="cstat-no" title="statement not covered" >    state.opponentsFields = [];</span>
-<span class="cstat-no" title="statement not covered" >    state.currentTetramino = null;</span>
+const onFinish = (state) =&gt; {
+    state.isStarted = false;
+    state.isOver = true;
+    state.field = FieldModel.getEmpty();
+    state.opponentsFields = [];
+    state.currentTetramino = null;
 };
 &nbsp;
 const updateFieldAndGame = <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; {
@@ -455,28 +455,28 @@ const game = createSlice({
     name: "game",
     initialState: gameState,
     reducers: {
-<span class="fstat-no" title="function not covered" >        st</span>artGame(state) {
-<span class="cstat-no" title="statement not covered" >            state.isStarted = true;</span>
-<span class="cstat-no" title="statement not covered" >            state.isOver = false;</span>
-<span class="cstat-no" title="statement not covered" >            state.field = FieldModel.getEmpty();</span>
-<span class="cstat-no" title="statement not covered" >            state.opponentsFields = state.players</span>
+        startGame(state) {
+            state.isStarted = true;
+            state.isOver = false;
+            state.field = FieldModel.getEmpty();
+            state.opponentsFields = state.players
                 .filter(<span class="fstat-no" title="function not covered" >(p</span>layer) =&gt; <span class="cstat-no" title="statement not covered" >player.id !== sessionStorageService.getSessionId())</span>
                 .map(<span class="fstat-no" title="function not covered" >(p</span>layer) =&gt; (<span class="cstat-no" title="statement not covered" >{ player, field: FieldModel.getEmpty() })</span>);
         },
 &nbsp;
-<span class="fstat-no" title="function not covered" >        fi</span>nishGame(state) {
-<span class="cstat-no" title="statement not covered" >            onFinish(state);</span>
+        finishGame(state) {
+            onFinish(state);
         },
 &nbsp;
 <span class="fstat-no" title="function not covered" >        re</span>setGame() {
 <span class="cstat-no" title="statement not covered" >            return gameState;</span>
         },
 &nbsp;
-<span class="fstat-no" title="function not covered" >        se</span>tGameProps(state, { payload: game }) {
-<span class="cstat-no" title="statement not covered" >            state.id = game.id;</span>
-<span class="cstat-no" title="statement not covered" >            state.createdAt = game.createdAt;</span>
-<span class="cstat-no" title="statement not covered" >            state.host = game.host;</span>
-<span class="cstat-no" title="statement not covered" >            state.players = game.players;</span>
+        setGameProps(state, { payload: game }) {
+            state.id = game.id;
+            state.createdAt = game.createdAt;
+            state.host = game.host;
+            state.players = game.players;
         },
 &nbsp;
 <span class="fstat-no" title="function not covered" >        up</span>dateOpponentField(state, { payload }) {
@@ -589,7 +589,7 @@ export default game.reducer;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-04T11:57:35.961Z
+                at 2023-03-04T15:49:22.644Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

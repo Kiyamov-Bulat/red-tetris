@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from "../src/client/components/button";
-import {fireEvent, render, waitFor} from "@testing-library/react";
+import {act, fireEvent, render, waitFor} from "@testing-library/react";
 import sessionStorageService from "../src/client/services/sessionStorageService";
 import {renderWithProviders} from "./helpers/redux";
 import Cube, {CUBE_SIZE} from "../src/client/components/field/cube";
@@ -9,8 +9,44 @@ import {CUBE_TYPE, FIELD_SIZE, TETRAMINO_TYPE} from "../src/utils/constants";
 import {getGameInitialState, updateGameState} from "../src/client/store/slices/game";
 import Field from "../src/client/components/field";
 import FieldModel from "../src/client/models/field";
+import Modal, {MODAL_TEST_ID} from "../src/client/components/modal";
+import {LOSE_TITLE, WIN_TITLE} from "../src/client/containers/game/gameOverModal";
+import Game from "../src/client/containers/game";
+import GameModel from "../src/client/models/game";
+import {selectGame} from "../src/client/store/selectors/game";
+import {v4 as uuidv4} from "uuid";
 
 const getCubeCSSColor = (type) => `background: ${CUBE_COLOR[type]}`;
+
+const expectFieldSize = (cubes) =>
+    expect(cubes.length).toBe(FIELD_SIZE.line * FIELD_SIZE.column);
+
+const expectEmptyField = (children) => {
+    expectFieldSize(children);
+
+    children.forEach(
+        (cube) => {
+            expect(cube).toHaveStyle(getCubeCSSColor(CUBE_TYPE.EMPTY));
+        }
+    );
+};
+
+const getCurrentUser = () => (
+    { name: 'Noob', id: sessionStorageService.getSessionId() }
+);
+
+const getMockGame = () => {
+    const mock = {};
+
+    mock.host = getCurrentUser();
+    mock.id = uuidv4();
+    mock.createdAt = new Date().toISOString();
+    mock.players = [];
+    mock.tetraminoQueue = [];
+    mock.isStarted = false;
+    mock.isOver = false;
+    return mock;
+};
 
 describe('components', () => {
     beforeAll(() => {
@@ -35,12 +71,7 @@ describe('components', () => {
     describe('cube', () => {
         it('Empty cube', () => {
             const { container } = renderWithProviders(
-                <Cube column={0} line={0} playerId={sessionStorageService.getSessionId()}/>,
-                {
-                    preloadedState: {
-                        game: { ...getGameInitialState() }
-                    }
-                }
+                <Cube column={0} line={0} playerId={sessionStorageService.getSessionId()}/>
             );
 
             expect(container.firstChild).toHaveStyle(getCubeCSSColor(CUBE_TYPE.EMPTY));
@@ -72,15 +103,10 @@ describe('components', () => {
             const { container } = renderField();
             const children = [...container.firstChild.childNodes.values()];
 
-            expect(container.firstChild.childNodes.length).toBe(FIELD_SIZE.line * FIELD_SIZE.column);
-
-            children.forEach(
-                (cube) => {
-                    expect(cube).toHaveStyle(getCubeCSSColor(CUBE_TYPE.EMPTY));
-                });
+            expectEmptyField(children);
         });
 
-        it ('field with tetramino', async () => {
+        it('field with tetramino', async () => {
             const { container, store } = renderField(true);
             const cubes = [...container.firstChild.childNodes.values()];
             const center = 4;
@@ -95,13 +121,14 @@ describe('components', () => {
             };
 
             testTetramino(0);
-            // UPDATE
-            store.dispatch(updateGameState());
 
-            await waitFor(() => {
-                expect(getCube(center, 0)).toHaveStyle(getCubeCSSColor(CUBE_TYPE.EMPTY));
-                testTetramino(1);
+            act(() => {
+                // UPDATE
+                store.dispatch(updateGameState());
             });
+
+            expect(getCube(center, 0)).toHaveStyle(getCubeCSSColor(CUBE_TYPE.EMPTY));
+            testTetramino(1);
         });
 
         it('mini field', () => {
@@ -110,6 +137,128 @@ describe('components', () => {
         
             cubes.forEach((cube) => {
                 expect(cube).toHaveStyle(`width: ${CUBE_SIZE.MINI}px; height: ${CUBE_SIZE.MINI}px`);
+            });
+        });
+    });
+
+    describe('modal', () => {
+       const renderModal = (isOpen, onClose) =>
+           renderWithProviders(<Modal onClose={onClose} text={'text'} title={'title'} isOpen={isOpen} className={'foo'}/>);
+
+       it('open modal', async () => {
+           let isOpen = true;
+           const { container, queryByText } = renderModal(isOpen, () => isOpen = false);
+           const modal = container.firstChild;
+
+           expect(queryByText('text')).toBeInTheDocument();
+           expect(queryByText('title')).toBeInTheDocument();
+
+           const btn = queryByText('X');
+
+           expect(btn).toBeInTheDocument();
+
+           if (!btn) return;
+
+           fireEvent.click(btn);
+           expect(modal).toBeInTheDocument();
+       });
+       
+       it('closed modal', () => {
+           const { container } = renderModal(false);
+
+           expect(container.firstChild).toBeNull();
+       });
+    });
+
+    describe('game', () => {
+        const renderGame = () => renderWithProviders(<Game/>);
+        const EMPTY_GAME_TYPE = {
+            INITIAL: 1,
+            WIN: 2,
+            LOSE: 3,
+        };
+        
+        const expectClosedModal = (queryByText) => {
+            expect(queryByText(WIN_TITLE)).toBeNull();
+            expect(queryByText(LOSE_TITLE)).toBeNull();
+        };
+
+        const expectWinModal = (queryByText) => {
+            expect(queryByText(WIN_TITLE)).toBeInTheDocument();
+            expect(queryByText(LOSE_TITLE)).toBeNull();
+        };
+        
+        const expectGameWithEmptyField = (type, data = renderGame()) => {
+            const { container, queryByText, store } = data;
+            const field = container.lastChild;
+
+            if (type !== EMPTY_GAME_TYPE.INITIAL) {
+                act(() => {
+                    const loser = type === EMPTY_GAME_TYPE.WIN ? { id: 'bar' } : getCurrentUser();
+                    GameModel.onConnect(getMockGame(), store);
+                    GameModel.onStart(selectGame(store.getState()), store);
+                    GameModel.onFinish(selectGame(store.getState()), loser, store);
+                });
+            }
+            
+            switch (type) {
+                case EMPTY_GAME_TYPE.INITIAL:
+                    expectClosedModal(queryByText);
+                    break;
+                case EMPTY_GAME_TYPE.WIN:
+                    expectWinModal(queryByText);
+                    break;
+                case EMPTY_GAME_TYPE.LOSE:
+                    expect(queryByText(LOSE_TITLE)).toBeInTheDocument();
+                    expect(queryByText(WIN_TITLE)).toBeNull();
+                    break;
+            }
+
+            expect(field).toBeTruthy();
+            expectEmptyField([...field.childNodes.values()]);
+            return data;
+        };
+        
+        it('initial state of game', () => {
+             expectGameWithEmptyField(EMPTY_GAME_TYPE.INITIAL);
+        });
+
+        it('lost game', () => {
+            const { container, queryByText } = expectGameWithEmptyField(EMPTY_GAME_TYPE.LOSE);
+
+            expect(container.firstChild).toBeTruthy();
+            fireEvent.click(container.firstChild);
+            expectClosedModal(queryByText);
+        });
+
+        it('winning game', () => {
+            const { container, queryByText } = expectGameWithEmptyField(EMPTY_GAME_TYPE.WIN);
+
+            expect(container.firstChild).toBeTruthy();
+            fireEvent.click(container.firstChild);
+            expectClosedModal(queryByText);
+        });
+        
+        it('modal close', () => {
+            const {container, queryByText, getByTestId} = expectGameWithEmptyField(EMPTY_GAME_TYPE.WIN);
+
+            // click on modal
+            fireEvent.click(getByTestId(MODAL_TEST_ID));
+            expectWinModal(queryByText);
+
+            const closeBtn = container.querySelector('button');
+
+            expect(closeBtn).toBeTruthy();
+            // click on close btn
+            fireEvent.click(closeBtn);
+            expectClosedModal(queryByText);
+        });
+        
+        it.skip('single game',  () => {
+            const { store, container} = renderGame();
+            
+            act(() => {
+                
             });
         });
     });

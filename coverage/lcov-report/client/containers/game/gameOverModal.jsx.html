@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>14/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>14/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -91,29 +91,35 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -125,23 +131,26 @@ import {useSelector} from "react-redux";
 import {selectGameIsOver, selectGameIsStarted} from "../../store/selectors/game";
 import {selectPlayerIsWinner} from "../../store/selectors/player";
 &nbsp;
-const GameOverModal = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    const gameIsOver = <span class="cstat-no" title="statement not covered" >useSelector(selectGameIsOver);</span>
-    const gameIsStarted = <span class="cstat-no" title="statement not covered" >useSelector(selectGameIsStarted);</span>
-    const isWinner = <span class="cstat-no" title="statement not covered" >useSelector(selectPlayerIsWinner);</span>
-    const text = <span class="cstat-no" title="statement not covered" >isWinner ? 'Поздравляем! Вы выиграли!' : 'К сожалению, вы проиграли' </span>;
-    const[isOpen, setIsOpen] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
+export const WIN_TITLE = 'Поздравляем! Вы выиграли!';
+export const LOSE_TITLE = 'К сожалению, вы проиграли';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        if (gameIsStarted) {</span>
+const GameOverModal = () =&gt; {
+    const gameIsOver = useSelector(selectGameIsOver);
+    const gameIsStarted = useSelector(selectGameIsStarted);
+    const isWinner = useSelector(selectPlayerIsWinner);
+    const text = isWinner ? WIN_TITLE : LOSE_TITLE;
+    const[isOpen, setIsOpen] = useState(false);
+&nbsp;
+    useEffect(() =&gt; {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (gameIsStarted) {
 <span class="cstat-no" title="statement not covered" >            setIsOpen(false);</span>
-        } else <span class="cstat-no" title="statement not covered" >if (gameIsOver) {</span>
-<span class="cstat-no" title="statement not covered" >            setIsOpen(true);</span>
+        } else if (gameIsOver) {
+            setIsOpen(true);
         }
     }, [gameIsOver, gameIsStarted]);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;Modal isOpen={isOpen} title={text} onClose={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setIsOpen(false)}</span>&gt;
+    return (
+        &lt;Modal isOpen={isOpen} title={text} onClose={() =&gt; setIsOpen(false)}&gt;
             Игра окончена!
         &lt;/Modal&gt;
     );
@@ -154,7 +163,7 @@ export default GameOverModal;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-04T11:57:35.961Z
+                at 2023-03-04T15:49:22.644Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

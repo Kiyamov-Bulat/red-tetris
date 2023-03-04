@@ -32,4 +32,6 @@ export const {
     removeGame,
 } = gameList.actions;
 
+export const getGameListInitialState = gameList.getInitialState;
+
 export default gameList.reducer;

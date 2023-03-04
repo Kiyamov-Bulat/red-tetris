@@ -3,7 +3,7 @@ import jsonFetch from "../services/fetch";
 import GameModel from "./game";
 import {GAME_SOCKET_EVENT} from "../../utils/constants";
 import {addGame, removeGame} from "../store/slices/gameList";
-import store from "../store";
+import appStore from "../store";
 
 const GameListModel = {
     get: createAsyncThunk('gameList/get', (_, thunkAPI) => {
@@ -12,11 +12,11 @@ const GameListModel = {
             .catch(() => thunkAPI.rejectWithValue([]));
     }),
 
-    _addGame: (game) => {
+    _addGame: (game, store = appStore) => {
         store.dispatch(addGame(game));
     },
 
-    _removeGame: (game) => {
+    _removeGame: (game, store = appStore) => {
         store.dispatch(removeGame(game));
     },
 

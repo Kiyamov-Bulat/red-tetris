@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 import sessionStorageService from "../services/sessionStorageService";
-import store from "../store";
+import appStore from "../store";
 import {GAME_SOCKET_EVENT} from "../../utils/constants";
 import {
     finishGame,
@@ -12,7 +12,7 @@ import {
     startGame,
     updateOpponentField
 } from "../store/slices/game";
-import {selectGameId, selectGameIsStarted, selectIsSinglePlayer} from "../store/selectors/game";
+import {selectGameId} from "../store/selectors/game";
 import {resetIsWinner, setIsWinner} from "../store/slices/player";
 
 export const SIDE_PANEL_TYPE = {
@@ -32,7 +32,7 @@ const GameModel = {
         GameModel.get().emit(event, ...args);
     },
 
-    create: (singlePlayer = true) => {
+    create: (singlePlayer = true, store = appStore) => {
         if (singlePlayer) {
             store.dispatch(setIsSinglePlayerGame());
             store.dispatch(startGame());
@@ -80,7 +80,7 @@ const GameModel = {
         GameModel.emit(GAME_SOCKET_EVENT.FINISH);
     },
 
-    clear: () => {
+    clear: (store = appStore) => {
         store.dispatch(resetGame());
         socket.removeAllListeners();
     },
@@ -94,7 +94,7 @@ const GameModel = {
         GameModel.clear();
     },
 
-    onCreate: (game) => {
+    onCreate: (game, store = appStore) => {
         if (game.host.id !== sessionStorageService.getSessionId()) {
             return;
         }
@@ -103,11 +103,11 @@ const GameModel = {
         socket.removeListener(GAME_SOCKET_EVENT.CREATE, GameModel.onCreate);
     },
 
-    onConnect: (game) => {
+    onConnect: (game, store = appStore) => {
         store.dispatch(setGameProps(game));
     },
 
-    onStart: (game) => {
+    onStart: (game, store = appStore) => {
         const gameId = selectGameId(store.getState());
 
         if (game.id === gameId) {
@@ -116,7 +116,7 @@ const GameModel = {
         }
     },
 
-    onUpdate: (data) => {
+    onUpdate: (data, store = appStore) => {
         const { collapsedLines } = data;
 
         store.dispatch(updateOpponentField(data));
@@ -126,7 +126,7 @@ const GameModel = {
         }
     },
 
-    onFinish(game, loser) {
+    onFinish(game, loser, store = appStore) {
         const gameId = selectGameId(store.getState());
 
         if (game.id !== gameId) {
@@ -139,7 +139,7 @@ const GameModel = {
         }
     },
 
-    onKick: (game, playerId) => {
+    onKick: (game, playerId, store = appStore) => {
         if (playerId === sessionStorageService.getSessionId()) {
             GameModel.clear();
         } else {
@@ -147,11 +147,11 @@ const GameModel = {
         }
     },
 
-    onLeave: (game, playerId) => {
+    onLeave: (game, playerId, store = appStore) => {
         store.dispatch(setGameProps(game));
     },
 
-    onGenerateTetramino: (tetramino) => {
+    onGenerateTetramino: (tetramino, store = appStore) => {
         store.dispatch(setCurrentTetramino(tetramino));
     }
 };
