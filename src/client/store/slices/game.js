@@ -4,7 +4,7 @@ import FieldModel from "../../models/field";
 import sessionStorageService from "../../services/sessionStorageService";
 import GameModel from "../../models/game";
 
-const gameState = {
+export const gameState = {
     id: '',
     host: null,
     createdAt: new Date().toISOString(),

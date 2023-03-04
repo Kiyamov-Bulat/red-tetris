@@ -5,43 +5,100 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/__test__/react.components.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__test__/redux1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/red-tetris.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/red-tetris.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__test__/react.components.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/__test__/react.components.test.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/clover.xml" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/clover.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/coverage-final.json" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/coverage-final.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/components/button/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/components/button/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/components/button/index.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/components/button/index.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/components/field/cube/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/components/field/cube/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/components/field/cube/index.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/components/field/cube/index.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/components/field/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/components/field/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/components/field/index.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/components/field/index.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/components/modal/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/components/modal/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/components/modal/index.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/components/modal/index.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/components/modal/useOutsideAlerter.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/components/modal/useOutsideAlerter.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/components/notice/icons.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/components/notice/icons.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/components/notice/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/components/notice/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/components/notice/index.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/components/notice/index.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/app.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/app.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/game/gameOverModal.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/game/gameOverModal.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/game/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/game/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/game/index.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/game/index.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/game/useGameControl.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/game/useGameControl.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/game/useGameUpdate.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/game/useGameUpdate.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/gameList/gameUnit.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/gameList/gameUnit.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/gameList/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/gameList/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/gameList/index.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/gameList/index.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/fields/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/fields/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/fields/index.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/fields/index.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/index.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/index.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/main/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/main/index.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/main/index.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/main/menu.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/main/menu.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/waitStart/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/waitStart/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/waitStart/index.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/waitStart/index.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/waitStart/menu.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/waitStart/menu.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/waitStart/player.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/containers/sidePanel/waitStart/player.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/index.jsx.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/index.jsx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/models/field.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/models/field.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/models/game.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/models/game.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/models/gameList.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/models/gameList.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/models/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/models/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/models/tetramino.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/models/tetramino.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/services/fetch.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/services/fetch.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/services/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/services/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/services/sessionStorageService.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/services/sessionStorageService.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/store/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/store/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/store/index.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/store/index.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/store/selectors/game.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/store/selectors/game.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/store/selectors/gameList.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/store/selectors/gameList.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/store/selectors/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/store/selectors/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/store/selectors/player.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/store/selectors/player.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/store/slices/game.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/store/slices/game.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/store/slices/gameList.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/store/slices/gameList.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/store/slices/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/store/slices/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/store/slices/player.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/store/slices/player.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/app.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/app.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/controllers/game.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/controllers/game.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/controllers/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/controllers/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/controllers/main.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/controllers/main.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/main.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/main.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/middlewares/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/middlewares/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/middlewares/logger.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/middlewares/logger.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/middlewares/setCors.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/middlewares/setCors.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/models/field.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/models/field.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/models/game.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/models/game.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/models/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/models/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/models/player.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/models/player.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/models/tetramino.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/models/tetramino.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/router/httpStatusCode.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/router/httpStatusCode.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/router/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/router/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/router/index.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/router/index.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/router/request.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/router/request.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/router/response.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/router/response.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/server/router/routeParams.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/server/router/routeParams.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/utils/constants.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/utils/constants.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/utils/formatDateString.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/utils/formatDateString.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/utils/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/utils/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/utils/randomChoice.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/utils/randomChoice.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/utils/selfPreservingPromise.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/utils/selfPreservingPromise.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov.info" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.conf.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/button/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/button/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/field/cube/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/field/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/modal/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/game/gameOverModal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/game/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/gameList/gameUnit.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/gameList/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/fields/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/main/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/main/menu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/menu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidePanel/waitStart/player.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/field/cube/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/field/cube/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/notice/icons.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/notice/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/notice/styles.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/models/tetramino.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/tetramino.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/services/fetch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/services/fetch.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/store/slices/tetramino.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fake.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/helpers/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/__test__/helpers/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mocha.opts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/react1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/redux1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/server1.js" beforeDir="false" afterPath="$PROJECT_DIR$/__test__/server1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +198,7 @@
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
       <workItem from="1677221687371" duration="57813000" />
-      <workItem from="1677598254496" duration="45765000" />
+      <workItem from="1677598254496" duration="54724000" />
     </task>
     <servers />
   </component>

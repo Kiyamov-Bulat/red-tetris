@@ -4,6 +4,10 @@ const config = {
         "^.+\\.(css|less|scss)$": "identity-obj-proxy",
         '^uuid$': require.resolve('uuid'),
     },
+    setupFilesAfterEnv: [
+        "@testing-library/jest-dom/extend-expect",
+        '<rootDir>/jest.env.js',
+    ],
     testEnvironment: 'jest-environment-jsdom',
     collectCoverage: true,
     collectCoverageFrom: [

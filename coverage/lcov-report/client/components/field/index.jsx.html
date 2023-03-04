@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -101,20 +101,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">600x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -132,20 +132,20 @@ import FieldModel from "../../models/field";
 import {FIELD_SIZE} from "../../../utils/constants";
 import styles from './styles.module.scss';
 &nbsp;
-const CUBE_GAP = <span class="cstat-no" title="statement not covered" >1;</span>
+const CUBE_GAP = 1;
 &nbsp;
-const Field = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> state, playerId = <span class="branch-0 cbranch-no" title="branch not covered" >sessionStorageService.getSessionId() </span>}) =&gt; {</span>
-    const cubeSize = <span class="cstat-no" title="statement not covered" >FieldModel.isMainField(playerId) ? CUBE_SIZE.FULL : CUBE_SIZE.MINI;</span>
-    const fieldWidth = <span class="cstat-no" title="statement not covered" >(cubeSize + CUBE_GAP) * FIELD_SIZE.column;</span>
-    const fieldHeight = <span class="cstat-no" title="statement not covered" >(cubeSize + CUBE_GAP) * FIELD_SIZE.line;</span>
+const Field = ({ state, playerId = <span class="branch-0 cbranch-no" title="branch not covered" >sessionStorageService.getSessionId() </span>}) =&gt; {
+    const cubeSize = FieldModel.isMainField(playerId) ? CUBE_SIZE.FULL : CUBE_SIZE.MINI;
+    const fieldWidth = (cubeSize + CUBE_GAP) * FIELD_SIZE.column;
+    const fieldHeight = (cubeSize + CUBE_GAP) * FIELD_SIZE.line;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    return (
         &lt;div style={{ width: `${fieldWidth}px`, height: `${fieldHeight}px`, gap: CUBE_GAP }}
              className={styles.field}
         &gt;
-            {state.map(<span class="fstat-no" title="function not covered" >(c</span>ubes, line) =&gt; <span class="cstat-no" title="statement not covered" >cubes.map(<span class="fstat-no" title="function not covered" >(c</span>ube, column) =&gt; {</span>
+            {state.map((cubes, line) =&gt; cubes.map((cube, column) =&gt; {
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                return &lt;Cube key={`${line}-${column}`}</span>
+                return &lt;Cube key={`${line}-${column}`}
                              size={cubeSize}
                              playerId={playerId}
                              line={line}
@@ -163,7 +163,7 @@ export default Field;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-04T08:57:58.530Z
+                at 2023-03-04T11:57:35.961Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -21,9 +21,9 @@ export const CUBE_COLOR = {
 };
 
 const TetraminoModel = {
-    generate: () => {
+    generate: (type) => {
         const tetramino = {
-            type: randomChoice(Object.values(TETRAMINO_TYPE)),
+            type: type ?? randomChoice(Object.values(TETRAMINO_TYPE)),
             position: { column: 4, line: 0 },
             rotation: TETRAMINO_ROTATE.TWELVE,
         };

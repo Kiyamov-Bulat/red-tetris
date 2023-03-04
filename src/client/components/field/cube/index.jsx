@@ -1,7 +1,8 @@
-import React, {memo} from 'react';
+import React from 'react';
 import styles from './styles.module.scss';
-import FieldModel from "../../../models/field";
 import {useSelector} from "react-redux";
+import FieldModel from "../../../models/field";
+
 export const CUBE_SIZE = {
     MINI: 12,
     FULL: 30,
@@ -9,7 +10,6 @@ export const CUBE_SIZE = {
 const Cube = ({ size = CUBE_SIZE.FULL, playerId, column, line }) => {
     const color = useSelector(FieldModel.getCubeColorSelector(playerId, line, column));
 
-    console.log(color);
     return (
         <div style={{
             background: color,
@@ -19,4 +19,4 @@ const Cube = ({ size = CUBE_SIZE.FULL, playerId, column, line }) => {
     );
 };
 
-export default memo(Cube);
+export default Cube;

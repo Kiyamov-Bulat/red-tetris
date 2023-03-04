@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1677920278566" clover="3.2.0">
-  <project timestamp="1677920278566" name="All files">
-    <metrics statements="719" coveredstatements="0" conditionals="247" coveredconditionals="0" methods="288" coveredmethods="0" elements="1254" coveredelements="0" complexity="0" loc="719" ncloc="719" packages="23" files="53" classes="53"/>
+<coverage generated="1677931055994" clover="3.2.0">
+  <project timestamp="1677931055994" name="All files">
+    <metrics statements="679" coveredstatements="101" conditionals="238" coveredconditionals="26" methods="278" coveredmethods="31" elements="1195" coveredelements="158" complexity="0" loc="679" ncloc="679" packages="23" files="52" classes="52"/>
     <package name="client">
       <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.jsx" path="/Users/gink/projects/red-tetris/src/client/index.jsx">
@@ -10,25 +10,35 @@
       </file>
     </package>
     <package name="client.components.button">
-      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="index.jsx" path="/Users/gink/projects/red-tetris/src/client/components/button/index.jsx">
-        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
       </file>
     </package>
     <package name="client.components.field">
-      <metrics statements="8" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="3"/>
       <file name="index.jsx" path="/Users/gink/projects/red-tetris/src/client/components/field/index.jsx">
-        <metrics statements="8" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="10" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
+        <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="11" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="19" count="60" type="stmt"/>
+        <line num="21" count="600" type="stmt"/>
+      </file>
+    </package>
+    <package name="client.components.field.cube">
+      <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <file name="index.jsx" path="/Users/gink/projects/red-tetris/src/client/components/field/cube/index.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="10" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="603" type="stmt"/>
+        <line num="13" count="603" type="stmt"/>
       </file>
     </package>
     <package name="client.components.modal">
@@ -48,56 +58,6 @@
         <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="client.components.notice">
-      <metrics statements="41" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="11" coveredmethods="0"/>
-      <file name="icons.js" path="/Users/gink/projects/red-tetris/src/client/components/notice/icons.js">
-        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-      </file>
-      <file name="index.js" path="/Users/gink/projects/red-tetris/src/client/components/notice/index.js">
-        <metrics statements="38" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="11" coveredmethods="0"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
       </file>
     </package>
     <package name="client.containers">
@@ -266,16 +226,16 @@
       </file>
     </package>
     <package name="client.models">
-      <metrics statements="150" coveredstatements="0" conditionals="57" coveredconditionals="0" methods="72" coveredmethods="0"/>
+      <metrics statements="150" coveredstatements="38" conditionals="59" coveredconditionals="18" methods="72" coveredmethods="16"/>
       <file name="field.js" path="/Users/gink/projects/red-tetris/src/client/models/field.js">
-        <metrics statements="47" coveredstatements="0" conditionals="27" coveredconditionals="0" methods="24" coveredmethods="0"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
+        <metrics statements="47" coveredstatements="16" conditionals="27" coveredconditionals="11" methods="24" coveredmethods="9"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="20" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
+        <line num="15" count="20" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
@@ -293,22 +253,22 @@
         <line num="51" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="57" count="0" type="stmt"/>
         <line num="58" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="64" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="64" count="4" type="cond" truecount="3" falsecount="0"/>
         <line num="73" count="0" type="stmt"/>
         <line num="75" count="0" type="stmt"/>
         <line num="76" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="77" count="0" type="stmt"/>
         <line num="80" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="85" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="84" count="794" type="stmt"/>
+        <line num="85" count="794" type="cond" truecount="2" falsecount="0"/>
         <line num="87" count="0" type="stmt"/>
-        <line num="89" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="93" count="0" type="stmt"/>
-        <line num="96" count="0" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
-        <line num="98" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="102" count="0" type="stmt"/>
+        <line num="89" count="794" type="cond" truecount="2" falsecount="0"/>
+        <line num="93" count="806" type="stmt"/>
+        <line num="96" count="603" type="stmt"/>
+        <line num="97" count="803" type="stmt"/>
+        <line num="98" count="803" type="cond" truecount="4" falsecount="0"/>
+        <line num="102" count="803" type="stmt"/>
         <line num="106" count="0" type="stmt"/>
         <line num="108" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="109" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -318,10 +278,10 @@
         <line num="117" count="0" type="stmt"/>
       </file>
       <file name="game.js" path="/Users/gink/projects/red-tetris/src/client/models/game.js">
-        <metrics statements="55" coveredstatements="0" conditionals="18" coveredconditionals="0" methods="19" coveredmethods="0"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
+        <metrics statements="55" coveredstatements="3" conditionals="18" coveredconditionals="0" methods="19" coveredmethods="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
         <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -376,8 +336,8 @@
         <line num="155" count="0" type="stmt"/>
       </file>
       <file name="gameList.js" path="/Users/gink/projects/red-tetris/src/client/models/gameList.js">
-        <metrics statements="14" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
-        <line num="8" count="0" type="stmt"/>
+        <metrics statements="14" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
@@ -393,23 +353,23 @@
         <line num="34" count="0" type="stmt"/>
       </file>
       <file name="tetramino.js" path="/Users/gink/projects/red-tetris/src/client/models/tetramino.js">
-        <metrics statements="34" coveredstatements="0" conditionals="12" coveredconditionals="0" methods="22" coveredmethods="0"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="50" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="55" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="60" count="0" type="stmt"/>
+        <metrics statements="34" coveredstatements="18" conditionals="14" coveredconditionals="7" methods="22" coveredmethods="7"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="37" count="404" type="stmt"/>
+        <line num="38" count="404" type="stmt"/>
+        <line num="40" count="404" type="stmt"/>
+        <line num="41" count="1616" type="stmt"/>
+        <line num="46" count="404" type="stmt"/>
+        <line num="50" count="603" type="cond" truecount="2" falsecount="0"/>
+        <line num="51" count="201" type="stmt"/>
+        <line num="54" count="402" type="stmt"/>
+        <line num="55" count="1596" type="cond" truecount="2" falsecount="0"/>
+        <line num="60" count="1" type="stmt"/>
         <line num="64" count="0" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
         <line num="78" count="0" type="stmt"/>
@@ -422,8 +382,8 @@
         <line num="102" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="107" count="0" type="stmt"/>
         <line num="108" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="113" count="0" type="stmt"/>
-        <line num="114" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="113" count="1" type="stmt"/>
+        <line num="114" count="4" type="cond" truecount="2" falsecount="0"/>
         <line num="119" count="0" type="stmt"/>
         <line num="123" count="0" type="stmt"/>
         <line num="127" count="0" type="stmt"/>
@@ -431,64 +391,61 @@
       </file>
     </package>
     <package name="client.services">
-      <metrics statements="18" coveredstatements="0" conditionals="18" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <metrics statements="15" coveredstatements="8" conditionals="14" coveredconditionals="3" methods="6" coveredmethods="3"/>
       <file name="fetch.js" path="/Users/gink/projects/red-tetris/src/client/services/fetch.js">
-        <metrics statements="11" coveredstatements="0" conditionals="13" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
+        <metrics statements="8" coveredstatements="1" conditionals="9" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="30" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="31" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="35" count="0" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="28" count="0" type="stmt"/>
       </file>
       <file name="sessionStorageService.js" path="/Users/gink/projects/red-tetris/src/client/services/sessionStorageService.js">
-        <metrics statements="7" coveredstatements="0" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <metrics statements="7" coveredstatements="7" conditionals="5" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="19" count="1603" type="cond" truecount="1" falsecount="1"/>
       </file>
     </package>
     <package name="client.store">
-      <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="index.js" path="/Users/gink/projects/red-tetris/src/client/store/index.js">
-        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
       </file>
     </package>
     <package name="client.store.selectors">
-      <metrics statements="23" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="20" coveredmethods="0"/>
+      <metrics statements="23" coveredstatements="14" conditionals="6" coveredconditionals="0" methods="20" coveredmethods="4"/>
       <file name="game.js" path="/Users/gink/projects/red-tetris/src/client/store/selectors/game.js">
-        <metrics statements="19" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="16" coveredmethods="0"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
+        <metrics statements="19" coveredstatements="14" conditionals="4" coveredconditionals="0" methods="16" coveredmethods="4"/>
+        <line num="4" count="1597" type="stmt"/>
+        <line num="5" count="803" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="594" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="28" count="0" type="stmt"/>
         <line num="30" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
+        <line num="33" count="200" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
       </file>
       <file name="gameList.js" path="/Users/gink/projects/red-tetris/src/client/store/selectors/gameList.js">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
@@ -502,17 +459,17 @@
       </file>
     </package>
     <package name="client.store.slices">
-      <metrics statements="78" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="28" coveredmethods="0"/>
+      <metrics statements="78" coveredstatements="16" conditionals="32" coveredconditionals="2" methods="28" coveredmethods="2"/>
       <file name="game.js" path="/Users/gink/projects/red-tetris/src/client/store/slices/game.js">
-        <metrics statements="64" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="19" coveredmethods="0"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
+        <metrics statements="64" coveredstatements="9" conditionals="32" coveredconditionals="2" methods="19" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
@@ -520,7 +477,7 @@
         <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="38" count="0" type="stmt"/>
         <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="43" count="0" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
@@ -539,13 +496,13 @@
         <line num="77" count="0" type="stmt"/>
         <line num="82" count="0" type="stmt"/>
         <line num="86" count="0" type="stmt"/>
-        <line num="90" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="90" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="91" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="92" count="0" type="stmt"/>
         <line num="94" count="0" type="stmt"/>
-        <line num="97" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="97" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="98" count="0" type="stmt"/>
-        <line num="100" count="0" type="stmt"/>
+        <line num="100" count="1" type="stmt"/>
         <line num="106" count="0" type="stmt"/>
         <line num="110" count="0" type="stmt"/>
         <line num="112" count="0" type="stmt"/>
@@ -567,28 +524,28 @@
         <line num="146" count="0" type="stmt"/>
         <line num="148" count="0" type="stmt"/>
         <line num="150" count="0" type="stmt"/>
-        <line num="170" count="0" type="stmt"/>
-        <line num="172" count="0" type="stmt"/>
+        <line num="170" count="1" type="stmt"/>
+        <line num="172" count="1" type="stmt"/>
       </file>
       <file name="gameList.js" path="/Users/gink/projects/red-tetris/src/client/store/slices/gameList.js">
-        <metrics statements="8" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <metrics statements="8" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
       </file>
       <file name="player.js" path="/Users/gink/projects/red-tetris/src/client/store/slices/player.js">
-        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
+        <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
       </file>
     </package>
     <package name="server">
@@ -917,16 +874,16 @@
       </file>
     </package>
     <package name="utils">
-      <metrics statements="18" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <metrics statements="18" coveredstatements="8" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
       <file name="constants.js" path="/Users/gink/projects/red-tetris/src/utils/constants.js">
-        <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="91" count="1" type="stmt"/>
       </file>
       <file name="formatDateString.js" path="/Users/gink/projects/red-tetris/src/utils/formatDateString.js">
         <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -938,8 +895,8 @@
         <line num="8" count="0" type="stmt"/>
       </file>
       <file name="randomChoice.js" path="/Users/gink/projects/red-tetris/src/utils/randomChoice.js">
-        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
       </file>
       <file name="selfPreservingPromise.js" path="/Users/gink/projects/red-tetris/src/utils/selfPreservingPromise.js">

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">14.06% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/64</span>
+                <span class='fraction'>9/64</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">6.25% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/32</span>
+                <span class='fraction'>2/32</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">5.26% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/19</span>
+                <span class='fraction'>1/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">14.06% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/64</span>
+                <span class='fraction'>9/64</span>
             </div>
         
             
@@ -242,7 +242,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -257,7 +257,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -265,8 +265,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -278,7 +278,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -325,17 +325,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -405,9 +405,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {createSlice} from "@reduxjs/toolkit";
 import TetraminoModel from "../../models/tetramino";
@@ -415,7 +415,7 @@ import FieldModel from "../../models/field";
 import sessionStorageService from "../../services/sessionStorageService";
 import GameModel from "../../models/game";
 &nbsp;
-const gameState = <span class="cstat-no" title="statement not covered" >{</span>
+export const gameState = {
     id: '',
     host: null,
     createdAt: new Date().toISOString(),
@@ -430,7 +430,7 @@ const gameState = <span class="cstat-no" title="statement not covered" >{</span>
     isOver: false,
 };
 &nbsp;
-const onFinish = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; {</span>
+const onFinish = <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; {
 <span class="cstat-no" title="statement not covered" >    state.isStarted = false;</span>
 <span class="cstat-no" title="statement not covered" >    state.isOver = true;</span>
 <span class="cstat-no" title="statement not covered" >    state.field = FieldModel.getEmpty();</span>
@@ -438,7 +438,7 @@ const onFinish = <span class="cstat-no" title="statement not covered" ><span cla
 <span class="cstat-no" title="statement not covered" >    state.currentTetramino = null;</span>
 };
 &nbsp;
-const updateFieldAndGame = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; {</span>
+const updateFieldAndGame = <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; {
     const [field, collapsedLines]  = <span class="cstat-no" title="statement not covered" >FieldModel.update(state.field, state.currentTetramino);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    state.field = field;</span>
@@ -451,7 +451,7 @@ const updateFieldAndGame = <span class="cstat-no" title="statement not covered" 
     }
 };
 &nbsp;
-const game = <span class="cstat-no" title="statement not covered" >createSlice({</span>
+const game = createSlice({
     name: "game",
     initialState: gameState,
     reducers: {
@@ -497,18 +497,18 @@ const game = <span class="cstat-no" title="statement not covered" >createSlice({
 <span class="cstat-no" title="statement not covered" >            state.currentTetramino = payload;</span>
         },
 &nbsp;
-<span class="fstat-no" title="function not covered" >        up</span>dateGameState(state) {
-<span class="cstat-no" title="statement not covered" >            if (!state.currentTetramino) {</span>
+        updateGameState(state) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!state.currentTetramino) {
 <span class="cstat-no" title="statement not covered" >                if (state.isSinglePlayer) {</span>
 <span class="cstat-no" title="statement not covered" >                    state.currentTetramino = TetraminoModel.generate();</span>
                 }
 <span class="cstat-no" title="statement not covered" >                return;</span>
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            if (FieldModel.atBottom(state.field, state.currentTetramino)) {</span>
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (FieldModel.atBottom(state.field, state.currentTetramino)) {
 <span class="cstat-no" title="statement not covered" >                updateFieldAndGame(state);</span>
             } else {
-<span class="cstat-no" title="statement not covered" >                state.currentTetramino = TetraminoModel.incrementLine(state.currentTetramino);</span>
+                state.currentTetramino = TetraminoModel.incrementLine(state.currentTetramino);
             }
 &nbsp;
         },
@@ -578,9 +578,9 @@ export const {
     moveRightTetramino,
     moveBottomTetramino,
     moveToPile,
-} = <span class="cstat-no" title="statement not covered" >game.actions;</span>
+} = game.actions;
 &nbsp;
-export const getGameInitialState = <span class="cstat-no" title="statement not covered" >game.getInitialState;</span>
+export const getGameInitialState = game.getInitialState;
 &nbsp;
 export default game.reducer;</pre></td></tr></table></pre>
 
@@ -589,7 +589,7 @@ export default game.reducer;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-04T08:57:58.530Z
+                at 2023-03-04T11:57:35.961Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
