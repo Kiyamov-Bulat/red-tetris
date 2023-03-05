@@ -4,12 +4,11 @@ import Response from './response';
 import SelfPreservingPromise from "../../utils/selfPreservingPromise";
 import RoueParams from "./routeParams";
 
-const ERequestMethod = {
+export const ERequestMethod = {
 	GET: 'GET',
 	POST: 'POST',
 	DELETE: 'DELETE',
 	UPDATE: 'UPDATE',
-	SOCKET: 'SOCKET',
 };
 
 class Router {
