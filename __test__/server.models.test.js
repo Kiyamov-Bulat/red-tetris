@@ -1,5 +1,5 @@
 import Field from "../src/server/models/field";
-import {CUBE_TYPE, TETRAMINO_TYPE} from "../src/utils/constants";
+import {CUBE_TYPE, INITIAL_TETRAMINO_POSITION, TETRAMINO_TYPE} from "../src/utils/constants";
 import TetraminoModel from "../src/client/models/tetramino";
 import FieldModel from "../src/client/models/field";
 import Player from "../src/server/models/player";
@@ -13,11 +13,16 @@ describe('server - models', () => {
         const transformedField = Field.transformToSpectatorField(field);
         let emptyField = transformedField.every((line) => line.every((column) => column.type === CUBE_TYPE.EMPTY));
         expect(emptyField).toBeTruthy();
-        
-        const [fieldWithITetramino] = FieldModel.update(field, TetraminoModel.generate(TETRAMINO_TYPE.I));
+
+        TetraminoModel.setGenerateType(TETRAMINO_TYPE.I);
+
+        const [fieldWithITetramino] = FieldModel.update(field, TetraminoModel.generate());
+
+        TetraminoModel.setGenerateType(null);
+
         const fieldWithTopmostTetramino = Field.transformToSpectatorField(fieldWithITetramino);
         const topLine = fieldWithTopmostTetramino[0];
-        const center = 4;
+        const center = INITIAL_TETRAMINO_POSITION.column;
         const topFilledCube = topLine[center]; // default tetramino pos - center;
         
         topLine.splice(center, 1);

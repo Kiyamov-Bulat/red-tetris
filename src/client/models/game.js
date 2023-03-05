@@ -1,7 +1,7 @@
 import io from "socket.io-client";
 import sessionStorageService from "../services/sessionStorageService";
 import store from "../store";
-import {GAME_SOCKET_EVENT} from "../../utils/constants";
+import {GAME_SOCKET_EVENT, TETRAMINO_TYPE} from "../../utils/constants";
 import {
     finishGame,
     lockLines,

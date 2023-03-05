@@ -5,7 +5,7 @@ import sessionStorageService from "../src/client/services/sessionStorageService"
 import {renderWithProviders} from "./helpers/redux";
 import Cube, {CUBE_SIZE} from "../src/client/components/field/cube";
 import TetraminoModel, {CUBE_COLOR} from "../src/client/models/tetramino";
-import {CUBE_TYPE, FIELD_SIZE, TETRAMINO_TYPE} from "../src/utils/constants";
+import {CUBE_TYPE, FIELD_SIZE, INITIAL_TETRAMINO_POSITION, TETRAMINO_TYPE} from "../src/utils/constants";
 import {getGameInitialState, updateGameState} from "../src/client/store/slices/game";
 import Field from "../src/client/components/field";
 import FieldModel from "../src/client/models/field";
@@ -74,19 +74,23 @@ describe('components', () => {
             type = TETRAMINO_TYPE.I,
             playerId = sessionStorageService.getSessionId()
         ) => {
-            return renderWithProviders(
+            TetraminoModel.setGenerateType(type);
+
+            const data = renderWithProviders(
                 <Field state={FieldModel.getEmpty()} playerId={playerId}/>,
                 {
                     preloadedState: {
                         game: {
                             ...getGameInitialState(),
                             currentTetramino: generateTetramino
-                                ? TetraminoModel.generate(type)
+                                ? TetraminoModel.generate()
                                 : undefined,
                         }
                     }
-                }
-            );
+                });
+
+            TetraminoModel.setGenerateType(null);
+            return data;
         };
 
         it('empty field', () => {
@@ -99,7 +103,7 @@ describe('components', () => {
         it('field with tetramino', async () => {
             const { container, store } = renderField(true);
             const cubes = [...container.firstChild.childNodes.values()];
-            const center = 4;
+            const center = INITIAL_TETRAMINO_POSITION.column;
             const size = 4;
             const getCube = (column, line) => cubes[column + line * FIELD_SIZE.column];
             const testTetramino = (line) => {

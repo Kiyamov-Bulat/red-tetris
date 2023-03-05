@@ -1,6 +1,6 @@
 import {
     CUBE_TYPE,
-    FIELD_SIZE,
+    FIELD_SIZE, INITIAL_TETRAMINO_POSITION,
     NEXT_TETRAMINO_ROTATE,
     TETRAMINO_COORDS,
     TETRAMINO_ROTATE,
@@ -21,10 +21,16 @@ export const CUBE_COLOR = {
 };
 
 const TetraminoModel = {
-    generate: (type) => {
+    GENERATE_TYPE: null,
+
+    setGenerateType(type) {
+        TetraminoModel.GENERATE_TYPE = Object.values(TETRAMINO_TYPE).includes(type) ? type : null;
+    },
+
+    generate: () => {
         const tetramino = {
-            type: type ?? randomChoice(Object.values(TETRAMINO_TYPE)),
-            position: { column: 4, line: 0 },
+            type: TetraminoModel.GENERATE_TYPE || randomChoice(Object.values(TETRAMINO_TYPE)),
+            position: { ...INITIAL_TETRAMINO_POSITION },
             rotation: TETRAMINO_ROTATE.TWELVE,
         };
         const topmostCube = TetraminoModel.getTopmostCube(tetramino);

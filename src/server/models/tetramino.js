@@ -1,4 +1,10 @@
-import {FIELD_SIZE, TETRAMINO_COORDS, TETRAMINO_ROTATE, TETRAMINO_TYPE} from "../../utils/constants";
+import {
+    FIELD_SIZE,
+    INITIAL_TETRAMINO_POSITION,
+    TETRAMINO_COORDS,
+    TETRAMINO_ROTATE,
+    TETRAMINO_TYPE
+} from "../../utils/constants";
 import randomChoice from "../../utils/randomChoice";
 
 class Tetramino {
@@ -11,7 +17,7 @@ class Tetramino {
     }
 
     static _setGeneratorType(type) {
-        this._GENERATOR_TYPE = type in TETRAMINO_TYPE ? type : null;
+        this.GENERATE_TYPE = Object.values(TETRAMINO_TYPE).includes(type) ? type : null;
     }
     /**
      * @static
@@ -19,7 +25,7 @@ class Tetramino {
     static generate() {
         const tetramino = new Tetramino(
             this._GENERATOR_TYPE ? this._GENERATOR_TYPE : randomChoice(Object.values(TETRAMINO_TYPE)),
-            { column: 4, line: 0 },
+            { ...INITIAL_TETRAMINO_POSITION },
             TETRAMINO_ROTATE.TWELVE,
         );
 

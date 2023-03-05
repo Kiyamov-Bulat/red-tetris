@@ -1,3 +1,5 @@
+export const INITIAL_TETRAMINO_POSITION = { column: 4, line: 0 };
+
 export const FIELD_SIZE = {
     column: 10,
     line: 20
