@@ -15,9 +15,6 @@ const config = {
         '!**/node_modules/**',
         '!**/vendor/**',
     ],
-    // transformIgnorePatterns: [
-    //     `/node_modules/(?!(somePkg)|react-dnd|core-dnd|@react-dnd)`,
-    // ],
     coverageThreshold: {
         global: {
             branches: 50,

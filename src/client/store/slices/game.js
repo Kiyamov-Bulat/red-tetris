@@ -11,7 +11,7 @@ export const gameState = {
     players: [],
 
     opponentsFields: [],
-    field: FieldModel.getEmpty(),
+    field: FieldModel?.getEmpty(),
     currentTetramino: null, //{ type: TETRAMINO_TYPE.I },
 
     isSinglePlayer: false,

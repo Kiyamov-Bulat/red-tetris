@@ -390,9 +390,7 @@ describe('components', () => {
             expectPlayers(3, false);
             expectPlayers(2, false);
             expectPlayers(1, false);
-            console.log(store.getState().game.players, sessionStorageService.getSessionId());
             expectPlayers(0, false);
-            console.log(store.getState());
             expect(queryByTestId(PLAYER_UNIT_TEST_ID)).toBeNull();
             expect(queryByTestId(GAME_UNIT_TEST_ID)).toBeNull();
             expect(queryByText(MAIN_SIDE_PANEL_TITLE)).toBeInTheDocument();

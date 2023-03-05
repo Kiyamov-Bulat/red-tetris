@@ -83,14 +83,7 @@ class Game {
     }
 
     generateFirstTetramino() {
-        this._tetraminoQueue.push({
-            value: Tetramino.generate(),
-            players: this.players.reduce((acc, player) => {
-                acc[player.id] = true;
-                return acc;
-            }, {}),
-        });
-        return this._tetraminoQueue[0].value;
+        return Tetramino.generate();
     }
 
     getNextTetramino(playerId) {

@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__test__/funcs.test.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/__test__/funcs.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__test__/helpers/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__test__/react.components.test.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/__test__/react.components.test.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__test__/redux1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__test__/server1.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/clover.xml" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/clover.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/coverage-final.json" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/coverage-final.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov-report/client/components/button/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/client/components/button/index.html" afterDir="false" />
@@ -84,6 +89,10 @@
       <change beforePath="$PROJECT_DIR$/coverage/lcov-report/utils/randomChoice.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/utils/randomChoice.js.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov-report/utils/selfPreservingPromise.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/utils/selfPreservingPromise.js.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov.info" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/models/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/player.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +192,7 @@
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
       <workItem from="1677221687371" duration="57813000" />
-      <workItem from="1677598254496" duration="73255000" />
+      <workItem from="1677598254496" duration="85130000" />
     </task>
     <servers />
   </component>

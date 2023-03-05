@@ -1,4 +1,5 @@
 class Player {
+    static DEFAULT_NAME = 'Noob';
     _id;
     _name;
     _socket;
@@ -6,7 +7,7 @@ class Player {
     constructor(id, socket) {
         this._id = id;
         this._socket = socket;
-        this._name = 'Noob';
+        this._name = Player.DEFAULT_NAME;
 
         socket.player = this;
     }

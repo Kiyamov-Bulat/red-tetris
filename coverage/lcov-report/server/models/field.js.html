@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -91,47 +91,47 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">400x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">400x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">400x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {CUBE_TYPE} from "../../utils/constants";
 &nbsp;
 class Field {
-<span class="fstat-no" title="function not covered" >    st</span>atic transformToSpectatorField(field) {
-        const newField = <span class="cstat-no" title="statement not covered" >[];</span>
-        const topmostColumns = <span class="cstat-no" title="statement not covered" >[];</span>
+    static transformToSpectatorField(field) {
+        const newField = [];
+        const topmostColumns = [];
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        field.forEach(<span class="fstat-no" title="function not covered" >(c</span>olumns, line) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            newField[line] = [];</span>
+        field.forEach((columns, line) =&gt; {
+            newField[line] = [];
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            columns.forEach(<span class="fstat-no" title="function not covered" >(c</span>olumnState, column) =&gt; {</span>
-                let type = <span class="cstat-no" title="statement not covered" >CUBE_TYPE.EMPTY;</span>
+            columns.forEach((columnState, column) =&gt; {
+                let type = CUBE_TYPE.EMPTY;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                if (columnState.type !== CUBE_TYPE.EMPTY &amp;&amp; !topmostColumns[column]) {</span>
-<span class="cstat-no" title="statement not covered" >                    type = CUBE_TYPE.TOPMOST;</span>
-<span class="cstat-no" title="statement not covered" >                    topmostColumns[column] = true;</span>
+                if (columnState.type !== CUBE_TYPE.EMPTY &amp;&amp; !topmostColumns[column]) {
+                    type = CUBE_TYPE.TOPMOST;
+                    topmostColumns[column] = true;
                 }
-<span class="cstat-no" title="statement not covered" >                newField[line][column] = { ...field[line][column], type };</span>
+                newField[line][column] = { ...field[line][column], type };
            });
         });
-<span class="cstat-no" title="statement not covered" >        return newField;</span>
+        return newField;
     }
 }
 &nbsp;
@@ -142,7 +142,7 @@ export default Field;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-04T18:47:44.670Z
+                at 2023-03-05T11:12:37.424Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
