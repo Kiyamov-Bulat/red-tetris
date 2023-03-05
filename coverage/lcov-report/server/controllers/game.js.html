@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">26.08% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/69</span>
+                <span class='fraction'>18/69</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">5.26% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/38</span>
+                <span class='fraction'>2/38</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">38.46% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>5/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">25.37% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/67</span>
+                <span class='fraction'>17/67</span>
             </div>
         
             
@@ -224,31 +224,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -347,18 +347,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -375,32 +375,32 @@ import Field from "../models/field";
 export default {
     gameListeners: [],
 &nbsp;
-<span class="fstat-no" title="function not covered" >    ge</span>tAll(req, res) {
-<span class="cstat-no" title="statement not covered" >        res.sendJSON(Game.getAllAvailable());</span>
+    getAll(req, res) {
+        res.sendJSON(Game.getAllAvailable());
     },
 &nbsp;
-<span class="fstat-no" title="function not covered" >    cr</span>eate(io, socket, hostId) {
-        const player = <span class="cstat-no" title="statement not covered" >new Player(hostId, socket);</span>
-        const game = <span class="cstat-no" title="statement not covered" >Game.create(player);</span>
+    create(io, socket, hostId) {
+        const player = new Player(hostId, socket);
+        const game = Game.create(player);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        io.emit(GAME_SOCKET_EVENT.CREATE, game);</span>
+        io.emit(GAME_SOCKET_EVENT.CREATE, game);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.connect(io, socket, game.id, player.id);</span>
+        this.connect(io, socket, game.id, player.id);
     },
 &nbsp;
-<span class="fstat-no" title="function not covered" >    co</span>nnect(io, socket, gameId, playerId) {
-        const game = <span class="cstat-no" title="statement not covered" >Game.get(gameId);</span>
+    connect(io, socket, gameId, playerId) {
+        const game = Game.get(gameId);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if (!game) {</span>
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!game) {
 <span class="cstat-no" title="statement not covered" >            return;</span>
         }
-        const isHost = <span class="cstat-no" title="statement not covered" >game.host.id === playerId;</span>
-        const player = <span class="cstat-no" title="statement not covered" >isHost ? game.host : new Player(playerId, socket);</span>
+        const isHost = game.host.id === playerId;
+        const player = isHost ? game.host : <span class="branch-1 cbranch-no" title="branch not covered" >new Player(playerId, socket);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        game.connect(player);</span>
-<span class="cstat-no" title="statement not covered" >        this._listenGameEvents(io, player);</span>
+        game.connect(player);
+        this._listenGameEvents(io, player);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        io.to(gameId).emit(GAME_SOCKET_EVENT.CONNECT, game, player);</span>
+        io.to(gameId).emit(GAME_SOCKET_EVENT.CONNECT, game, player);
     },
 &nbsp;
 <span class="fstat-no" title="function not covered" >    di</span>sconnect(io, socket, fromGame = <span class="branch-0 cbranch-no" title="branch not covered" >false)</span> {
@@ -498,19 +498,19 @@ export default {
 <span class="cstat-no" title="statement not covered" >        this.disconnect(io, player.socket, true);</span>
     },
 &nbsp;
-<span class="fstat-no" title="function not covered" >    _l</span>istenGameEvents(io, player) {
-        const socket = <span class="cstat-no" title="statement not covered" >player.socket;</span>
-        const wrapper = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(c</span>b) =&gt; <span class="cstat-no" title="statement not covered" >cb.bind(this, io, player);</span></span>
+    _listenGameEvents(io, player) {
+        const socket = player.socket;
+        const wrapper = (cb) =&gt; cb.bind(this, io, player);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.gameListeners = [</span>
+        this.gameListeners = [
             [GAME_SOCKET_EVENT.START, wrapper(this.start)],
             [GAME_SOCKET_EVENT.FINISH, wrapper(this.finish)],
             [GAME_SOCKET_EVENT.UPDATE, wrapper(this.update)],
             [GAME_SOCKET_EVENT.KICK, wrapper(this.kick)],
             [GAME_SOCKET_EVENT.LEAVE, wrapper(this.leave)],
         ];
-<span class="cstat-no" title="statement not covered" >        for (const pair of this.gameListeners) {</span>
-<span class="cstat-no" title="statement not covered" >            socket.on(...pair);</span>
+        for (const pair of this.gameListeners) {
+            socket.on(...pair);
         }
     },
 &nbsp;
@@ -526,7 +526,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-05T11:12:37.424Z
+                at 2023-03-05T12:14:56.083Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

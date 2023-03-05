@@ -2,18 +2,23 @@ import {FIELD_SIZE, TETRAMINO_COORDS, TETRAMINO_ROTATE, TETRAMINO_TYPE} from "..
 import randomChoice from "../../utils/randomChoice";
 
 class Tetramino {
+    static _GENERATOR_TYPE = null;
+
     constructor(type, position, rotation) {
         this.type = type;
         this.position = position;
         this.rotation = rotation;
     }
 
+    static _setGeneratorType(type) {
+        this._GENERATOR_TYPE = type in TETRAMINO_TYPE ? type : null;
+    }
     /**
      * @static
      */
     static generate() {
         const tetramino = new Tetramino(
-            randomChoice(Object.values(TETRAMINO_TYPE)),
+            this._GENERATOR_TYPE ? this._GENERATOR_TYPE : randomChoice(Object.values(TETRAMINO_TYPE)),
             { column: 4, line: 0 },
             TETRAMINO_ROTATE.TWELVE,
         );

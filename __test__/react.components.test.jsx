@@ -14,7 +14,6 @@ import {LOSE_TITLE, WIN_TITLE} from "../src/client/containers/game/gameOverModal
 import Game from "../src/client/containers/game";
 import GameModel from "../src/client/models/game";
 import {selectGame} from "../src/client/store/selectors/game";
-import {v4 as uuidv4} from "uuid";
 import App from "../src/client/containers/app";
 import {MAIN_SIDE_PANEL_TITLE} from "../src/client/containers/sidePanel/main";
 import {WAIT_START_SIDE_PANEL_TITLE} from "../src/client/containers/sidePanel/waitStart";
@@ -22,6 +21,7 @@ import {FIELDS_SIDE_PANEL_TITLE} from "../src/client/containers/sidePanel/fields
 import GameList from "../src/client/models/gameList";
 import {GAME_UNIT_TEST_ID} from "../src/client/containers/gameList/gameUnit";
 import {PLAYER_UNIT_TEST_ID} from "../src/client/containers/sidePanel/waitStart/player";
+import {getCurrentUser, getMockGame, getMockPlayer} from "./helpers/game";
 
 const getCubeCSSColor = (type) => `background: ${CUBE_COLOR[type]}`;
 
@@ -36,27 +36,6 @@ const expectEmptyField = (children) => {
             expect(cube).toHaveStyle(getCubeCSSColor(CUBE_TYPE.EMPTY));
         }
     );
-};
-
-const getCurrentUser = () => (
-    { name: 'Noob', id: sessionStorageService.getSessionId() }
-);
-
-const getMockPlayer = () => (
-    { name: 'Noob', id: uuidv4() }
-);
-
-const getMockGame = () => {
-    const mock = {};
-
-    mock.host = getCurrentUser();
-    mock.id = uuidv4();
-    mock.createdAt = new Date().toISOString();
-    mock.players = [];
-    mock.tetraminoQueue = [];
-    mock.isStarted = false;
-    mock.isOver = false;
-    return mock;
 };
 
 describe('components', () => {
@@ -349,7 +328,7 @@ describe('components', () => {
         });
 
         it('waitStart with players', () => {
-            const { queryAllByTestId, queryAllByText, queryByTestId, queryByText, store } = renderApp();
+            const { queryAllByTestId, queryAllByText, queryByTestId, queryByText } = renderApp();
             const players = [getCurrentUser()];
             const game = getMockGame();
 

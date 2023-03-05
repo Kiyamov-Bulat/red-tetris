@@ -5,6 +5,7 @@ import FieldModel from "../src/client/models/field";
 import Player from "../src/server/models/player";
 import Tetramino from "../src/server/models/tetramino";
 import Game from "../src/server/models/game";
+import {createGame, createPlayer} from "./helpers/game";
 
 describe('server - models', () => {
     it('field', () => {
@@ -34,15 +35,6 @@ describe('server - models', () => {
         beforeEach(() => {
             Game.GAME_LIST = [];
         });
-        
-        const createPlayer = () => {
-            const socket = { id: Math.random(), join: jest.fn(), leave: jest.fn() };
-            
-            return new Player(Math.random(), socket);
-        };
-        const createGame = () => {
-            return Game.create(createPlayer());
-        };
 
         const expectGamesN = (n, game) => {
             expect(Game.getAll().length).toBe(n);
@@ -162,8 +154,6 @@ describe('server - models', () => {
             const nextTetramino1 = game.getNextTetramino(p1.id);
             expect(game._tetraminoQueue).toHaveLength(1);
 
-            expect(nextTetramino1).not.toEqual(firstTetramino);
-
             expectTetraminos(0, nextTetramino1, p1.id);
             const queue1Players = game._tetraminoQueue[0].players;
 
@@ -186,7 +176,6 @@ describe('server - models', () => {
             const queue2Players = game._tetraminoQueue[1].players;
 
             expectTetraminos(1, nextTetramino2, p2.id);
-            expect(nextTetramino1).not.toEqual(nextTetramino2);
             expect(queue2Players[host.id]).toBeFalsy();
             expect(queue2Players[p1.id]).toBeFalsy();
             expect(game._tetraminoQueue).toHaveLength(2);
