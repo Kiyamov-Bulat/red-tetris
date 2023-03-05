@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1677954706324" clover="3.2.0">
-  <project timestamp="1677954706324" name="All files">
-    <metrics statements="684" coveredstatements="261" conditionals="239" coveredconditionals="69" methods="274" coveredmethods="93" elements="1197" coveredelements="423" complexity="0" loc="684" ncloc="684" packages="23" files="51" classes="51"/>
+<coverage generated="1677955664696" clover="3.2.0">
+  <project timestamp="1677955664696" name="All files">
+    <metrics statements="684" coveredstatements="262" conditionals="239" coveredconditionals="69" methods="274" coveredmethods="94" elements="1197" coveredelements="425" complexity="0" loc="684" ncloc="684" packages="23" files="51" classes="51"/>
     <package name="client">
       <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.jsx" path="/Users/gink/projects/red-tetris/src/client/index.jsx">
@@ -876,7 +876,7 @@
       </file>
     </package>
     <package name="utils">
-      <metrics statements="18" coveredstatements="14" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="1"/>
+      <metrics statements="18" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="2"/>
       <file name="constants.js" path="/Users/gink/projects/red-tetris/src/utils/constants.js">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -897,9 +897,9 @@
         <line num="8" count="23" type="stmt"/>
       </file>
       <file name="randomChoice.js" path="/Users/gink/projects/red-tetris/src/utils/randomChoice.js">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
       </file>
       <file name="selfPreservingPromise.js" path="/Users/gink/projects/red-tetris/src/utils/selfPreservingPromise.js">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
