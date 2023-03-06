@@ -2,7 +2,6 @@ import {createSlice} from "@reduxjs/toolkit";
 import TetraminoModel from "../../models/tetramino";
 import FieldModel from "../../models/field";
 import sessionStorageService from "../../services/sessionStorageService";
-import GameModel from "../../models/game";
 
 export const gameState = {
     id: '',
@@ -55,6 +54,12 @@ const game = createSlice({
             const fieldIdx = state.opponentsFields.findIndex(({ player }) =>
                 player.id === payload.player.id
             );
+            const playerIdx = state.players.findIndex((next) => next.id === payload.player.id);
+
+            // @TODO
+            if (playerIdx !== -1) {
+                state.players[playerIdx] = payload.player;
+            }
 
             if (fieldIdx !== -1) {
                 state.opponentsFields[fieldIdx] = { field: payload.field, player: payload.player };

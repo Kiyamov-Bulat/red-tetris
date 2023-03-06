@@ -4,6 +4,7 @@ import sessionStorageService from "../../services/sessionStorageService";
 import FieldModel from "../../models/field";
 import {FIELD_SIZE} from "../../../utils/constants";
 import styles from './styles.module.scss';
+import Score from "./score";
 
 const CUBE_GAP = 1;
 
@@ -16,6 +17,7 @@ const Field = ({ state, playerId = sessionStorageService.getSessionId() }) => {
         <div style={{ width: `${fieldWidth}px`, height: `${fieldHeight}px`, gap: CUBE_GAP }}
              className={styles.field}
         >
+            <Score playerId={playerId}/>
             {state.map((cubes, line) => cubes.map((cube, column) => {
 
                 return <Cube key={`${line}-${column}`}

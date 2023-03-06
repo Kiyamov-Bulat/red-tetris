@@ -1,8 +1,26 @@
 .field {
+  position: relative;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
   height: 100%;
   background: rgba(255, 255, 255, 0.9);
+}
+
+.score {
+  position: absolute;
+  background: white;
+  opacity: 0.7;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: bold;
+  right: 10px;
+  top: 10px;
+  -webkit-box-shadow: 5px 4px 8px 0px rgba(0, 113, 201, 0.2);
+  -moz-box-shadow: 5px 4px 8px 0px rgba(0, 113, 201, 0.2);
+  box-shadow: 0px 0px 2px 1px rgba(0, 113, 201, 0.2);
+
 }

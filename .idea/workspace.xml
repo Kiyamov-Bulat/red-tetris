@@ -6,16 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/game/useGameUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/game/useGameUpdate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/models/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/field.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/field/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/field/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/field/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/field/styles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/modal/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/modal/styles.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/store/selectors/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/selectors/player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/store/slices/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/controllers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/controllers/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/models/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +114,7 @@
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
       <workItem from="1677221687371" duration="57813000" />
-      <workItem from="1677598254496" duration="104749000" />
+      <workItem from="1677598254496" duration="106070000" />
     </task>
     <servers />
   </component>
