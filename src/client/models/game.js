@@ -1,7 +1,7 @@
 import io from "socket.io-client";
 import sessionStorageService from "../services/sessionStorageService";
 import store from "../store";
-import {GAME_SOCKET_EVENT} from "../../utils/constants";
+import {GAME_MODE, GAME_SOCKET_EVENT, TETRAMINO_TYPE} from "../../utils/constants";
 import {
     finishGame,
     generateTetramino,
@@ -25,6 +25,7 @@ import {
 import {resetIsWinner, resetScore, setIsWinner, setScore, updateScore} from "../store/slices/player";
 import FieldModel from "./field";
 import { setMode as setModeGameList } from '../store/slices/gameList';
+import TetraminoModel from "./tetramino";
 
 export const SIDE_PANEL_TYPE = {
     MAIN: '@side-panel-type/main',
@@ -177,7 +178,13 @@ const GameModel = {
 
         // new tetramino (single game)
         if (!currentTetramino) {
-            isSinglePlayer && store.dispatch(generateTetramino());
+            if (isSinglePlayer) {
+                const mode = selectGameMode(state);
+
+                mode === GAME_MODE.Z && TetraminoModel.setGenerateType(TETRAMINO_TYPE.Z);
+                store.dispatch(generateTetramino());
+                mode === GAME_MODE.Z && TetraminoModel.setGenerateType(null);
+            }
             return;
         }
 

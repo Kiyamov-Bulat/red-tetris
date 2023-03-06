@@ -1,7 +1,7 @@
 import {v4 as uuidv4} from 'uuid';
 import Tetramino from "./tetramino";
 import randomChoice from "../../utils/randomChoice";
-import {GAME_MODE} from "../../utils/constants";
+import {GAME_MODE, TETRAMINO_TYPE} from "../../utils/constants";
 
 class Game {
     static GAME_LIST = [];
@@ -57,6 +57,18 @@ class Game {
     get mode() {
         return this._mode;
     }
+    
+    get isZ() {
+        return this.mode === GAME_MODE.Z;
+    }
+
+    get isCommon() {
+        return this.mode === GAME_MODE.COMMON;
+    }
+
+    get isRandomFilled() {
+        return this.mode === GAME_MODE.FILLED;
+    }
 
     connect(player) {
         player.game = this;
@@ -89,9 +101,15 @@ class Game {
             mode: this.mode,
         };
     }
+    
+    generateTetramino() {
+        this.isZ && Tetramino._setGeneratorType(TETRAMINO_TYPE.Z);
 
-    generateFirstTetramino() {
-        return Tetramino.generate();
+        const tetramino = Tetramino.generate();
+
+        this.isZ && Tetramino._setGeneratorType(null);
+
+        return tetramino;
     }
 
     getNextTetramino(playerId) {
@@ -99,7 +117,7 @@ class Game {
 
         if (nextTetraminoIndex === -1) {
             const newTetramino = {
-                value: Tetramino.generate(),
+                value: this.generateTetramino(),
                 players: { [playerId]: true },
             };
 
@@ -133,7 +151,7 @@ class Game {
     start() {
         this._isStarted = true;
         this._isOver = false;
-        return this.generateFirstTetramino();
+        return this.generateTetramino();
     }
 
     finish() {

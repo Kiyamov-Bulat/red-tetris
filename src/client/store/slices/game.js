@@ -91,6 +91,10 @@ const game = createSlice({
         },
 
         rotateTetramino(state) {
+            if (!state.currentTetramino) {
+                return;
+            }
+
             let rotatedTetramino = TetraminoModel.rotate(state.currentTetramino);
 
             while (TetraminoModel.outsideLeftEdge(rotatedTetramino)) {

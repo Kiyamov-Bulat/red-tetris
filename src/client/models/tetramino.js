@@ -131,7 +131,7 @@ const TetraminoModel = {
 
     intersectsPile: (field, tetramino) => {
         return TetraminoModel.getCubes(tetramino).some((cube) =>
-            field[cube.line][cube.column].type !== CUBE_TYPE.EMPTY
+            cube.line >= 0 && field[cube.line][cube.column].type !== CUBE_TYPE.EMPTY
         );
     },
 };

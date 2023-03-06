@@ -8,7 +8,7 @@ import {
 import randomChoice from "../../utils/randomChoice";
 
 class Tetramino {
-    static _GENERATOR_TYPE = null;
+    static GENERATE_TYPE = null;
 
     constructor(type, position, rotation) {
         this.type = type;
@@ -24,7 +24,7 @@ class Tetramino {
      */
     static generate() {
         const tetramino = new Tetramino(
-            this._GENERATOR_TYPE ? this._GENERATOR_TYPE : randomChoice(Object.values(TETRAMINO_TYPE)),
+            this.GENERATE_TYPE ? this.GENERATE_TYPE : randomChoice(Object.values(TETRAMINO_TYPE)),
             { ...INITIAL_TETRAMINO_POSITION },
             TETRAMINO_ROTATE.TWELVE,
         );
