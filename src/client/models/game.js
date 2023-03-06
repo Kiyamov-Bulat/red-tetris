@@ -1,19 +1,23 @@
 import io from "socket.io-client";
 import sessionStorageService from "../services/sessionStorageService";
 import store from "../store";
-import {GAME_SOCKET_EVENT, TETRAMINO_TYPE} from "../../utils/constants";
+import {GAME_SOCKET_EVENT} from "../../utils/constants";
 import {
     finishGame,
+    generateTetramino,
     lockLines,
+    moveBottomTetramino,
     resetGame,
     setCurrentTetramino,
     setGameProps,
     setIsSinglePlayerGame,
     startGame,
+    updateGameState,
     updateOpponentField
 } from "../store/slices/game";
-import {selectGameId} from "../store/selectors/game";
-import {resetIsWinner, setIsWinner} from "../store/slices/player";
+import {selectCurrentTetramino, selectField, selectGameId, selectIsSinglePlayer} from "../store/selectors/game";
+import {resetIsWinner, resetScore, setIsWinner, setScore, updateScore} from "../store/slices/player";
+import FieldModel from "./field";
 
 export const SIDE_PANEL_TYPE = {
     MAIN: '@side-panel-type/main',
@@ -34,6 +38,7 @@ const GameModel = {
 
     create: (singlePlayer = true) => {
         if (singlePlayer) {
+            store.dispatch(resetScore());
             store.dispatch(setIsSinglePlayerGame());
             store.dispatch(startGame());
             return;
@@ -113,6 +118,7 @@ const GameModel = {
 
         if (game.id === gameId) {
             store.dispatch(resetIsWinner());
+            store.dispatch(resetScore());
             store.dispatch(startGame());
         }
     },
@@ -127,7 +133,7 @@ const GameModel = {
         }
     },
 
-    onFinish(game, loser) {
+    onFinish(game, winner) {
         const gameId = selectGameId(store.getState());
 
         if (game.id !== gameId) {
@@ -135,7 +141,7 @@ const GameModel = {
         }
         store.dispatch(finishGame());
 
-        if (loser?.id !== sessionStorageService.getSessionId()) {
+        if (winner?.id === sessionStorageService.getSessionId()) {
             store.dispatch(setIsWinner());
         }
     },
@@ -152,8 +158,44 @@ const GameModel = {
         store.dispatch(setGameProps(game));
     },
 
-    onGenerateTetramino: (tetramino) => {
+    onGenerateTetramino: (tetramino, score) => {
+        store.dispatch(setScore(score));
         store.dispatch(setCurrentTetramino(tetramino));
+    },
+
+    updateState: () => {
+        const state = store.getState();
+        const currentTetramino = selectCurrentTetramino(state);
+        const isSinglePlayer = selectIsSinglePlayer(state);
+
+        // new tetramino (single game)
+        if (!currentTetramino) {
+            isSinglePlayer && store.dispatch(generateTetramino());
+            return;
+        }
+
+        const field = selectField(state);
+
+        // tetramino increment
+        if (!FieldModel.atBottom(field, currentTetramino)) {
+            store.dispatch(moveBottomTetramino());
+            return;
+        }
+
+        // update field
+        const [updatedField, collapsedLines] = FieldModel.update(field, currentTetramino);
+
+        !isSinglePlayer && GameModel.update(updatedField, collapsedLines);
+
+        // final
+        if (FieldModel.pileLineIsZero(updatedField)) {
+            store.dispatch(finishGame());
+            !isSinglePlayer && GameModel.finish();
+            return;
+        }
+
+        store.dispatch(updateScore(collapsedLines));
+        store.dispatch(updateGameState(updatedField));
     }
 };
 

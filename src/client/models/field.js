@@ -20,7 +20,7 @@ const FieldModel = {
     },
 
     update: (field, landedTetramino) => {
-        const newField = [...field];
+        const newField = field.reduce((acc, line) => [...acc, line.slice()], []);
         
         TetraminoModel.getCubes(landedTetramino).forEach((cube) => {
             newField[cube.line][cube.column] = { type: landedTetramino.type };

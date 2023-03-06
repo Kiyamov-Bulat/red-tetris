@@ -19,27 +19,6 @@ export const gameState = {
     isOver: false,
 };
 
-const onFinish = (state) => {
-    state.isStarted = false;
-    state.isOver = true;
-    state.field = FieldModel.getEmpty();
-    state.opponentsFields = [];
-    state.currentTetramino = null;
-};
-
-const updateFieldAndGame = (state) => {
-    const [field, collapsedLines]  = FieldModel.update(state.field, state.currentTetramino);
-
-    state.field = field;
-    state.currentTetramino = null;
-    !state.isSinglePlayer && GameModel.update(state.field, collapsedLines);
-
-    if (FieldModel.pileLineIsZero(state.field)) {
-        onFinish(state);
-        !state.isSinglePlayer && GameModel.finish();
-    }
-};
-
 const game = createSlice({
     name: "game",
     initialState: gameState,
@@ -54,7 +33,11 @@ const game = createSlice({
         },
 
         finishGame(state) {
-            onFinish(state);
+            state.isStarted = false;
+            state.isOver = true;
+            state.field = FieldModel.getEmpty();
+            state.opponentsFields = [];
+            state.currentTetramino = null;
         },
 
         resetGame() {
@@ -86,20 +69,13 @@ const game = createSlice({
             state.currentTetramino = payload;
         },
 
-        updateGameState(state) {
-            if (!state.currentTetramino) {
-                if (state.isSinglePlayer) {
-                    state.currentTetramino = TetraminoModel.generate();
-                }
-                return;
-            }
+        updateGameState(state, { payload }) {
+            state.field = payload;
+            state.currentTetramino = null;
+        },
 
-            if (FieldModel.atBottom(state.field, state.currentTetramino)) {
-                updateFieldAndGame(state);
-            } else {
-                state.currentTetramino = TetraminoModel.incrementLine(state.currentTetramino);
-            }
-
+        generateTetramino(state) {
+            state.currentTetramino = TetraminoModel.generate();
         },
 
         lockLines(state, { payload }) {
@@ -167,6 +143,7 @@ export const {
     moveRightTetramino,
     moveBottomTetramino,
     moveToPile,
+    generateTetramino,
 } = game.actions;
 
 export const getGameInitialState = game.getInitialState;

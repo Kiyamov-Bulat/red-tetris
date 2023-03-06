@@ -133,6 +133,18 @@ class Game {
         this._isOver = true;
     }
 
+    getWinner(loser) {
+        let score = -1;
+        let winner = null;
+
+        for (const player of this.players) {
+           if (player.id !== loser.id && player.score > score) {
+               winner = player;
+               score = winner.score;
+           }
+        }
+        return winner;
+    }
     static getAll() {
         return [...this.GAME_LIST];
     }

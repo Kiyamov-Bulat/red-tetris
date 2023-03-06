@@ -91,7 +91,7 @@ export default {
             return;
         }
         game.finish();
-        io.emit(GAME_SOCKET_EVENT.FINISH, game, game.players.length > 1 ? player : null);
+        io.emit(GAME_SOCKET_EVENT.FINISH, game, game.getWinner(player));
     },
 
     update(io, player, field, collapsedLines) {
@@ -104,8 +104,9 @@ export default {
         const transformedField = Field.transformToSpectatorField(field);
         const nextTetramino = game.getNextTetramino(player.id);
 
+        player.updateScore(collapsedLines);
         player.socket.broadcast.to(game.id).emit(GAME_SOCKET_EVENT.UPDATE, { field: transformedField, player, collapsedLines });
-        player.socket.emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino);
+        player.socket.emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino, player.score); // @TODO
     },
     
     kick(io, player, kickedPlayerId) {

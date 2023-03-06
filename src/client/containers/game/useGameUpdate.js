@@ -1,12 +1,11 @@
 import React, {useEffect, useRef} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {selectGameIsStarted} from "../../store/selectors/game";
-import {updateGameState} from "../../store/slices/game";
+import Game from "../../models/game";
 
 export const GAME_UPDATE_TIMEOUT = 500;
 
 const useGameUpdate = () => {
-    const dispatch = useDispatch();
     const gameIsStarted = useSelector(selectGameIsStarted);
     const updateIntervalId = useRef(null);
 
@@ -16,7 +15,7 @@ const useGameUpdate = () => {
         }
 
         updateIntervalId.current = window.setInterval(() => {
-            dispatch(updateGameState());
+            Game.updateState();
         }, GAME_UPDATE_TIMEOUT);
 
         return () => {

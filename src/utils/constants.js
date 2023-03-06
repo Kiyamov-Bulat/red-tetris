@@ -96,3 +96,6 @@ export const CUBE_TYPE = {
     TOPMOST: 'topmost',
     ...TETRAMINO_TYPE,
 };
+
+export const SCORE_UNIT = 10;
+export const SCORE_COLLAPSE_UNIT = 100;

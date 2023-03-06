@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="" />
+    <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/game/useGameUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/game/useGameUpdate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/models/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/field.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/models/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/selectors/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/selectors/player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/slices/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/store/slices/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/store/slices/player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/controllers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/controllers/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/models/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/models/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +71,10 @@
       <recent name="$PROJECT_DIR$/src/client/utils/constants.js" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Node.js.game.js (1)">
+    <configuration name="game.js (1)" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/client/models/game.js" working-dir="$PROJECT_DIR$/src/client/models">
+      <method v="2" />
+    </configuration>
     <configuration name="game.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/server/controllers/game.js" working-dir="$PROJECT_DIR$/src/server/controllers">
       <method v="2" />
     </configuration>
@@ -85,6 +100,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.game.js (1)" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.jest" />
         <item itemvalue="Node.js.game.js" />
@@ -103,7 +119,7 @@
       <workItem from="1676908491186" duration="358000" />
       <workItem from="1676991680800" duration="27818000" />
       <workItem from="1677221687371" duration="57813000" />
-      <workItem from="1677598254496" duration="99291000" />
+      <workItem from="1677598254496" duration="104749000" />
     </task>
     <servers />
   </component>
