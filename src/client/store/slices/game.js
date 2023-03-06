@@ -2,6 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import TetraminoModel from "../../models/tetramino";
 import FieldModel from "../../models/field";
 import sessionStorageService from "../../services/sessionStorageService";
+import {GAME_MODE} from "../../../utils/constants";
 
 export const gameState = {
     id: '',
@@ -16,6 +17,8 @@ export const gameState = {
     isSinglePlayer: false,
     isStarted: false,
     isOver: false,
+
+    mode: GAME_MODE.COMMON,
 };
 
 const game = createSlice({
@@ -129,8 +132,13 @@ const game = createSlice({
             const pileLine = FieldModel.getPileLine(state.field, state.currentTetramino);
 
             state.currentTetramino = TetraminoModel.moveToPile(state.currentTetramino, pileLine);
+        },
+
+        setMode(state, { payload }) {
+            state.mode = payload;
         }
     },
+
 });
 
 export const {
@@ -149,6 +157,7 @@ export const {
     moveBottomTetramino,
     moveToPile,
     generateTetramino,
+    setMode,
 } = game.actions;
 
 export const getGameInitialState = game.getInitialState;

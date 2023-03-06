@@ -1,6 +1,7 @@
 import {v4 as uuidv4} from 'uuid';
 import Tetramino from "./tetramino";
 import randomChoice from "../../utils/randomChoice";
+import {GAME_MODE} from "../../utils/constants";
 
 class Game {
     static GAME_LIST = [];
@@ -13,7 +14,8 @@ class Game {
     _tetraminoQueue;
     _isStarted;
 
-    constructor(host) {
+    _mode;
+    constructor(host, mode = GAME_MODE.COMMON) {
         this._host = host;
         this._id = uuidv4();
         this._createdAt = new Date();
@@ -21,6 +23,7 @@ class Game {
         this._tetraminoQueue = [];
         this._isStarted = false;
         this._isOver = false;
+        this._mode = mode;
     }
 
     get id() {
@@ -51,6 +54,10 @@ class Game {
         return this._isStarted;
     }
 
+    get mode() {
+        return this._mode;
+    }
+
     connect(player) {
         player.game = this;
         player.socket.join(this.id);
@@ -79,6 +86,7 @@ class Game {
             players: this.players.map((player) => player?.toJSON()),
             isOver: this.isOver,
             isStarted: this.isStarted,
+            mode: this.mode,
         };
     }
 
@@ -153,8 +161,8 @@ class Game {
         return this.getAll().filter((game) => !game.isStarted);
     }
 
-    static create(host) {
-        const game = new Game(host);
+    static create(host, mode = GAME_MODE.COMMON) {
+        const game = new Game(host, mode);
 
         this.GAME_LIST.push(game);
 

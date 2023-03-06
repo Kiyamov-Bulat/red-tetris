@@ -2,14 +2,14 @@ import React, {useEffect} from 'react';
 import GameListModel from '../../models/gameList';
 import store from "../../store";
 import {useSelector} from "react-redux";
-import {selectGameListState} from "../../store/selectors/gameList";
+import {selectGameListByMode} from "../../store/selectors/gameList";
 import GameUnit from "./gameUnit";
 import styles from './styles.module.scss';
 
 const dispatchUpdateGameList = (dispatch = store.dispatch) => dispatch(GameListModel.get());
 
 const GameList = () => {
-    const state = useSelector(selectGameListState);
+    const state = useSelector(selectGameListByMode);
 
     useEffect(() => {
         dispatchUpdateGameList();

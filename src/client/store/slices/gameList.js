@@ -1,8 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
 import GameListModel from "../../models/gameList";
+import {GAME_MODE} from "../../../utils/constants";
 
 const gameListState = {
-    state: []
+    state: [],
+    mode: GAME_MODE,
 };
 
 const gameList = createSlice({
@@ -14,6 +16,9 @@ const gameList = createSlice({
         },
         removeGame: (state, { payload }) => {
             state.state = state.state.filter((game) => game.id !== payload.id);
+        },
+        setMode(state, { payload }) {
+            state.mode = payload;
         }
     },
     extraReducers: (builder) => {
@@ -30,6 +35,7 @@ const gameList = createSlice({
 export const {
     addGame,
     removeGame,
+    setMode,
 } = gameList.actions;
 
 export const getGameListInitialState = gameList.getInitialState;

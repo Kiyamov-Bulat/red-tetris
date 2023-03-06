@@ -1,0 +1,20 @@
+.modes {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: calc(100% + 10px);
+  gap: 6px;
+
+  p {
+    padding: 6px 3px;
+    background: #e1e1e1;
+    writing-mode: tb-rl;
+    cursor: pointer;
+  }
+
+}
+
+p.selected {
+  color: white;
+  background: #0074D9;
+}

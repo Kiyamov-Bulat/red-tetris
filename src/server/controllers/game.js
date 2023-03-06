@@ -10,9 +10,9 @@ export default {
         res.sendJSON(Game.getAllAvailable());
     },
 
-    create(io, socket, hostId) {
+    create(io, socket, hostId, mode) {
         const player = new Player(hostId, socket);
-        const game = Game.create(player);
+        const game = Game.create(player, mode);
 
         io.emit(GAME_SOCKET_EVENT.CREATE, game);
 

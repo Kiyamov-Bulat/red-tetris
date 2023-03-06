@@ -10,14 +10,21 @@ import {
     resetGame,
     setCurrentTetramino,
     setGameProps,
-    setIsSinglePlayerGame,
+    setIsSinglePlayerGame, setMode,
     startGame,
     updateGameState,
     updateOpponentField
 } from "../store/slices/game";
-import {selectCurrentTetramino, selectField, selectGameId, selectIsSinglePlayer} from "../store/selectors/game";
+import {
+    selectCurrentTetramino,
+    selectField,
+    selectGameId,
+    selectGameMode,
+    selectIsSinglePlayer
+} from "../store/selectors/game";
 import {resetIsWinner, resetScore, setIsWinner, setScore, updateScore} from "../store/slices/player";
 import FieldModel from "./field";
+import { setMode as setModeGameList } from '../store/slices/gameList';
 
 export const SIDE_PANEL_TYPE = {
     MAIN: '@side-panel-type/main',
@@ -44,7 +51,7 @@ const GameModel = {
             return;
         }
 
-        socket.emit(GAME_SOCKET_EVENT.CREATE, sessionStorageService.getSessionId());
+        socket.emit(GAME_SOCKET_EVENT.CREATE, sessionStorageService.getSessionId(), selectGameMode(store.getState()));
         socket.on(GAME_SOCKET_EVENT.CREATE, GameModel.onCreate);
     },
 
@@ -196,6 +203,11 @@ const GameModel = {
 
         store.dispatch(updateScore(collapsedLines));
         store.dispatch(updateGameState(updatedField));
+    },
+
+    setMode: (mode) => {
+        store.dispatch(setMode(mode));
+        store.dispatch(setModeGameList(mode));
     }
 };
 
