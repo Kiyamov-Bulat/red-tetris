@@ -1,5 +1,12 @@
 import Field from "../src/server/models/field";
-import {CUBE_TYPE, GAME_MODE, INITIAL_TETRAMINO_POSITION, TETRAMINO_TYPE} from "../src/utils/constants";
+import {
+    CUBE_TYPE,
+    FIELD_SIZE,
+    GAME_MODE,
+    INITIAL_TETRAMINO_POSITION,
+    RANDOM_FILLED_PART,
+    TETRAMINO_TYPE
+} from "../src/utils/constants";
 import TetraminoModel from "../src/client/models/tetramino";
 import FieldModel from "../src/client/models/field";
 import Player from "../src/server/models/player";
@@ -246,5 +253,29 @@ describe('server - models', () => {
         const someCubeOnCenter = cubes.some((cube) => cube.line === pos.line && cube.column === pos.column);
 
         expect(someCubeOnCenter).toBeTruthy();
+    });
+    
+    it('field', () => {
+        jest.spyOn(global.Math, 'random').mockReturnValue(1);
+
+        Math.random = () => 1;
+        const filledField1 = Field.generateRandomFilled();
+        const filledField2 = Field.generateRandomFilled();
+        const empty1 = Field.getEmpty();
+        const empty2 = Field.getEmpty();
+
+        jest.spyOn(global.Math, 'random').mockRestore();
+
+        expect(filledField1).not.toBe(filledField2);
+        expect(empty1).not.toBe(empty2);
+
+        expect(filledField1).toHaveLength(FIELD_SIZE.line);
+        expect(filledField2).toHaveLength(FIELD_SIZE.line);
+        expect(empty1).toHaveLength(FIELD_SIZE.line);
+
+        const filledIndex = Math.round((1 - RANDOM_FILLED_PART) * filledField1.length);
+
+        expect(filledField1.slice(filledIndex).every(line => line.every(cube => cube.type !== CUBE_TYPE.EMPTY))).toBeTruthy();
+        expect(empty1.every(line => line.every(cube => cube.type === CUBE_TYPE.EMPTY))).toBeTruthy();
     });
 });
