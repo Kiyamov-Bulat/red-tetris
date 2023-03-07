@@ -46,8 +46,8 @@ const game = createSlice({
             state.currentTetramino = null;
         },
 
-        resetGame() {
-            return gameState;
+        resetGame(state) {
+            return { ...gameState, mode: state.mode };
         },
 
         setGameProps(state, { payload: game }) {

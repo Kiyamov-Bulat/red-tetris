@@ -1,12 +1,5 @@
 import TetraminoModel, {CUBE_COLOR} from "./tetramino";
-import {
-    CUBE_TYPE,
-    FIELD,
-    FIELD_SIZE,
-    RANDOM_FILLED_PART,
-    TETRAMINO_COORDS,
-    TETRAMINO_TYPE
-} from "../../utils/constants";
+import {CUBE_TYPE, FIELD, FIELD_SIZE, RANDOM_FILLED_PART, TETRAMINO_TYPE} from "../../utils/constants";
 import {selectCurrentTetramino, selectField, selectOpponentsFields} from "../store/selectors/game";
 import sessionStorageService from "../services/sessionStorageService";
 import appStore from "../store";

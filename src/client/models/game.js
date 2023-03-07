@@ -26,7 +26,6 @@ import {
 } from "../store/selectors/game";
 import {resetIsWinner, resetScore, setIsWinner, setScore, updateScore} from "../store/slices/player";
 import FieldModel from "./field";
-import {setMode as setModeGameList} from '../store/slices/gameList';
 
 export const SIDE_PANEL_TYPE = {
     MAIN: '@side-panel-type/main',
@@ -211,7 +210,6 @@ const GameModel = {
 
     setMode: (mode) => {
         store.dispatch(setMode(mode));
-        store.dispatch(setModeGameList(mode));
     }
 };
 

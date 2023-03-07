@@ -4,7 +4,6 @@ import sessionStorageService from "../services/sessionStorageService";
 import styles from './styles.module.scss';
 import SidePanel from "./sidePanel";
 import GameModel from "../models/game";
-import ModesPanel from "./sidePanel/main/modesPanel";
 
 const App = () => {
     useEffect(() => {

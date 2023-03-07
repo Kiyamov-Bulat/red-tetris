@@ -1,12 +1,14 @@
 import {
     CUBE_TYPE,
-    FIELD_SIZE, INITIAL_TETRAMINO_POSITION,
+    FIELD_SIZE,
+    INITIAL_TETRAMINO_POSITION,
     NEXT_TETRAMINO_ROTATE,
     TETRAMINO_COORDS,
     TETRAMINO_ROTATE,
     TETRAMINO_TYPE
 } from "../../utils/constants";
 import randomChoice from "../../utils/randomChoice";
+
 export const CUBE_COLOR = {
     [CUBE_TYPE.EMPTY]: '#e1e1e1',
     [CUBE_TYPE.LOCKED]: '#1a1a1a',

@@ -6,7 +6,7 @@ import {renderWithProviders} from "./helpers/redux";
 import Cube, {CUBE_SIZE, CUBE_TEST_ID} from "../src/client/components/field/cube";
 import TetraminoModel, {CUBE_COLOR} from "../src/client/models/tetramino";
 import {CUBE_TYPE, FIELD_SIZE, INITIAL_TETRAMINO_POSITION, TETRAMINO_TYPE} from "../src/utils/constants";
-import {getGameInitialState, updateGameState} from "../src/client/store/slices/game";
+import {getGameInitialState} from "../src/client/store/slices/game";
 import Field from "../src/client/components/field";
 import FieldModel from "../src/client/models/field";
 import Modal, {MODAL_TEST_ID} from "../src/client/components/modal";
