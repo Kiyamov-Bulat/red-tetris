@@ -16,7 +16,7 @@ const GameListModel = {
         store.dispatch(addGame(game));
     },
 
-    _removeGame: (game, store) => {
+    _removeGame: (game) => {
         store.dispatch(removeGame(game));
     },
 

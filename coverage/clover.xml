@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678214612409" clover="3.2.0">
-  <project timestamp="1678214612409" name="All files">
-    <metrics statements="787" coveredstatements="572" conditionals="295" coveredconditionals="169" methods="311" coveredmethods="223" elements="1393" coveredelements="964" complexity="0" loc="787" ncloc="787" packages="24" files="55" classes="55"/>
+<coverage generated="1678215076236" clover="3.2.0">
+  <project timestamp="1678215076236" name="All files">
+    <metrics statements="787" coveredstatements="572" conditionals="293" coveredconditionals="167" methods="311" coveredmethods="223" elements="1391" coveredelements="962" complexity="0" loc="787" ncloc="787" packages="24" files="55" classes="55"/>
     <package name="client">
       <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.jsx" path="/Users/gink/projects/red-tetris/src/client/index.jsx">
@@ -249,7 +249,7 @@
       </file>
     </package>
     <package name="client.models">
-      <metrics statements="195" coveredstatements="151" conditionals="91" coveredconditionals="66" methods="83" coveredmethods="65"/>
+      <metrics statements="195" coveredstatements="151" conditionals="89" coveredconditionals="64" methods="83" coveredmethods="65"/>
       <file name="field.js" path="/Users/gink/projects/red-tetris/src/client/models/field.js">
         <metrics statements="62" coveredstatements="41" conditionals="35" coveredconditionals="24" methods="29" coveredmethods="24"/>
         <line num="8" count="3" type="stmt"/>
@@ -397,7 +397,7 @@
         <line num="212" count="0" type="stmt"/>
       </file>
       <file name="gameList.js" path="/Users/gink/projects/red-tetris/src/client/models/gameList.js">
-        <metrics statements="14" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="5"/>
+        <metrics statements="14" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="5"/>
         <line num="8" count="3" type="stmt"/>
         <line num="10" count="7" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
@@ -601,15 +601,15 @@
       </file>
       <file name="gameList.js" path="/Users/gink/projects/red-tetris/src/client/store/slices/gameList.js">
         <metrics statements="9" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="5"/>
-        <line num="5" count="3" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="14" count="5" type="stmt"/>
-        <line num="17" count="14" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="26" count="7" type="cond" truecount="2" falsecount="0"/>
-        <line num="34" count="3" type="stmt"/>
-        <line num="36" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="16" count="14" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="35" count="3" type="stmt"/>
       </file>
       <file name="player.js" path="/Users/gink/projects/red-tetris/src/client/store/slices/player.js">
         <metrics statements="12" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="4"/>
