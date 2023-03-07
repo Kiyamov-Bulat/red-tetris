@@ -1,6 +1,5 @@
-import params from '../../../params';
 const setCORS = (req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', params.server.url);
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
         'Access-Control-Allow-Headers',
         'Origin, Content-Type, Content-Length, Authorization, Accept, X-Requested-With',

@@ -8,7 +8,7 @@ describe('server - middlewares', () => {
         const next = jest.fn();
 
         setCors({}, res, next);
-        expect(res.headers['Access-Control-Allow-Origin']).toBe(params.server.url);
+        expect(res.headers['Access-Control-Allow-Origin']).toBe('*'); //params.server.url);
         expect(res.headers['Access-Control-Allow-Headers']).toBe(
             'Origin, Content-Type, Content-Length, Authorization, Accept, X-Requested-With',
         );
