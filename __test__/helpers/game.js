@@ -2,6 +2,7 @@ import sessionStorageService from "../../src/client/services/sessionStorageServi
 import {v4 as uuidv4} from "uuid";
 import Player from "../../src/server/models/player";
 import Game from "../../src/server/models/game";
+import {GAME_MODE} from "../../src/utils/constants";
 
 export const getCurrentUser = () => (
     { name: 'Noob', id: sessionStorageService.getSessionId() }
@@ -11,7 +12,7 @@ export const getMockPlayer = () => (
     { name: 'Noob', id: uuidv4() }
 );
 
-export const getMockGame = () => {
+export const getMockGame = (mode = GAME_MODE.COMMON) => {
     const mock = {};
 
     mock.host = getCurrentUser();
@@ -21,6 +22,7 @@ export const getMockGame = () => {
     mock.tetraminoQueue = [];
     mock.isStarted = false;
     mock.isOver = false;
+    mock.mode = mode;
     return mock;
 };
 

@@ -4,16 +4,16 @@ import {CUBE_TYPE, FIELD_SIZE, INITIAL_TETRAMINO_POSITION, TETRAMINO_TYPE} from 
 import gameController from '../src/server/controllers/game';
 import {renderWithProviders} from "./helpers/redux";
 import App from "../src/client/containers/app";
-import {act, fireEvent, waitFor} from "@testing-library/react";
+import {act, fireEvent} from "@testing-library/react";
 import {
-    selectCurrentTetramino, selectField,
+    selectCurrentTetramino,
+    selectField,
     selectGameIsOver,
     selectGameIsStarted,
     selectIsSinglePlayer
 } from "../src/client/store/selectors/game";
-import {GAME_UPDATE_TIMEOUT} from "../src/client/containers/game/useGameUpdate";
 import TetraminoModel from "../src/client/models/tetramino";
-import {updateGameState} from "../src/client/store/slices/game";
+import GameModel from "../src/client/models/game";
 
 const createClient = () => {
 };
@@ -61,7 +61,7 @@ describe('game full imitation', () => {
         expect(selectGameIsOver(state)).toBeFalsy();
         expect(getByText('С противником')).toBeInTheDocument();
 
-        act(() => store.dispatch(updateGameState()));
+        act(() => GameModel.updateState());
         expect(selectCurrentTetramino(store.getState())).not.toBeNull();
 
         fireEvent.keyDown(document, ARROW_DOWN);
@@ -71,7 +71,7 @@ describe('game full imitation', () => {
 
         expect(lowestCube).toEqual({ line: FIELD_SIZE.line - 1, column: INITIAL_TETRAMINO_POSITION.column });
 
-        act(() => store.dispatch(updateGameState())); // 19
+        act(() => GameModel.updateState()); // 19
 
         let field = selectField(store.getState());
 
@@ -79,7 +79,7 @@ describe('game full imitation', () => {
             expect(field[cube.line][cube.column].type).toBe(currentTetramino.type);
         }
 
-        act(() => store.dispatch(updateGameState())); // 0
+        act(() => GameModel.updateState()); // 0
 
         currentTetramino = selectCurrentTetramino(store.getState());
 
@@ -101,7 +101,7 @@ describe('game full imitation', () => {
             ...INITIAL_TETRAMINO_POSITION, column: INITIAL_TETRAMINO_POSITION.column + 1
         });
 
-        act(() => store.dispatch(updateGameState())); // 1
+        act(() => GameModel.updateState()); // 1
         
         fireEvent.keyDown(document, ARROW_UP);
 
@@ -116,19 +116,19 @@ describe('game full imitation', () => {
         expect(TetraminoModel.getTopmostCube(currentTetramino).line).toEqual(4);
         expect(TetraminoModel.getLeftmostCube(currentTetramino).column).toEqual(INITIAL_TETRAMINO_POSITION.column);
 
-        act(() => store.dispatch(updateGameState())); // 5
+        act(() => GameModel.updateState()); // 5
         fireEvent.keyDown(document, ARROW_RIGHT);
         fireEvent.keyDown(document, ARROW_DOWN);
-        act(() => store.dispatch(updateGameState())); // 19
-        act(() => store.dispatch(updateGameState())); // 0
+        act(() => GameModel.updateState()); // 19
+        act(() => GameModel.updateState()); // 0
 
         for (let i = 5; i < FIELD_SIZE.column; ++i) {
             fireEvent.keyDown(document, ARROW_RIGHT);
         }
         fireEvent.keyDown(document, ARROW_DOWN);
 
-        act(() => store.dispatch(updateGameState()));
-        act(() => store.dispatch(updateGameState()));
+        act(() => GameModel.updateState());
+        act(() => GameModel.updateState());
 
         for (let i = 4; i >= 0; --i) {
             fireEvent.keyDown(document, ARROW_LEFT);
@@ -136,17 +136,17 @@ describe('game full imitation', () => {
         fireEvent.keyDown(document, ARROW_UP);
         fireEvent.keyDown(document, ARROW_DOWN);
 
-        act(() => store.dispatch(updateGameState()));
+        act(() => GameModel.updateState());
         const everyFilled = selectField(store.getState())[FIELD_SIZE.line - 1].every((cube) => cube.type !== CUBE_TYPE.EMPTY);
         expect(everyFilled).toBeFalsy();
 
-        act(() => store.dispatch(updateGameState()));
+        act(() => GameModel.updateState());
 
         for (let i = 0; i < 5; ++i) {
             fireEvent.keyDown(document, ARROW_DOWN);
 
-            act(() => store.dispatch(updateGameState()));
-            act(() => store.dispatch(updateGameState()));
+            act(() => GameModel.updateState());
+            act(() => GameModel.updateState());
         }
         expect(selectGameIsOver(store.getState())).toBeTruthy();
         expect(selectGameIsStarted(store.getState())).toBeFalsy();

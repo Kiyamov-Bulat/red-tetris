@@ -17,7 +17,6 @@ const Field = ({ state, playerId = sessionStorageService.getSessionId() }) => {
         <div style={{ width: `${fieldWidth}px`, height: `${fieldHeight}px`, gap: CUBE_GAP }}
              className={styles.field}
         >
-            <Score playerId={playerId}/>
             {state.map((cubes, line) => cubes.map((cube, column) => {
 
                 return <Cube key={`${line}-${column}`}
@@ -27,6 +26,7 @@ const Field = ({ state, playerId = sessionStorageService.getSessionId() }) => {
                              column={column}
                 />;
             }))}
+            <Score playerId={playerId}/>
         </div>
     );
 };

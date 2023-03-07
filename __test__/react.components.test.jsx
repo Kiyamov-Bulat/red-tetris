@@ -3,13 +3,13 @@ import Button from "../src/client/components/button";
 import {act, fireEvent, render} from "@testing-library/react";
 import sessionStorageService from "../src/client/services/sessionStorageService";
 import {renderWithProviders} from "./helpers/redux";
-import Cube, {CUBE_SIZE} from "../src/client/components/field/cube";
+import Cube, {CUBE_SIZE, CUBE_TEST_ID} from "../src/client/components/field/cube";
 import TetraminoModel, {CUBE_COLOR} from "../src/client/models/tetramino";
 import {CUBE_TYPE, FIELD_SIZE, INITIAL_TETRAMINO_POSITION, TETRAMINO_TYPE} from "../src/utils/constants";
 import {getGameInitialState, updateGameState} from "../src/client/store/slices/game";
 import Field from "../src/client/components/field";
 import FieldModel from "../src/client/models/field";
-import Modal from "../src/client/components/modal";
+import Modal, {MODAL_TEST_ID} from "../src/client/components/modal";
 import {LOSE_TITLE, WIN_TITLE} from "../src/client/containers/game/gameOverModal";
 import Game from "../src/client/containers/game";
 import GameModel from "../src/client/models/game";
@@ -94,10 +94,9 @@ describe('components', () => {
         };
 
         it('empty field', () => {
-            const { container } = renderField();
-            const children = [...container.firstChild.childNodes.values()];
+            const { getAllByTestId } = renderField();
 
-            expectEmptyField(children);
+            expectEmptyField(getAllByTestId(CUBE_TEST_ID));
         });
 
         it('field with tetramino', async () => {
@@ -118,7 +117,7 @@ describe('components', () => {
 
             act(() => {
                 // UPDATE
-                store.dispatch(updateGameState());
+                GameModel.updateState();
             });
 
             expect(getCube(center, 0)).toHaveStyle(getCubeCSSColor(CUBE_TYPE.EMPTY));
@@ -126,10 +125,9 @@ describe('components', () => {
         });
 
         it('mini field', () => {
-            const { container } = renderField(false, undefined, 1);
-            const cubes = [...container.firstChild.childNodes.values()];
-        
-            cubes.forEach((cube) => {
+            const { getAllByTestId } = renderField(false, undefined, 1);
+
+            getAllByTestId(CUBE_TEST_ID).forEach((cube) => {
                 expect(cube).toHaveStyle(`width: ${CUBE_SIZE.MINI}px; height: ${CUBE_SIZE.MINI}px`);
             });
         });
@@ -183,10 +181,11 @@ describe('components', () => {
 
             if (type !== EMPTY_GAME_TYPE.INITIAL) {
                 act(() => {
-                    const loser = type === EMPTY_GAME_TYPE.WIN ? { id: 'bar' } : getCurrentUser();
+                    const winner = type === EMPTY_GAME_TYPE.WIN ? getCurrentUser() : { id: 'bar' };
+
                     GameModel.onConnect(getMockGame());
                     GameModel.onStart(selectGame(store.getState()));
-                    GameModel.onFinish(selectGame(store.getState()), loser);
+                    GameModel.onFinish(selectGame(store.getState()), winner);
                 });
             }
             
@@ -204,7 +203,7 @@ describe('components', () => {
             }
 
             expect(field).toBeTruthy();
-            expectEmptyField([...field.childNodes.values()]);
+            expectEmptyField(data.getAllByTestId(CUBE_TEST_ID));
             return data;
         };
         
@@ -213,18 +212,18 @@ describe('components', () => {
         });
 
         it('lost game', () => {
-            const { container, queryByText } = expectGameWithEmptyField(EMPTY_GAME_TYPE.LOSE);
+            const { queryByText, queryByTestId } = expectGameWithEmptyField(EMPTY_GAME_TYPE.LOSE);
 
-            expect(container.firstChild).toBeTruthy();
-            fireEvent.click(container.firstChild);
+            expect(queryByTestId(MODAL_TEST_ID)).toBeTruthy();
+            fireEvent.click(queryByTestId(MODAL_TEST_ID));
             expectClosedModal(queryByText);
         });
 
         it('winning game', () => {
-            const { container, queryByText } = expectGameWithEmptyField(EMPTY_GAME_TYPE.WIN);
+            const { queryByText, queryByTestId } = expectGameWithEmptyField(EMPTY_GAME_TYPE.WIN);
 
-            expect(container.firstChild).toBeTruthy();
-            fireEvent.click(container.firstChild);
+            expect(queryByTestId(MODAL_TEST_ID)).toBeTruthy();
+            fireEvent.click(queryByTestId(MODAL_TEST_ID));
             expectClosedModal(queryByText);
         });
     });

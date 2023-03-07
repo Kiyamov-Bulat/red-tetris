@@ -4,7 +4,7 @@ import {GAME_MODE} from "../../../utils/constants";
 
 const gameListState = {
     state: [],
-    mode: GAME_MODE,
+    mode: GAME_MODE.COMMON,
 };
 
 const gameList = createSlice({
@@ -12,7 +12,7 @@ const gameList = createSlice({
     initialState: gameListState,
     reducers: {
         addGame: (state, { payload }) => {
-            state.state.push(payload);
+            state.state = [...state.state, payload];
         },
         removeGame: (state, { payload }) => {
             state.state = state.state.filter((game) => game.id !== payload.id);

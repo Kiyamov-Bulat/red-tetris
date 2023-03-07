@@ -1,5 +1,12 @@
 import TetraminoModel, {CUBE_COLOR} from "./tetramino";
-import {CUBE_TYPE, FIELD, FIELD_SIZE, RANDOM_FILLED_PART, TETRAMINO_TYPE} from "../../utils/constants";
+import {
+    CUBE_TYPE,
+    FIELD,
+    FIELD_SIZE,
+    RANDOM_FILLED_PART,
+    TETRAMINO_COORDS,
+    TETRAMINO_TYPE
+} from "../../utils/constants";
 import {selectCurrentTetramino, selectField, selectOpponentsFields} from "../store/selectors/game";
 import sessionStorageService from "../services/sessionStorageService";
 import appStore from "../store";
@@ -43,7 +50,7 @@ const FieldModel = {
 
     update: (field, landedTetramino) => {
         const newField = field.reduce((acc, line) => [...acc, line.slice()], []);
-        
+
         TetraminoModel.getCubes(landedTetramino).forEach((cube) => {
             newField[cube.line][cube.column] = { type: landedTetramino.type };
         });
@@ -88,6 +95,10 @@ const FieldModel = {
                     field[cube.line + 1][cube.column].type !== CUBE_TYPE.EMPTY
                 )
         );
+    },
+
+    cubeIsEmpty: (field, line, column) => {
+        return (line >= field.length || line < 0 || field[line][column].type === CUBE_TYPE.EMPTY);
     },
 
     getPileLine: (field, tetramino) => {

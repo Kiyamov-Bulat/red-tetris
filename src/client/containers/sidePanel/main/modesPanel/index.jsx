@@ -8,7 +8,6 @@ import Mode from "./mode";
 const ModesPanel = () => {
     const selectedMode = useSelector(selectGameMode);
 
-    console.log(selectedMode);
     return (
         <div className={styles.modes}>
             {Object.values(GAME_MODE).map((mode) =>

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.08% </span>
+                <span class="strong">25.35% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/69</span>
+                <span class='fraction'>18/71</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25.37% </span>
+                <span class="strong">24.63% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/67</span>
+                <span class='fraction'>17/69</span>
             </div>
         
             
@@ -215,7 +215,9 @@
 <a name='L150'></a><a href='#L150'>150</a>
 <a name='L151'></a><a href='#L151'>151</a>
 <a name='L152'></a><a href='#L152'>152</a>
-<a name='L153'></a><a href='#L153'>153</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -296,15 +298,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -317,10 +310,21 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -379,9 +383,9 @@ export default {
         res.sendJSON(Game.getAllAvailable());
     },
 &nbsp;
-    create(io, socket, hostId) {
+    create(io, socket, hostId, mode) {
         const player = new Player(hostId, socket);
-        const game = Game.create(player);
+        const game = Game.create(player, mode);
 &nbsp;
         io.emit(GAME_SOCKET_EVENT.CREATE, game);
 &nbsp;
@@ -448,9 +452,10 @@ export default {
         }
 &nbsp;
         const nextTetramino = <span class="cstat-no" title="statement not covered" >game.start();</span>
+        const field = <span class="cstat-no" title="statement not covered" >game.isRandomFilled ? Field.generateRandomFilled() : Field.getEmpty();</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        io.emit(GAME_SOCKET_EVENT.START, game);</span>
-<span class="cstat-no" title="statement not covered" >        io.to(game.id).emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino);</span>
+<span class="cstat-no" title="statement not covered" >        io.to(game.id).emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino, field);</span>
     },
 &nbsp;
 <span class="fstat-no" title="function not covered" >    fi</span>nish(io, player) {
@@ -460,7 +465,7 @@ export default {
 <span class="cstat-no" title="statement not covered" >            return;</span>
         }
 <span class="cstat-no" title="statement not covered" >        game.finish();</span>
-<span class="cstat-no" title="statement not covered" >        io.emit(GAME_SOCKET_EVENT.FINISH, game, game.players.length &gt; 1 ? player : null);</span>
+<span class="cstat-no" title="statement not covered" >        io.emit(GAME_SOCKET_EVENT.FINISH, game, game.getWinner(player));</span>
     },
 &nbsp;
 <span class="fstat-no" title="function not covered" >    up</span>date(io, player, field, collapsedLines) {
@@ -473,8 +478,9 @@ export default {
         const transformedField = <span class="cstat-no" title="statement not covered" >Field.transformToSpectatorField(field);</span>
         const nextTetramino = <span class="cstat-no" title="statement not covered" >game.getNextTetramino(player.id);</span>
 &nbsp;
+<span class="cstat-no" title="statement not covered" >        player.updateScore(collapsedLines);</span>
 <span class="cstat-no" title="statement not covered" >        player.socket.broadcast.to(game.id).emit(GAME_SOCKET_EVENT.UPDATE, { field: transformedField, player, collapsedLines });</span>
-<span class="cstat-no" title="statement not covered" >        player.socket.emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino);</span>
+<span class="cstat-no" title="statement not covered" >        player.socket.emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino, player.score); </span>// @TODO
     },
     
 <span class="fstat-no" title="function not covered" >    ki</span>ck(io, player, kickedPlayerId) {
@@ -526,7 +532,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-05T16:49:28.532Z
+                at 2023-03-07T15:18:48.329Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -1,5 +1,5 @@
 import Field from "../src/server/models/field";
-import {CUBE_TYPE, INITIAL_TETRAMINO_POSITION, TETRAMINO_TYPE} from "../src/utils/constants";
+import {CUBE_TYPE, GAME_MODE, INITIAL_TETRAMINO_POSITION, TETRAMINO_TYPE} from "../src/utils/constants";
 import TetraminoModel from "../src/client/models/tetramino";
 import FieldModel from "../src/client/models/field";
 import Player from "../src/server/models/player";
@@ -53,6 +53,7 @@ describe('server - models', () => {
                 players: [],
                 isOver: false,
                 isStarted: false,
+                mode: GAME_MODE.COMMON,
             };
 
             expect(game1.id).toBeTruthy();
@@ -228,7 +229,7 @@ describe('server - models', () => {
         expect(player.socket).toBeTruthy();
         expect(player.socket.id).toBe('socket-id');
         expect(player.game).toBeUndefined();
-        expect(player.toJSON()).toEqual({ id: 1, name: Player.DEFAULT_NAME });
+        expect(player.toJSON()).toEqual({ id: 1, name: Player.DEFAULT_NAME, score: 0 });
         player.game = { id: 'game-id' };
         expect(player.game).toEqual({ id: 'game-id' });
     });
