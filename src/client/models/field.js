@@ -52,6 +52,8 @@ const FieldModel = {
         const newField = field.reduce((acc, line) => [...acc, line.slice()], []);
 
         TetraminoModel.getCubes(landedTetramino).forEach((cube) => {
+            if (newField[cube.line][cube.column].type === CUBE_TYPE.LOCKED) return;
+
             newField[cube.line][cube.column] = { type: landedTetramino.type };
         });
 
