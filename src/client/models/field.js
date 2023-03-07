@@ -100,19 +100,20 @@ const FieldModel = {
     },
 
     cubeIsEmpty: (field, line, column) => {
-        return (line >= field.length || line < 0 || field[line][column].type === CUBE_TYPE.EMPTY);
+        return (field[line][column].type === CUBE_TYPE.EMPTY);
     },
 
     getPileLine: (field, tetramino) => {
         let i;
         const cubes = TetraminoModel.getCubes(tetramino);
+        const lowestCube = TetraminoModel.getLowestCube(tetramino);
+        const distance = field.length - lowestCube.line;
+        const everyEmpty = (i) =>
+            cubes.every((cube) => FieldModel.cubeIsEmpty(field, cube.line + i, cube.column));
 
-        for (i = 0; i < field.length; ++i) {
-            if (cubes.some((cube) => field[i][cube.column].type !== CUBE_TYPE.EMPTY)) {
-                return i;
-            }
-        }
-        return i;
+        for (i = 0; i < distance && everyEmpty(i); ++i);
+
+        return i + lowestCube.line;
     },
 
     getCube: (playerId, line, column, store = appStore) => {
