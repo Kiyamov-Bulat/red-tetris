@@ -1,8 +1,9 @@
 import TetraminoModel, {CUBE_COLOR} from "./tetramino";
-import {CUBE_TYPE, FIELD_SIZE} from "../../utils/constants";
+import {CUBE_TYPE, FIELD, FIELD_SIZE, RANDOM_FILLED_PART, TETRAMINO_TYPE} from "../../utils/constants";
 import {selectCurrentTetramino, selectField, selectOpponentsFields} from "../store/selectors/game";
 import sessionStorageService from "../services/sessionStorageService";
 import appStore from "../store";
+import randomChoice from "../../utils/randomChoice";
 
 const getEmptyFieldLine = () => {
     return Array(FIELD_SIZE.column).fill({ type: CUBE_TYPE.EMPTY });
@@ -12,11 +13,32 @@ const getLockedFieldLine = () => {
     return Array(FIELD_SIZE.column).fill({ type: CUBE_TYPE.LOCKED });
 };
 
-export const FIELD = [...Array(FIELD_SIZE.line)].map(() => getEmptyFieldLine());
-
 const FieldModel = {
     getEmpty: () => {
-        return [...FIELD];
+        return FIELD.reduce((acc, line) => [...acc, line.slice()], []);
+    },
+
+    generateRandomFilled: (part = RANDOM_FILLED_PART) => {
+        const field = FieldModel.getEmpty();
+        const index = Math.round((1 - part) * field.length);
+
+        for (let i = index; i < field.length; ++i) {
+            const line = field[i];
+
+            for (let j = 0; j < line.length; ++j) {
+                const filled = Math.random() >= 0.5;
+
+                if (filled) {
+                    line[j] = { ...line[j], type: randomChoice(Object.values(TETRAMINO_TYPE)) };
+                }
+            }
+            if (line.every((cube) => cube.type !== CUBE_TYPE.EMPTY)) {
+                const emptyIndex = randomChoice([...Array(line.length).keys()]);
+
+                line[emptyIndex] = CUBE_TYPE.EMPTY;
+            }
+        }
+        return field;
     },
 
     update: (field, landedTetramino) => {

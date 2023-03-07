@@ -15,6 +15,7 @@ class Game {
     _isStarted;
 
     _mode;
+
     constructor(host, mode = GAME_MODE.COMMON) {
         this._host = host;
         this._id = uuidv4();

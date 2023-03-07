@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import TetraminoModel from "../../models/tetramino";
 import FieldModel from "../../models/field";
 import sessionStorageService from "../../services/sessionStorageService";
-import {GAME_MODE} from "../../../utils/constants";
+import {GAME_MODE, TETRAMINO_TYPE} from "../../../utils/constants";
 
 export const gameState = {
     id: '',
@@ -28,7 +28,11 @@ const game = createSlice({
         startGame(state) {
             state.isStarted = true;
             state.isOver = false;
-            state.field = FieldModel.getEmpty();
+
+            state.field = state.isSinglePlayer && state.mode === GAME_MODE.FILLED
+                ? FieldModel.generateRandomFilled()
+                : FieldModel.getEmpty();
+
             state.opponentsFields = state.players
                 .filter((player) => player.id !== sessionStorageService.getSessionId())
                 .map((player) => ({ player, field: FieldModel.getEmpty() }));
@@ -83,7 +87,9 @@ const game = createSlice({
         },
 
         generateTetramino(state) {
+            state.mode === GAME_MODE.Z && TetraminoModel.setGenerateType(TETRAMINO_TYPE.Z);
             state.currentTetramino = TetraminoModel.generate();
+            state.mode === GAME_MODE.Z && TetraminoModel.setGenerateType(null);
         },
 
         lockLines(state, { payload }) {
@@ -140,6 +146,10 @@ const game = createSlice({
 
         setMode(state, { payload }) {
             state.mode = payload;
+        },
+
+        setField(state, { payload }) {
+            state.field = payload;
         }
     },
 
@@ -162,6 +172,7 @@ export const {
     moveToPile,
     generateTetramino,
     setMode,
+    setField,
 } = game.actions;
 
 export const getGameInitialState = game.getInitialState;

@@ -1,7 +1,7 @@
 import io from "socket.io-client";
 import sessionStorageService from "../services/sessionStorageService";
 import store from "../store";
-import {GAME_MODE, GAME_SOCKET_EVENT, TETRAMINO_TYPE} from "../../utils/constants";
+import {GAME_SOCKET_EVENT} from "../../utils/constants";
 import {
     finishGame,
     generateTetramino,
@@ -9,8 +9,10 @@ import {
     moveBottomTetramino,
     resetGame,
     setCurrentTetramino,
+    setField,
     setGameProps,
-    setIsSinglePlayerGame, setMode,
+    setIsSinglePlayerGame,
+    setMode,
     startGame,
     updateGameState,
     updateOpponentField
@@ -24,8 +26,7 @@ import {
 } from "../store/selectors/game";
 import {resetIsWinner, resetScore, setIsWinner, setScore, updateScore} from "../store/slices/player";
 import FieldModel from "./field";
-import { setMode as setModeGameList } from '../store/slices/gameList';
-import TetraminoModel from "./tetramino";
+import {setMode as setModeGameList} from '../store/slices/gameList';
 
 export const SIDE_PANEL_TYPE = {
     MAIN: '@side-panel-type/main',
@@ -166,8 +167,10 @@ const GameModel = {
         store.dispatch(setGameProps(game));
     },
 
-    onGenerateTetramino: (tetramino, score) => {
-        store.dispatch(setScore(score));
+    onGenerateTetramino: (tetramino, scoreOrField) => {
+        const action = typeof scoreOrField === 'number' ? setScore : setField;
+
+        store.dispatch(action(scoreOrField));
         store.dispatch(setCurrentTetramino(tetramino));
     },
 
@@ -178,13 +181,7 @@ const GameModel = {
 
         // new tetramino (single game)
         if (!currentTetramino) {
-            if (isSinglePlayer) {
-                const mode = selectGameMode(state);
-
-                mode === GAME_MODE.Z && TetraminoModel.setGenerateType(TETRAMINO_TYPE.Z);
-                store.dispatch(generateTetramino());
-                mode === GAME_MODE.Z && TetraminoModel.setGenerateType(null);
-            }
+            isSinglePlayer && store.dispatch(generateTetramino());
             return;
         }
 

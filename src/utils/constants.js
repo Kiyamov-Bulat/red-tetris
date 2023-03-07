@@ -105,3 +105,6 @@ export const GAME_MODE = {
     Z: 'z-only',
     FILLED: 'random-filled',
 };
+export const FIELD = [...Array(FIELD_SIZE.line)].map(() => Array(FIELD_SIZE.column).fill({ type: CUBE_TYPE.EMPTY }));
+
+export const RANDOM_FILLED_PART = 0.4;

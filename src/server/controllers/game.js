@@ -79,9 +79,10 @@ export default {
         }
 
         const nextTetramino = game.start();
+        const field = game.isRandomFilled ? Field.generateRandomFilled() : Field.getEmpty();
 
         io.emit(GAME_SOCKET_EVENT.START, game);
-        io.to(game.id).emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino);
+        io.to(game.id).emit(GAME_SOCKET_EVENT.GENERATE_TETRAMINO, nextTetramino, field);
     },
 
     finish(io, player) {
