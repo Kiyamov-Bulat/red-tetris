@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/red-tetris.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/red-tetris.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="0b2fc40d-4003-4d39-92af-0deb38fbde71" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +102,7 @@
       <workItem from="1676991680800" duration="27818000" />
       <workItem from="1677221687371" duration="57813000" />
       <workItem from="1677598254496" duration="122980000" />
-      <workItem from="1678215411309" duration="552000" />
+      <workItem from="1678215411309" duration="916000" />
     </task>
     <servers />
   </component>
