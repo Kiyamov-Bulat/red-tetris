@@ -12,9 +12,16 @@ const Field = ({ state, playerId = sessionStorageService.getSessionId() }) => {
     const cubeSize = FieldModel.isMainField(playerId) ? CUBE_SIZE.FULL : CUBE_SIZE.MINI;
     const fieldWidth = (cubeSize + CUBE_GAP) * FIELD_SIZE.column;
     const fieldHeight = (cubeSize + CUBE_GAP) * FIELD_SIZE.line;
+    const style = {
+        minWidth: `${fieldWidth}px`,
+        minHeight: `${fieldHeight}px`,
+        width: `${fieldWidth}px`,
+        height: `${fieldHeight}px`,
+        gap: CUBE_GAP
+    };
 
     return (
-        <div style={{ width: `${fieldWidth}px`, height: `${fieldHeight}px`, gap: CUBE_GAP }}
+        <div style={style}
              className={styles.field}
         >
             {state.map((cubes, line) => cubes.map((cube, column) => {
