@@ -1,7 +1,7 @@
 {
   "name": "red_tetrisboilerplate",
   "version": "0.0.1",
-  "author": "redpelicans",
+  "author": "Kiyamov-Bulat",
   "license": "MIT",
   "scripts": {
     "eslint": "eslint src --fix",
